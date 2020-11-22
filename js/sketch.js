@@ -164,7 +164,7 @@ function createPoints(nb){ // crée un point dont les coordonées sont relatives
 		}
 	}
 	if (_rotate){
-		rotate += listOfSpeed[_rotateSpeedLvl];
+		rotate += listOfSpeed[_rotateSpeedLvl][0];
 	}
 
 
