@@ -2,15 +2,16 @@
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="Random generative processing art">
-    <meta name="author" content="Axel AVININ">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Random generative processing art" name="description">
+    <meta content="Axel AVININ" name="author">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <style>
         body {
             padding: 0;
             margin: 0;
         }
     </style>
+    <link rel="stylesheet" href="https://cdn.lex-agone.fr/bulma.css">
     <script src="https://cdn.lex-agone.fr/jquery.js" type="text/javascript"></script>
     <script src="https://cdn.lex-agone.fr/p5.js" type="text/javascript"></script>
     <script src="https://cdn.lex-agone.fr/color-picker.js" type="text/javascript"></script>
@@ -19,26 +20,27 @@
 </head>
 
 <body>
-<main>
-  Nombre de points : <input id="nbPoints" type="range" min="4" max="30" step="1" value="4" ><span id="valeur_nbPoints">4</span><br>
-  <label
-  data-toggle="checkbox-toggle"
-  data-rounded="rounded"
-  data-handle-size="20"
-  data-handle-color="bg-white"
-  data-off-color="bg-grey"
-  data-on-color="bg-blue-light">
-  <input id="rotate" type="checkbox" name="rotate" checked>
-  </label>
+    <main>
+        Nombre de points : <input id="nbPoints" max="30" min="4" step="1" type="range" value="4"><span
+            id="valeur_nbPoints">4</span><br>
+        Rotation :
+        <input checked id="rotate" name="rotate" type="checkbox">
 
-  Speed : <input id="rotateSpeed" type="range" min="0" max="15" step="1" value="5"><span id="valeur_rotateSpeed">5</span> || <span id="rotateSpeedComment">normal</span><br>
-  Crossed Lines :<input id="crossLine" type="checkbox" name="CrossedLine" checked><br>
-  Static center :<input id="staticCenter" type="checkbox" name="staticCenter" checked><br>
-  Close shape :<input id="closeShape" type="checkbox" name="closeShape" checked><br>
-  Angular Noise :<input id="angularNoise" type="checkbox" name="angularNoise" checked><br>
-  Radius Noise :<input id="radiusNoise" type="checkbox" name="radiusNoise" checked><br>
-  Start Generation :<input id="showGeometry" type="checkbox" name="showGeometry" ><br>
-</main>
+        Speed : <input id="rotateSpeed" max="15" min="0" step="1" type="range" value="5"><span
+            id="valeur_rotateSpeed">5</span> || <span id="rotateSpeedComment">normal</span><br>
+        Crossed Lines :<input checked id="crossLine" name="CrossedLine" type="checkbox"><br>
+        Static center :<input checked id="staticCenter" name="staticCenter" type="checkbox"><br>
+        Close shape :<input checked id="closeShape" name="closeShape" type="checkbox"><br>
+        Angular Noise :<input checked id="angularNoise" name="angularNoise" type="checkbox"><br>
+        Radius Noise :<input checked id="radiusNoise" name="radiusNoise" type="checkbox"><br>
+        Start Generation :<input id="showGeometry" name="showGeometry" type="checkbox"><br>
+        <script type="text/javascript">
+            jscolor.presets.default = {
+                format:'any', position:'bottom'
+            };
+        </script>
+        Couleur : <input id="color" name="color" data-jscolor="{value:'#FFFFFF'}"><br><br>
+    </main>
 </body>
 
 </html>
