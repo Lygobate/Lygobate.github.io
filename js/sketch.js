@@ -122,7 +122,7 @@ $(function () {
 
 // variables______________________________________
 
-var canvasSize = $(window).width()/3;
+var canvasSize = 600;
 let canvahtml;
 var backgroundKey;
 
