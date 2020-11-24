@@ -56,7 +56,7 @@ var _generationLimit = true; //checkBox --> affiche _generationDuration
 var _generationDuration;
 
 var _showGeometry = true;//Bouton "Generate" onClick -->
-
+let _timeGeneration = Math.floor((Math.random() * 1200) + 60);
 
 
 //_____________________ Jquery pour dynamiser les boutons
@@ -99,14 +99,16 @@ $(function () {
 		});
 		$('#curveColor').on("input change", function () {
 			curveColor = $('#curveColor').val();
-			//console.log(color);
 		});
 		$('#bgColor').on("input change", function () {
 			bgColor = $('#bgColor').val();
-			//console.log(color);
+		});
+		$('#timeGeneration').on("input change", function(){
+			_timeGeneration = $('#timeGeneration').val();
 		});
 	}
 );
+
 
 /*A faire en front pour le moment____________________________________
 
@@ -121,6 +123,10 @@ $(function () {
 
 
 //_____________________ paramétrage des boutons
+function rgba_to_array(color, array){
+	array.push(color.substring(5, color.length-1).split(","));
+}
+
 
 
 
