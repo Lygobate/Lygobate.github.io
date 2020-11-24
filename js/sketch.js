@@ -12,16 +12,16 @@ var listOfSpeed = [
 	[0,"arrêt"],
 	[0.001,"très lent"],
 	[0.002,"lent"],
-	[0.003,"très lent"],
-	[0.004,"très lent"],
-	[0.005,"très lent"],
-	[0.006,"très lent"],
-	[0.007,"très lent"],
-	[0.008,"très lent"],
-	[0.009,"très lent"],
-	[0.01,"très lent"],
-	[0.02,"très lent"],
-	[0.03,"très lent"],
+	[0.003,"lent"],
+	[0.004,"normal"],
+	[0.005,"normal"],
+	[0.006,"moyen"],
+	[0.007,"soutenu"],
+	[0.008,"soutenu"],
+	[0.009,"rapide"],
+	[0.01,"rapide"],
+	[0.02,"Très rapide"],
+	[0.03,"Très rapide"],
 	[0.04,"Maximum"],
 	[0.05,"U MAD!!"],
 	[0.1,"WTF"],
@@ -29,7 +29,7 @@ var listOfSpeed = [
 
 var _background = 'black'; //black or white (menu déroulant) ==> idéal color picker
 
-var _angleNoiseSetter = false; //checkbox --> affiche _angleNoisePower//-->OK
+var _angleNoiseSetter = true; //checkbox --> affiche _angleNoisePower//-->OK
 var _angleNoisePower = 10; //slider ||min 0|max 15 | step 1
 
 var _radiusNoiseSetter = true;//checkbox --> affiche _radiusNoisePower //-->OK
@@ -79,6 +79,12 @@ $(function () {
 		$('#showGeometry').on("click", function () {
 			_showGeometry = $('#showGeometry').prop("checked");
 		});
+		$('#angularNoise').on("click", function () {
+			_angleNoiseSetter = $('#angularNoise').prop("checked");
+		});
+		$('#radiusNoise').on("click", function () {
+			_radiusNoiseSetter = $('#radiusNoise').prop("checked");
+		});
 		$('#rotateSpeed').on("input change", function () {
 			_rotateSpeedLvl = $('#rotateSpeed').val();
 			$('#valeur_rotateSpeed').html(_rotateSpeedLvl);
@@ -86,6 +92,18 @@ $(function () {
 		});
 	}
 );
+
+/*A faire en front pour le moment____________________________________
+
+		- Start génération est un type="button". au premier clique il passe en false. puis switchera entre les 2
+		- Besoin d'avis : Est-ce qu'on décoche tout au début ? et on laisserai l'utilisateur paramétrere coreectement sa courbe au début, avant de lancer ?
+		- Il me faut un type button pour regénérer une courbe sans refresh la page.
+		Pour cela je pense qu'il faut apeller a nouveau la function "setup" qui initialisera de noouvelles données et une nouvelle courbe.
+		- Commencer une mise en forme, placer le tout en dessous, dans un menu lisible. Trouver des boutons switch ON/OFF (trouvable en jquery).
+		- récupérer dans 2 variables la largeur de l'écran dynamiquement.
+*/
+
+
 
 //_____________________ paramétrage des boutons
 
@@ -113,7 +131,6 @@ var centerY = 0;
 
 var x = [];
 var y = [];
-var fetchedCoords = [];
 
 var predefAngle = []; //les prédefs sont les clés de random propres à chaque points initialisé une seule fois dans le code
 var predefRadius =[];
@@ -124,7 +141,6 @@ var angles =[];
 var radius =[];
 var rotate;
 
-var anglenoise, radiusnoise;
 var centerXNoise, centerYNoise;
 
 //
@@ -142,8 +158,8 @@ function setup() {
 	for (var i = 0; i < _nbPointsMax; i++) {
 		predefAngle[i] = random(0,pi*2); //prédétermine des angle pour les points disposés pour le bézier relativement  au centre
 		predefRadius[i] = random(0,50);
+		predefAngleKeyNoiseRand[i] = random(0,35);
 		predefRadiusKeyNoiseRand[i]	= random(0,35); //prédétermine une clé de randomisation du bruit pour chaque points
-		predefAngleKeyNoiseRand[i]	= random(5,10);
 	}
 
 	//console.log(predefRadiusKeyNoiseRand);
@@ -156,17 +172,20 @@ function createPoints(nb){ // crée un point dont les coordonées sont relatives
 	if (_angleNoiseSetter){
 		for (var i = 0; i < _nbPoints; i++) {
 			predefAngle[i] += 0.00003;
+			//console.log("ok");
 		}
 	}
 	if (_radiusNoiseSetter){
 		for (var i = 0; i < _nbPoints; i++) {
 			predefRadiusKeyNoiseRand[i] += 0.0020; //puissance de bruit
+			//console.log("ok");
 		}
 	}
 	if (_rotate){
 		rotate += listOfSpeed[_rotateSpeedLvl][0];
 	}
 
+//console.log(predefRadiusKeyNoiseRand[0]);
 
 	for (var i = 0; i < nb ; i++) {
 
@@ -177,12 +196,13 @@ function createPoints(nb){ // crée un point dont les coordonées sont relatives
 
 
 
+
 			centerX = (noise(centerXNoise) *100)-50;//"* 100)-50"-->moyen"* 200)-100"-->Fort
 			centerY = (noise(centerYNoise) *100)-50;
 			//correctif a faire : le centre se déplace den diagonale : X = Y ?
 			//log centerY et center X, si =, générer une clé de randomisation
 
-		if (!_staticCenter){
+		if (_staticCenter){
 			centerX = 0;
 			centerY = 0;
 		}
@@ -224,6 +244,7 @@ function drawCurveVertex(_nbPoints){
 		endShape()
 	}
 }
+
 
 function isGeometryRevealed() {
 
@@ -278,21 +299,19 @@ function draw() {
 	translate(canvasSize/2,canvasSize/2);
 	noFill();
 
-
-
+	createPoints(_nbPoints);
+	stroke(white);
+	console.log(_showGeometry);
+	isGeometryRevealed();
+	drawCurveVertex(_nbPoints);
 
 	centerXNoise += 0.003;
 	centerYNoise += 0.003;
-
-
-	createPoints(_nbPoints);
-	stroke(white);
-	isGeometryRevealed();
-	drawCurveVertex(_nbPoints);
 	//console.log(_nbPoints);
 	//console.log(x);
 
-
+//console.log(_radiusNoiseSetter);
+//console.log(_angleNoiseSetter);
 }
 
 

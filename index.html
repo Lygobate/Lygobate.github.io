@@ -19,13 +19,24 @@
 
 <body>
 <main>
-    Nombre de points : <input type="range" id="nbPoints" min="4" max="30" step="1" value="4" ><span id="valeur_nbPoints">4</span><br>
-    Rotation :<input id="rotate" type="checkbox" name="rotate" checked>
-    Vitesse : <input type="range" id="rotateSpeed" min="0" max="15" step="1" value="5"><span id="valeur_rotateSpeed">5</span> || <span id="rotateSpeedComment">normal</span><br>
-    CrossedLine :<input id="crossLine" type="checkbox" name="CrossedLine" checked><br>
-    Centre statique :<input id="staticCenter" type="checkbox" name="staticCenter" checked><br>
-    Forme fermée :<input id="closeShape" type="checkbox" name="closeShape" checked><br>
-    Montrer géométrie :<input id="showGeometry" type="checkbox" name="showGeometry" checked><br>
+  Nombre de points : <input id="nbPoints" type="range" min="4" max="30" step="1" value="4" ><span id="valeur_nbPoints">4</span><br>
+  <label
+  data-toggle="checkbox-toggle"
+  data-rounded="rounded"
+  data-handle-size="20"
+  data-handle-color="bg-white"
+  data-off-color="bg-grey"
+  data-on-color="bg-blue-light">
+  <input id="rotate" type="checkbox" name="rotate" checked>
+  </label>
+
+  Speed : <input id="rotateSpeed" type="range" min="0" max="15" step="1" value="5"><span id="valeur_rotateSpeed">5</span> || <span id="rotateSpeedComment">normal</span><br>
+  Crossed Lines :<input id="crossLine" type="checkbox" name="CrossedLine" checked><br>
+  Static center :<input id="staticCenter" type="checkbox" name="staticCenter" checked><br>
+  Close shape :<input id="closeShape" type="checkbox" name="closeShape" checked><br>
+  Angular Noise :<input id="angularNoise" type="checkbox" name="angularNoise" checked><br>
+  Radius Noise :<input id="radiusNoise" type="checkbox" name="radiusNoise" checked><br>
+  Start Generation :<input id="showGeometry" type="checkbox" name="showGeometry" ><br>
 </main>
 </body>
 
