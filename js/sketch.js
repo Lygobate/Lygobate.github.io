@@ -77,7 +77,11 @@ $(function () {
 			_rotate = $('#rotate').prop("checked");
 		});
 		$('#showGeometry').on("click", function () {
-			_showGeometry = $('#showGeometry').prop("checked");
+			if (_showGeometry === true){
+				_showGeometry = false;
+			} else {
+				_showGeometry = true;
+			}
 		});
 		$('#angularNoise').on("click", function () {
 			_angleNoiseSetter = $('#angularNoise').prop("checked");
@@ -89,6 +93,10 @@ $(function () {
 			_rotateSpeedLvl = $('#rotateSpeed').val();
 			$('#valeur_rotateSpeed').html(_rotateSpeedLvl);
 			$('#rotateSpeedComment').html(listOfSpeed[_rotateSpeedLvl][1]);
+		});
+		$('#color').on("input change", function () {
+			color = $('#color').val();
+			console.log(color);
 		});
 	}
 );
@@ -301,7 +309,7 @@ function draw() {
 
 	createPoints(_nbPoints);
 	stroke(white);
-	console.log(_showGeometry);
+	//console.log(_showGeometry);
 	isGeometryRevealed();
 	drawCurveVertex(_nbPoints);
 
