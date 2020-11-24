@@ -96,15 +96,15 @@ $(function () {
 		});
 		$('#color').on("input change", function () {
 			color = $('#color').val();
-			console.log(color);
+			//console.log(color);
 		});
 	}
 );
 
 /*A faire en front pour le moment____________________________________
 
-		- Start génération est un type="button". au premier clique il passe en false. puis switchera entre les 2
-		- Besoin d'avis : Est-ce qu'on décoche tout au début ? et on laisserai l'utilisateur paramétrere coreectement sa courbe au début, avant de lancer ?
+		\- Start génération est un type="button". au premier clique il passe en false. puis switchera entre les 2
+		\- Besoin d'avis : Est-ce qu'on décoche tout au début ? et on laisserai l'utilisateur paramétrere coreectement sa courbe au début, avant de lancer ?
 		- Il me faut un type button pour regénérer une courbe sans refresh la page.
 		Pour cela je pense qu'il faut apeller a nouveau la function "setup" qui initialisera de noouvelles données et une nouvelle courbe.
 		- Commencer une mise en forme, placer le tout en dessous, dans un menu lisible. Trouver des boutons switch ON/OFF (trouvable en jquery).
@@ -122,7 +122,8 @@ $(function () {
 
 // variables______________________________________
 
-var canvasSize = 800;
+var canvasSize = $(window).width()/3;
+let canvahtml;
 var backgroundKey;
 
 const pi = 3.1415926535897932384626433832795;
@@ -154,7 +155,8 @@ var centerXNoise, centerYNoise;
 //
 
 function setup() {
-	createCanvas(canvasSize, canvasSize);
+	canvahtml=createCanvas(canvasSize, canvasSize);
+	canvahtml.parent('canvas');
 	frameRate(65);
 	background(100);
 

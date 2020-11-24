@@ -16,11 +16,13 @@
     <script src="https://cdn.lex-agone.fr/p5.js" type="text/javascript"></script>
     <script src="https://cdn.lex-agone.fr/color-picker.js" type="text/javascript"></script>
     <script src="js/sketch.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
-    <main>
+    <div id="canvas" class="container has-text-centered"></div>
+    <main class="parametres">
         Nombre de points : <input id="nbPoints" max="30" min="4" step="1" type="range" value="4"><span
             id="valeur_nbPoints">4</span><br>
         Rotation :
@@ -34,11 +36,7 @@
         Angular Noise :<input checked id="angularNoise" name="angularNoise" type="checkbox"><br>
         Radius Noise :<input checked id="radiusNoise" name="radiusNoise" type="checkbox"><br>
         Start Generation :<input id="showGeometry" name="showGeometry" type="checkbox"><br>
-        <script type="text/javascript">
-            jscolor.presets.default = {
-                format:'rgba', position:'bottom'
-            };
-        </script>
+        <script type="text/javascript">jscolor.presets.default = {format:'rgba',position:'bottom'};</script>
         Couleur : <input id="color" name="color" data-jscolor="{value:'#FFFFFF'}"><br><br>
     </main>
 </body>
