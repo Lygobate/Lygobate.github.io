@@ -2,6 +2,11 @@
 // ------------ les boutons
 
 //max recommamdé 10pts
+let back_color = [];
+back_color[0] = 100;
+back_color[1] = 100;
+back_color[2] = 100;
+back_color[3] = 1;
 var _nbPointsMax = 30;
 var _nbPoints = 4;// MIN 2 _closeShape = true ||  MIN 4 si _closeShape = false |max 30|step 1 |init 6
 var _crossLine = true;	//check button //-->OK
@@ -159,7 +164,7 @@ function setup() {
 	canvahtml=createCanvas(canvasSize, canvasSize);
 	canvahtml.parent('canvas');
 	frameRate(65);
-	background(100);
+	background(back_color[0]);
 
 	rotate= 0; //variable incrémentale
 
@@ -261,7 +266,7 @@ function isGeometryRevealed() {
 
 	if (_showGeometry){
 		backgroundKey = 0;
-		background(100);
+		background(back_color[0]);
 		function marker(){
 				strokeWeight(2);
 				ellipse(x[i],y[i],10,10);
@@ -298,7 +303,7 @@ function isGeometryRevealed() {
 	}
 	else {
 		if (backgroundKey === 0) { // Correctif //faire en sorte de mettre 1 seule couche de background pour couvrir la coube persistante du mode géometry
-			background(100);
+			background(back_color[0]);
 			backgroundKey = 1;
 		}
 		strokeWeight(0.01);// for curveVerte
