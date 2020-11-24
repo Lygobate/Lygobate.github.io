@@ -45,7 +45,8 @@ var _col2 = [0];
 var _col3 = [];
 var _col4 = [0];
 var _col5= [];
-var color = [];
+var currentColor = [];
+var colorList = [];
 var _colorTransitionDuration = 10 //(secondes) input number || min 0,5|max 60|step 0,5
 var _changeDurationAuto = false; //
 
@@ -95,7 +96,7 @@ $(function () {
 			$('#rotateSpeedComment').html(listOfSpeed[_rotateSpeedLvl][1]);
 		});
 		$('#color').on("input change", function () {
-			color = $('#color').val();
+			currentColor = $('#color').val();
 			//console.log(color);
 		});
 	}
@@ -122,7 +123,7 @@ $(function () {
 
 // variables______________________________________
 
-var canvasSize = $(window).width()/3;
+var canvasSize = 800;
 let canvahtml;
 var backgroundKey;
 
