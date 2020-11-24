@@ -2,11 +2,6 @@
 // ------------ les boutons
 
 //max recommamdé 10pts
-let back_color = [];
-back_color[0] = 100;
-back_color[1] = 100;
-back_color[2] = 100;
-back_color[3] = 1;
 var _nbPointsMax = 30;
 var _nbPoints = 4;// MIN 2 _closeShape = true ||  MIN 4 si _closeShape = false |max 30|step 1 |init 6
 var _crossLine = true;	//check button //-->OK
@@ -50,10 +45,12 @@ var _col2 = [0];
 var _col3 = [];
 var _col4 = [0];
 var _col5= [];
-var currentColor = [];
+var curveColor;
 var colorList = [];
 var _colorTransitionDuration = 10 //(secondes) input number || min 0,5|max 60|step 0,5
 var _changeDurationAuto = false; //
+
+var bgColor;
 
 var _generationLimit = true; //checkBox --> affiche _generationDuration
 var _generationDuration;
@@ -100,8 +97,12 @@ $(function () {
 			$('#valeur_rotateSpeed').html(_rotateSpeedLvl);
 			$('#rotateSpeedComment').html(listOfSpeed[_rotateSpeedLvl][1]);
 		});
-		$('#color').on("input change", function () {
-			currentColor = $('#color').val();
+		$('#curveColor').on("input change", function () {
+			curveColor = $('#curveColor').val();
+			//console.log(color);
+		});
+		$('#bgColor').on("input change", function () {
+			bgColor = $('#bgColor').val();
 			//console.log(color);
 		});
 	}
@@ -164,7 +165,7 @@ function setup() {
 	canvahtml=createCanvas(canvasSize, canvasSize);
 	canvahtml.parent('canvas');
 	frameRate(65);
-	background(back_color[0]);
+	background(100);
 
 	rotate= 0; //variable incrémentale
 
@@ -209,7 +210,6 @@ function createPoints(nb){ // crée un point dont les coordonées sont relatives
 			radius[i] = (noise(predefRadiusKeyNoiseRand[i]) * 350) + predefRadius[i];  //création bruit sur la longueur du rayon
 			angles[i] = ((noise(predefAngle[i] * 200)) + predefAngle[i]) + rotate; //création bruit sur l'angle du rayon
 		//}
-
 
 
 
@@ -266,7 +266,7 @@ function isGeometryRevealed() {
 
 	if (_showGeometry){
 		backgroundKey = 0;
-		background(back_color[0]);
+		background(100);
 		function marker(){
 				strokeWeight(2);
 				ellipse(x[i],y[i],10,10);
@@ -303,7 +303,7 @@ function isGeometryRevealed() {
 	}
 	else {
 		if (backgroundKey === 0) { // Correctif //faire en sorte de mettre 1 seule couche de background pour couvrir la coube persistante du mode géometry
-			background(back_color[0]);
+			background(100);
 			backgroundKey = 1;
 		}
 		strokeWeight(0.01);// for curveVerte
@@ -325,9 +325,10 @@ function draw() {
 	centerYNoise += 0.003;
 	//console.log(_nbPoints);
 	//console.log(x);
-
 //console.log(_radiusNoiseSetter);
 //console.log(_angleNoiseSetter);
+
+
 }
 
 
