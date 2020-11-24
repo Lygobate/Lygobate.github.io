@@ -42,9 +42,9 @@ var colorManual = false // checkBox --> masque le menu couleur si "true"
 var _nbColors = 1; //menu déroulant max 5
 var _col1 = [255]; //3 inputs RVB possible a remplir avec un color picker
 var _col2 = [0];
-var _col3 = [];
+var _col3 = [0];
 var _col4 = [0];
-var _col5= [];
+var _col5= [0];
 var curveColor;
 var colorList = [];
 var _colorTransitionDuration = 10 //(secondes) input number || min 0,5|max 60|step 0,5
@@ -110,12 +110,11 @@ $(function () {
 
 /*A faire en front pour le moment____________________________________
 
-		\- Start génération est un type="button". au premier clique il passe en false. puis switchera entre les 2
-		\- Besoin d'avis : Est-ce qu'on décoche tout au début ? et on laisserai l'utilisateur paramétrere coreectement sa courbe au début, avant de lancer ?
 		- Il me faut un type button pour regénérer une courbe sans refresh la page.
 		Pour cela je pense qu'il faut apeller a nouveau la function "setup" qui initialisera de noouvelles données et une nouvelle courbe.
 		- Commencer une mise en forme, placer le tout en dessous, dans un menu lisible. Trouver des boutons switch ON/OFF (trouvable en jquery).
 		- récupérer dans 2 variables la largeur de l'écran dynamiquement.
+
 */
 
 
@@ -142,9 +141,7 @@ const close = 1;
 
 var centerX = 0;
 var centerY = 0;
-
-
-
+var centerXNoise, centerYNoise;
 var x = [];
 var y = [];
 
@@ -157,7 +154,7 @@ var angles =[];
 var radius =[];
 var rotate;
 
-var centerXNoise, centerYNoise;
+
 
 //
 
