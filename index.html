@@ -5,41 +5,65 @@
     <meta content="Random generative processing art" name="description">
     <meta content="Axel AVININ" name="author">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <style>
-        body {
-            padding: 0;
-            margin: 0;
-        }
-    </style>
+
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.lex-agone.fr/bulma.css">
     <script src="https://cdn.lex-agone.fr/jquery.js" type="text/javascript"></script>
     <script src="https://cdn.lex-agone.fr/p5.js" type="text/javascript"></script>
     <script src="https://cdn.lex-agone.fr/color-picker.js" type="text/javascript"></script>
     <script src="js/sketch.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="css/style.css">
+
 
 </head>
 
 <body>
     <div id="canvas" class="has-text-centered"></div>
     <main class="parametres">
-        <script type="text/javascript">jscolor.presets.default = {format:'rgba',position:'bottom'};</script>
-        Dot number : <input id="nbPoints" max="30" min="4" step="1" type="range" value="4"><span
+
+        <script type="text/javascript">jscolor.presets.default = {format:'rgb', backgroundColor:'rgba(227,227,227,1)',
+	borderColor:'rgba(255,255,255,1)', mode:'HSV',shadow:false, position:'bottom'};</script>
+
+        Dot number :
+        <input id="nbPoints" max="30" min="4" step="1" type="range" value="4"><span
             id="valeur_nbPoints">4</span><br>
+
         Rotation :
-        <input checked id="rotate" name="rotate" type="checkbox">
-        Speed : <input id="rotateSpeed" max="15" min="0" step="1" type="range" value="5"><span id="valeur_rotateSpeed">5</span> || <span id="rotateSpeedComment">normal</span><br>
-        Crossed Lines : <input checked id="crossLine" name="CrossedLine" type="checkbox"><br>
-        Static center : <input checked id="staticCenter" name="staticCenter" type="checkbox"><br>
-        Close shape : <input checked id="closeShape" name="closeShape" type="checkbox"><br>
-        Angular Noise : <input checked id="angularNoise" name="angularNoise" type="checkbox"><br>
-        Radius Noise : <input checked id="radiusNoise" name="radiusNoise" type="checkbox"><br>
-        Shape color : <input id="curveColor" name="curveColor" data-jscolor="{value:'#FFFFFF'}"><br>
-        Background : <input id="bgColor" name="bgColor" data-jscolor="{value:'#FFFFFF'}"><br>
-        Generation duration : <input type="number" name="timeGeneration" id="timeGeneration" min="1" max="300" step="5">
+        <input id="rotate" name="rotate" type="checkbox">
+        <input id="rotateSpeed" max="15" min="0" step="1" type="range" value="5">
+        <span class="speed">
+          <span id="valeur_rotateSpeed">5</span>
+          <span> || </span>
+          <span id="rotateSpeedComment">normal</span>
+        </span><br>
+
+        <!-- Crossed Lines :
+        <input checked id="crossLine" name="CrossedLine" type="checkbox"><br>-->
+        Close shape :
+        <input checked id="closeShape" name="closeShape" type="checkbox"><br>
+        Static center :
+        <input checked id="staticCenter" name="staticCenter" type="checkbox"><br>
+        Angular Noise :
+        <input checked id="angularNoise" name="angularNoise" type="checkbox"><br>
+        Radius Noise :
+        <input checked id="radiusNoise" name="radiusNoise" type="checkbox"><br>
+        Shape color :
+        <input id="curveColor" name="curveColor" data-jscolor="{value:'#FFFFFF'}"><br>
+        Background :
+        <input id="bgColor" name="bgColor" data-jscolor="{value:'#000000'}"><br>
+
+        Generation duration :
+        <input type="number" name="timeGeneration" id="timeGeneration" min="1" max="300" step="1">
 
         <br><br>
-        <input id="showGeometry" name="showGeometry" value="Start Generation" type="button"><br>
+        <!-- |start generation| |new curve| -->
+        <!-- |stop generation| |reset| -->
+        <ul class="buttonList">
+          <li><input id="stopGeneration" name="stopGeneration" value="Stop Generation" type="button"></li>
+          <li><input id="showGeometry" name="showGeometry" value="Start Generation" type="button"></li>
+          <li><input id="newCurve" name="newCurve" value="New Curve" type="button"></li>
+        </ul>
+
+
     </main>
 </body>
 

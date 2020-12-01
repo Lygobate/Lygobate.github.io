@@ -45,16 +45,22 @@ var _col2 = [0];
 var _col3 = [0];
 var _col4 = [0];
 var _col5= [0];
-var curveColor;
+var curveColorString ='rgb(255,255,255)';
+var curveColor =[];
 var colorList = [];
 var _colorTransitionDuration = 10 //(secondes) input number || min 0,5|max 60|step 0,5
 var _changeDurationAuto = false; //
 
-var bgColorString = 'rgba(100,100,100,1)'
-var bgColor = [100,100,100,1]; //valeur par défaut
+var bgColorString = 'rgb(0,0,0)'
+var bgColor = []; //valeur par défaut
 
+var markerStroke;
+
+//auto stop
 var _generationLimit = true; //checkBox --> affiche _generationDuration
 var _generationDuration;
+//manual stop
+var _stop = false;
 
 var _showGeometry = true;//Bouton "Generate" onClick -->
 
@@ -68,24 +74,33 @@ $(function () {
 			_nbPoints = $('#nbPoints').val();
 			$('#valeur_nbPoints').html(_nbPoints);
 		});
-		$('#crossLine').on("click", function () {
-			_crossLine = $('#crossLine').prop("checked");
+
+		rotateSpeedMenuInit();
+		$('#rotate').on("click", function () {
+			if (_rotate === true){
+				_rotate = false;
+			}else{
+				_rotate = true;
+			}
+			$('#rotateSpeed').toggle("slow");
+			$('.speed').toggle();
 		});
-		$('#staticCenter').on("click", function () {
-			_staticCenter = $('#staticCenter').prop("checked");
+		$('#rotateSpeed').on("input change", function () {
+			_rotateSpeedLvl = $('#rotateSpeed').val();
+			$('#valeur_rotateSpeed').html(_rotateSpeedLvl);
+			$('#rotateSpeedComment').html(listOfSpeed[_rotateSpeedLvl][1]);
 		});
+
 		$('#closeShape').on("click", function () {
 			_closeShape = $('#closeShape').prop("checked");
 		});
-		$('#rotate').on("click", function () {
-			_rotate = $('#rotate').prop("checked");
-		});
-		$('#showGeometry').on("click", function () {
-			if (_showGeometry === true){
-				_showGeometry = false;
-			} else {
-				_showGeometry = true;
-			}
+
+		/*$('#crossLine').on("click", function () {
+			_crossLine = $('#crossLine').prop("checked");
+		});*/
+
+		$('#staticCenter').on("click", function () {
+			_staticCenter = $('#staticCenter').prop("checked");
 		});
 		$('#angularNoise').on("click", function () {
 			_angleNoiseSetter = $('#angularNoise').prop("checked");
@@ -93,19 +108,47 @@ $(function () {
 		$('#radiusNoise').on("click", function () {
 			_radiusNoiseSetter = $('#radiusNoise').prop("checked");
 		});
-		$('#rotateSpeed').on("input change", function () {
-			_rotateSpeedLvl = $('#rotateSpeed').val();
-			$('#valeur_rotateSpeed').html(_rotateSpeedLvl);
-			$('#rotateSpeedComment').html(listOfSpeed[_rotateSpeedLvl][1]);
-		});
+
+
+
 		$('#curveColor').on("input change", function () {
-			curveColor = $('#curveColor').val();
+			curveColorString = $('#curveColor').val();
 			//console.log(color);
 		});
 		$('#bgColor').on("input change", function () {
 			bgColorString = $('#bgColor').val();
 			//console.log(color);
 		});
+
+
+		$('#showGeometry').on("click", function () {//show géometry fait office de start generation et de reset
+			if (_showGeometry === true){
+				_showGeometry = false;
+				$('#showGeometry').prop("value", 'Reset')
+				$('#stopGeneration').css("display", 'block')
+				$('#newCurve').css("display", 'none')
+			} else {
+				_showGeometry = true;
+				$('#showGeometry').prop("value", 'Start Generation')
+				$('#stopGeneration').css("display", 'none')
+				$('#newCurve').css("display", 'block')
+				loop();//débloque si le noLoop est activé, et qu'on retourne sur le showGeometry
+			}
+		});
+		$('#stopGeneration').on("click", function () {
+			if (_stop == false){
+				_stop = true;
+				$('#stopGeneration').prop("value", 'Play Generation')
+				noLoop();
+			} else {
+				_stop = false;
+				loop();
+				$('#stopGeneration').prop("value", 'Stop Generation')
+			}
+		});
+		$('#newCurve').on("click",function(){
+			setup();
+		})
 	}
 );
 
@@ -124,8 +167,32 @@ $(function () {
 //_____________________ paramétrage des boutons
 
 
-
-
+function rotateSpeedMenuInit(){
+	if (_rotate==true) {
+		$('.speed,#rotateSpeed').css('display','inline-block');
+		$('#rotate').attr('checked',true);
+	}
+	else {
+		$('.speed,#rotateSpeed').css('display','none');
+		$('#rotate').attr('checked',false);
+	}
+}
+/*moment____________________________________non fonctionnel
+function checkBoxInit(){
+	if (_closeShape==true) {
+		$('#closeShape').prop('checked');
+	}
+	if (_staticCenter==true) {
+		$('#staticCenter').prop('checked');
+	}
+	if (_angularNoise==true) {
+		$('#angularNoise').prop('checked');
+	}
+	if (_radiusNoise==true) {
+		$('#radiusNoise').prop('checked');
+	}
+}
+*/
 
 
 // variables______________________________________
@@ -137,6 +204,7 @@ var backgroundKey;
 const pi = 3.1415926535897932384626433832795;
 const white = 255;
 const black = 0;
+const red = [255,0,0];
 const open = 0;
 const close = 1;
 
@@ -176,15 +244,15 @@ function setup() {
 		predefRadius[i] = random(0,50);
 		predefAngleKeyNoiseRand[i] = random(0,35);
 		predefRadiusKeyNoiseRand[i]	= random(0,35); //prédétermine une clé de randomisation du bruit pour chaque points
+
+		loop();
 	}
 
 	//console.log(predefRadiusKeyNoiseRand);
 	//console.log(predefAngle);
 }
 
-function rgba_to_array(color, array){
-	array.push(color.substring(5, color.length-1).split(","));
-}
+
 
 function createPoints(nb){ // crée un point dont les coordonées sont relatives au centre
 
@@ -200,7 +268,7 @@ function createPoints(nb){ // crée un point dont les coordonées sont relatives
 			//console.log("ok");
 		}
 	}
-	if (_rotate){
+	if (_rotate==true){
 		rotate += listOfSpeed[_rotateSpeedLvl][0];
 	}
 
@@ -263,39 +331,55 @@ function drawCurveVertex(_nbPoints){
 	}
 }
 
+function rgb_to_array(color, array){ //substring(5, color.length-1) pour rgba
+	array.unshift(color.substring(4, color.length-1).split(","));//[[r,v,b],...] tab 2D
+	array.splice(1);
+}
 
 function isGeometryRevealed() {
 
 	if (_showGeometry){
 		backgroundKey = 0;
-		//rgba_to_array(bgColorString,bgColor);
-		background(100);
-		console.log();
+		rgb_to_array(bgColorString,bgColor);
+		background(bgColor[0]);
+
 
 		function marker(){
-				strokeWeight(2);
-				ellipse(x[i],y[i],10,10);
-				drawingContext.setLineDash([0.5, 3]);
-				strokeWeight(1.5);
-				line(centerX,centerY,x[i],y[i])
-				drawingContext.setLineDash([])
-			}
+			strokeWeight(2);
+			ellipse(x[i],y[i],10,10);
+			drawingContext.setLineDash([0.5, 3]);
+			strokeWeight(2);
+			line(centerX,centerY,x[i],y[i])
+			drawingContext.setLineDash([])
+		}
+
+
+		if (bgColor[0][0]==255 && bgColor[0][1]>=0 && bgColor[0][1]<=180 && bgColor[0][1]<=140 ){
+			markerStroke = 0;
+		}
+		else if (bgColor[0][0]==255 && bgColor[0][1]<=140 && bgColor[0][2]>=0 && bgColor[0][2]<=180) {
+			markerStroke = 0;
+		}
+		else {
+			markerStroke = red;
+		}
 
 		for (var i = 0; i < _nbPoints ; i++) {
-			stroke(255,0,0);
+			stroke(markerStroke);
 			if(!_closeShape){ //met en blanc les géométries non reliées quand la forme n'est pas fermée
 				if (_nbPoints >= 4 && i == 0 ) {
-					stroke(255);
+					stroke(white);
 					marker();
 				}
 				else if (_nbPoints >= 4 && i == _nbPoints-1 ) {
-					stroke(255);
+					stroke(white);
 					marker();
 				}
 				else {
 					marker();
 				}
 			}
+
 			marker();
 		}//fin for
 
@@ -308,7 +392,7 @@ function isGeometryRevealed() {
 	}
 	else {
 		if (backgroundKey === 0) { // Correctif //faire en sorte de mettre 1 seule couche de background pour couvrir la coube persistante du mode geometry
-			background(100);
+			background(bgColor[0]);
 			backgroundKey = 1;
 		}
 		strokeWeight(0.01);// for curveVerte
@@ -316,26 +400,25 @@ function isGeometryRevealed() {
 }
 
 
+
 function draw() {
 	translate(canvasSize/2,canvasSize/2);
 	noFill();
 
 	createPoints(_nbPoints);
-	stroke(white);
-	//console.log(_showGeometry);
+
+	rgb_to_array(curveColorString,curveColor)
+	stroke(curveColor[0]);
+
 	isGeometryRevealed();
 	drawCurveVertex(_nbPoints);
 
 	centerXNoise += 0.003;
 	centerYNoise += 0.003;
-	//console.log(_nbPoints);
-	//console.log(x);
-//console.log(_radiusNoiseSetter);
-//console.log(_angleNoiseSetter);
 
-console.log(bgColorString);
+
+	//console.log(bgColorString);
 }
-
 
 
 
