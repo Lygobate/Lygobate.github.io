@@ -50,13 +50,14 @@ var colorList = [];
 var _colorTransitionDuration = 10 //(secondes) input number || min 0,5|max 60|step 0,5
 var _changeDurationAuto = false; //
 
-var bgColor;
+var bgColorString = 'rgba(100,100,100,1)'
+var bgColor = [100,100,100,1]; //valeur par défaut
 
 var _generationLimit = true; //checkBox --> affiche _generationDuration
 var _generationDuration;
 
 var _showGeometry = true;//Bouton "Generate" onClick -->
-let _timeGeneration = Math.floor((Math.random() * 1200) + 60);
+
 
 
 //_____________________ Jquery pour dynamiser les boutons
@@ -99,16 +100,14 @@ $(function () {
 		});
 		$('#curveColor').on("input change", function () {
 			curveColor = $('#curveColor').val();
+			//console.log(color);
 		});
 		$('#bgColor').on("input change", function () {
-			bgColor = $('#bgColor').val();
-		});
-		$('#timeGeneration').on("input change", function(){
-			_timeGeneration = $('#timeGeneration').val();
+			bgColorString = $('#bgColor').val();
+			//console.log(color);
 		});
 	}
 );
-
 
 /*A faire en front pour le moment____________________________________
 
@@ -116,16 +115,13 @@ $(function () {
 		Pour cela je pense qu'il faut apeller a nouveau la function "setup" qui initialisera de noouvelles données et une nouvelle courbe.
 		- Commencer une mise en forme, placer le tout en dessous, dans un menu lisible. Trouver des boutons switch ON/OFF (trouvable en jquery).
 		- récupérer dans 2 variables la largeur de l'écran dynamiquement.
+		- générer des
 
 */
 
 
 
 //_____________________ paramétrage des boutons
-function rgba_to_array(color, array){
-	array.push(color.substring(5, color.length-1).split(","));
-}
-
 
 
 
@@ -186,6 +182,9 @@ function setup() {
 	//console.log(predefAngle);
 }
 
+function rgba_to_array(color, array){
+	array.push(color.substring(5, color.length-1).split(","));
+}
 
 function createPoints(nb){ // crée un point dont les coordonées sont relatives au centre
 
@@ -269,7 +268,10 @@ function isGeometryRevealed() {
 
 	if (_showGeometry){
 		backgroundKey = 0;
+		//rgba_to_array(bgColorString,bgColor);
 		background(100);
+		console.log();
+
 		function marker(){
 				strokeWeight(2);
 				ellipse(x[i],y[i],10,10);
@@ -305,7 +307,7 @@ function isGeometryRevealed() {
 		stroke(white);
 	}
 	else {
-		if (backgroundKey === 0) { // Correctif //faire en sorte de mettre 1 seule couche de background pour couvrir la coube persistante du mode géometry
+		if (backgroundKey === 0) { // Correctif //faire en sorte de mettre 1 seule couche de background pour couvrir la coube persistante du mode geometry
 			background(100);
 			backgroundKey = 1;
 		}
@@ -331,7 +333,7 @@ function draw() {
 //console.log(_radiusNoiseSetter);
 //console.log(_angleNoiseSetter);
 
-
+console.log(bgColorString);
 }
 
 

@@ -24,7 +24,7 @@
     <div id="canvas" class="has-text-centered"></div>
     <main class="parametres">
         <script type="text/javascript">jscolor.presets.default = {format:'rgba',position:'bottom'};</script>
-        Nombre de points : <input id="nbPoints" max="30" min="4" step="1" type="range" value="4"><span
+        Dot number : <input id="nbPoints" max="30" min="4" step="1" type="range" value="4"><span
             id="valeur_nbPoints">4</span><br>
         Rotation :
         <input checked id="rotate" name="rotate" type="checkbox">
@@ -34,10 +34,12 @@
         Close shape : <input checked id="closeShape" name="closeShape" type="checkbox"><br>
         Angular Noise : <input checked id="angularNoise" name="angularNoise" type="checkbox"><br>
         Radius Noise : <input checked id="radiusNoise" name="radiusNoise" type="checkbox"><br>
-        Start Generation : <input id="showGeometry" name="showGeometry" type="button"><br>
-        Couleur des courbes : <input id="curveColor" name="curveColor" data-jscolor="{value:'#FFFFFF'}"><br>
-        Couleur de fond : <input id="bgColor" name="bgColor" data-jscolor="{value:'#FFFFFF'}"><br>
-        Temps de génération : <input type="number" name="timeGeneration" id="timeGeneration" min="1" max="300" step="5">
+        Shape color : <input id="curveColor" name="curveColor" data-jscolor="{value:'#FFFFFF'}"><br>
+        Background : <input id="bgColor" name="bgColor" data-jscolor="{value:'#FFFFFF'}"><br>
+        Generation duration : <input type="number" name="timeGeneration" id="timeGeneration" min="1" max="300" step="5">
+
+        <br><br>
+        <input id="showGeometry" name="showGeometry" value="Start Generation" type="button"><br>
     </main>
 </body>
 
