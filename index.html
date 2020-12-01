@@ -18,52 +18,57 @@
 
 <body>
     <div id="canvas" class="has-text-centered"></div>
-    <main class="parametres">
-
-        <script type="text/javascript">jscolor.presets.default = {format:'rgb', backgroundColor:'rgba(227,227,227,1)',
-	borderColor:'rgba(255,255,255,1)', mode:'HSV',shadow:false, position:'bottom'};</script>
-
-        Dot number :
-        <input id="nbPoints" max="30" min="4" step="1" type="range" value="4"><span
-            id="valeur_nbPoints">4</span><br>
-
-        Rotation :
-        <input id="rotate" name="rotate" type="checkbox">
-        <input id="rotateSpeed" max="15" min="0" step="1" type="range" value="5">
-        <span class="speed">
-          <span id="valeur_rotateSpeed">5</span>
-          <span> || </span>
-          <span id="rotateSpeedComment">normal</span>
-        </span><br>
-
+    <main class="parametres container mt-6 is-flex is-flex-direction-column">
+      <div class="container">
+        <script type="text/javascript">jscolor.presets.default = {format:'rgb', backgroundColor:'rgba(227,227,227,1)', borderColor:'rgba(255,255,255,1)', mode:'HSV',shadow:false, position:'bottom'};</script>
+        <label for="nbPoints" class="label">Nombre de points :
+          <input name="nbPoints" id="nbPoints" max="30" min="4" step="1" type="range" value="4">
+          <span id="valeur_nbPoints">4</span>
+        </label>
+        <label for="rotate" class="label">Rotation :
+          <input id="rotate" name="rotate" type="checkbox">
+          <input id="rotateSpeed" max="15" min="0" step="1" type="range" value="5">
+          <span class="speed">
+            <span id="valeur_rotateSpeed">5</span>
+            <span> || </span>
+            <span id="rotateSpeedComment">normal</span>
+          </span>
+        </label>
+      </div>
         <!-- Crossed Lines :
-        <input checked id="crossLine" name="CrossedLine" type="checkbox"><br>-->
-        Close shape :
-        <input checked id="closeShape" name="closeShape" type="checkbox"><br>
-        Static center :
-        <input checked id="staticCenter" name="staticCenter" type="checkbox"><br>
-        Angular Noise :
-        <input checked id="angularNoise" name="angularNoise" type="checkbox"><br>
-        Radius Noise :
-        <input checked id="radiusNoise" name="radiusNoise" type="checkbox"><br>
-        Shape color :
-        <input id="curveColor" name="curveColor" data-jscolor="{value:'#FFFFFF'}"><br>
-        Background :
-        <input id="bgColor" name="bgColor" data-jscolor="{value:'#000000'}"><br>
-
-        Generation duration :
-        <input type="number" name="timeGeneration" id="timeGeneration" min="1" max="300" step="1">
-
-        <br><br>
+        <input checked id="crossLine" name="CrossedLine" type="checkbox">-->
+        <label for="closeShape" class="label">Close shape :
+          <input checked id="closeShape" name="closeShape" type="checkbox">
+        </label>
+        <label for="staticCenter" class="label">Static center :
+          <input checked id="staticCenter" name="staticCenter" type="checkbox">
+        </label>
+        <label for="angularNoise" class="label">Angular Noise :
+          <input checked id="angularNoise" name="angularNoise" type="checkbox">
+        </label>
+        <label for="radiusNoise" class="label">Radius Noise :
+          <input checked id="radiusNoise" name="radiusNoise" type="checkbox">
+        </label>
+        <label for="curveColor" class="label">Shape color :
+          <input class="input" id="curveColor" name="curveColor" data-jscolor="{value:'#FFFFFF'}">
+        </label>
+        <label for="bgColor" class="label">Background :
+          <input class="input" id="bgColor" name="bgColor" data-jscolor="{value:'#000000'}">
+        </label>
+        <label for="timeGeneration">Generation duration :
+          <input class="input" type="number" name="timeGeneration" id="timeGeneration" min="1" max="300" step="1">
+        </label>
+      </div>
+      <div class="container">
         <!-- |start generation| |new curve| -->
         <!-- |stop generation| |reset| -->
         <ul class="buttonList">
-          <li><input id="stopGeneration" name="stopGeneration" value="Stop Generation" type="button"></li>
-          <li><input id="showGeometry" name="showGeometry" value="Start Generation" type="button"></li>
-          <li><input id="newCurve" name="newCurve" value="New Curve" type="button"></li>
+          <li><input class="button" id="stopGeneration" name="stopGeneration" value="Stop Generation" type="button"></li>
+          <li><input class="button is-primary" id="showGeometry" name="showGeometry" value="Start Generation" type="button"></li>
+          <li><input class="button is-link ml-4" id="newCurve" name="newCurve" value="New Curve" type="button"></li>
+          <li><input class="button" id="saveCanvas" name="saveCanvas" value="Télécharger" type="button"></li>
         </ul>
-
-
+      </div>
     </main>
 </body>
 

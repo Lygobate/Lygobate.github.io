@@ -54,7 +54,9 @@ var _changeDurationAuto = false; //
 var bgColorString = 'rgb(0,0,0)'
 var bgColor = []; //valeur par défaut
 
+var colorMoyBg;
 var markerStroke;
+var autoNBCol;
 
 //auto stop
 var _generationLimit = true; //checkBox --> affiche _generationDuration
@@ -124,31 +126,38 @@ $(function () {
 		$('#showGeometry').on("click", function () {//show géometry fait office de start generation et de reset
 			if (_showGeometry === true){
 				_showGeometry = false;
-				$('#showGeometry').prop("value", 'Reset')
-				$('#stopGeneration').css("display", 'block')
-				$('#newCurve').css("display", 'none')
+				$('#showGeometry').prop("value", 'Reset');
+				$('#stopGeneration').css("display", 'block');
+				$('#newCurve').css("display", 'none');
+				$('#bgColor').css("display", 'none');
+				$('#saveCanvas').css("display", 'block');
 			} else {
 				_showGeometry = true;
-				$('#showGeometry').prop("value", 'Start Generation')
-				$('#stopGeneration').css("display", 'none')
-				$('#newCurve').css("display", 'block')
+				$('#showGeometry').prop("value", 'Start Generation');
+				$('#stopGeneration').css("display", 'none');
+				$('#newCurve').css("display", 'block');
+				$('#bgColor').css("display", 'inline-block');
+				$('#saveCanvas').css("display", 'none');
 				loop();//débloque si le noLoop est activé, et qu'on retourne sur le showGeometry
 			}
 		});
 		$('#stopGeneration').on("click", function () {
 			if (_stop == false){
 				_stop = true;
-				$('#stopGeneration').prop("value", 'Play Generation')
+				$('#stopGeneration').prop("value", 'Play Generation');
 				noLoop();
 			} else {
 				_stop = false;
 				loop();
-				$('#stopGeneration').prop("value", 'Stop Generation')
+				$('#stopGeneration').prop("value", 'Stop Generation');
 			}
 		});
 		$('#newCurve').on("click",function(){
 			setup();
-		})
+		});
+		$('#saveCanvas').on("click",function(){
+			saveCanvas(document.getElementById("defaultCanvas0") ,'save_canvas', 'png');
+		});
 	}
 );
 
@@ -177,22 +186,22 @@ function rotateSpeedMenuInit(){
 		$('#rotate').attr('checked',false);
 	}
 }
-/*moment____________________________________non fonctionnel
+
 function checkBoxInit(){
 	if (_closeShape==true) {
-		$('#closeShape').prop('checked');
+		$('#closeShape').attr('checked',true);
 	}
 	if (_staticCenter==true) {
-		$('#staticCenter').prop('checked');
+		$('#staticCenter').attr('checked',true);
 	}
 	if (_angularNoise==true) {
-		$('#angularNoise').prop('checked');
+		$('#angularNoise').attr('checked',true);
 	}
 	if (_radiusNoise==true) {
-		$('#radiusNoise').prop('checked');
+		$('#radiusNoise').attr('checked',true);
 	}
 }
-*/
+
 
 
 // variables______________________________________
@@ -353,7 +362,17 @@ function isGeometryRevealed() {
 			drawingContext.setLineDash([])
 		}
 
+		colorMoyBg = 0;
+		colorMoyBg = (parseInt(bgColor[0][0]) + parseInt(bgColor[0][1]) + parseInt(bgColor[0][2]))/3;
 
+		if(colorMoyBg <= 255/2){
+			autoNBCol = 255;
+		}else{
+			autoNBCol = 0;
+		}
+
+
+		//le "if" et le "else if" détecte une couleur trop près du rouge
 		if (bgColor[0][0]==255 && bgColor[0][1]>=0 && bgColor[0][1]<=180 && bgColor[0][1]<=140 ){
 			markerStroke = 0;
 		}
@@ -368,23 +387,22 @@ function isGeometryRevealed() {
 			stroke(markerStroke);
 			if(!_closeShape){ //met en blanc les géométries non reliées quand la forme n'est pas fermée
 				if (_nbPoints >= 4 && i == 0 ) {
-					stroke(white);
+					stroke(autoNBCol);
 					marker();
 				}
 				else if (_nbPoints >= 4 && i == _nbPoints-1 ) {
-					stroke(white);
+					stroke(autoNBCol);
 					marker();
 				}
 				else {
 					marker();
 				}
 			}
-
 			marker();
 		}//fin for
 
 		strokeWeight(1);
-		stroke(0);
+		stroke(autoNBCol);
 		line(centerX-10,centerY,centerX+10,centerY);//croix centrale : trait horizontal
 		line(centerX,centerY-10,centerX,centerY+10);//croix centrale : trait vertical
 		strokeWeight(2); // for curveVertex

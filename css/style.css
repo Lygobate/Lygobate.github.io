@@ -1,7 +1,7 @@
 
 #defaultCanvas0{
-    width: 35% !important;
-    height: 35% !important;
+    width: 40% !important;
+    height: 40% !important;
 }
 
 
@@ -12,3 +12,6 @@ input[type="button"]{}
 #stopGeneration{display: none;}
 
 .buttonList{display: flex;}
+#saveCanvas{
+  display:none;
+}
