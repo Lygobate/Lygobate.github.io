@@ -1,3 +1,4 @@
+jscolor.presets.default = {format:'rgb', backgroundColor:'rgba(227,227,227,1)', borderColor:'rgba(255,255,255,1)', mode:'HSV',shadow:false, position:'bottom'};
 
 // ------------ les boutons
 
@@ -66,7 +67,11 @@ var _stop = false;
 
 var _showGeometry = true;//Bouton "Generate" onClick -->
 
-
+var now = new Date();
+var annee   = now.getFullYear();
+var mois    = now.getMonth() + 1;
+var jour    = now.getDate();
+var timeCode  = now.getTime()
 
 //_____________________ Jquery pour dynamiser les boutons
 
@@ -84,8 +89,12 @@ $(function () {
 			}else{
 				_rotate = true;
 			}
-			$('#rotateSpeed').toggle("slow");
-			$('.speed').toggle();
+			$('.speed').toggleClass('fade');
+			if ($('#rotateSpeed').prop('disabled')){
+				$('#rotateSpeed').removeAttr('disabled');
+			}else{
+				$('#rotateSpeed').attr('disabled', 'disabled');
+			}
 		});
 		$('#rotateSpeed').on("input change", function () {
 			_rotateSpeedLvl = $('#rotateSpeed').val();
@@ -127,16 +136,22 @@ $(function () {
 			if (_showGeometry === true){
 				_showGeometry = false;
 				$('#showGeometry').prop("value", 'Reset');
+				$('#showGeometry').toggleClass('is-primary')
+				$('#showGeometry').toggleClass('is-warning');
 				$('#stopGeneration').css("display", 'block');
 				$('#newCurve').css("display", 'none');
-				$('#bgColor').css("display", 'none');
+				// $('#bgColorLabel').css("display", 'none');
+				$('#bgColorLabel>input').attr("disabled", 'disabled');
 				$('#saveCanvas').css("display", 'block');
 			} else {
 				_showGeometry = true;
 				$('#showGeometry').prop("value", 'Start Generation');
+				$('#showGeometry').toggleClass('is-warning');
+				$('#showGeometry').toggleClass('is-primary')
 				$('#stopGeneration').css("display", 'none');
 				$('#newCurve').css("display", 'block');
-				$('#bgColor').css("display", 'inline-block');
+				// $('#bgColorLabel').css("display", 'inline-block');
+				$('#bgColorLabel>input').removeAttr("disabled");
 				$('#saveCanvas').css("display", 'none');
 				loop();//débloque si le noLoop est activé, et qu'on retourne sur le showGeometry
 			}
@@ -145,18 +160,22 @@ $(function () {
 			if (_stop == false){
 				_stop = true;
 				$('#stopGeneration').prop("value", 'Play Generation');
+				$('#stopGeneration').toggleClass('is-primary')
+				$('#stopGeneration').toggleClass('is-danger');
 				noLoop();
 			} else {
 				_stop = false;
 				loop();
 				$('#stopGeneration').prop("value", 'Stop Generation');
+				$('#stopGeneration').toggleClass('is-primary')
+				$('#stopGeneration').toggleClass('is-danger');
 			}
 		});
 		$('#newCurve').on("click",function(){
 			setup();
 		});
 		$('#saveCanvas').on("click",function(){
-			saveCanvas(document.getElementById("defaultCanvas0") ,'save_canvas', 'png');
+			saveCanvas(document.getElementById("defaultCanvas0") ,'generation'+'_'+jour+'-'+mois+'-'+annee+'_'+timeCode, 'png');
 		});
 	}
 );
@@ -187,26 +206,41 @@ function rotateSpeedMenuInit(){
 	}
 }
 
+/*
 function checkBoxInit(){
-	if (_closeShape==true) {
-		$('#closeShape').attr('checked',true);
-	}
-	if (_staticCenter==true) {
-		$('#staticCenter').attr('checked',true);
-	}
-	if (_angularNoise==true) {
-		$('#angularNoise').attr('checked',true);
-	}
-	if (_radiusNoise==true) {
-		$('#radiusNoise').attr('checked',true);
-	}
+	$(function(){
+		if (_closeShape==true) {
+			$('#closeShape').attr('checked',true);
+		}
+		else{
+			$('#closeShape').attr('checked',false);
+		}
+		if (_staticCenter==true) {
+			$('#staticCenter').attr('checked',true);
+		}
+		else{
+			$('#staticCenter').attr('checked',false);
+		}
+		if (_angularNoise==true) {
+			$('#angularNoise').attr('checked',true);
+		}
+		if (_angularNoise==true) {
+			$('#angularNoise').attr('checked',false);
+		}
+		if (_radiusNoise==true) {
+			$('#radiusNoise').attr('checked',true);
+		}
+		if (_radiusNoise==true) {
+			$('#radiusNoise').attr('checked',false);
+		}
+	});
 }
-
+*/
 
 
 // variables______________________________________
 
-var canvasSize = 800;
+var canvasSize = 1000;
 let canvahtml;
 var backgroundKey;
 
@@ -232,7 +266,6 @@ var predefAngleKeyNoiseRand = [];
 var angles =[];
 var radius =[];
 var rotate;
-
 
 
 //
@@ -364,11 +397,10 @@ function isGeometryRevealed() {
 
 		colorMoyBg = 0;
 		colorMoyBg = (parseInt(bgColor[0][0]) + parseInt(bgColor[0][1]) + parseInt(bgColor[0][2]))/3;
-
-		if(colorMoyBg <= 255/2){
-			autoNBCol = 255;
-		}else{
+		if(colorMoyBg >= 200){//seuil de clareté
 			autoNBCol = 0;
+		}else{
+			autoNBCol = 255;
 		}
 
 
@@ -406,7 +438,7 @@ function isGeometryRevealed() {
 		line(centerX-10,centerY,centerX+10,centerY);//croix centrale : trait horizontal
 		line(centerX,centerY-10,centerX,centerY+10);//croix centrale : trait vertical
 		strokeWeight(2); // for curveVertex
-		stroke(white);
+		stroke(curveColor[0]);
 	}
 	else {
 		if (backgroundKey === 0) { // Correctif //faire en sorte de mettre 1 seule couche de background pour couvrir la coube persistante du mode geometry
@@ -420,12 +452,12 @@ function isGeometryRevealed() {
 
 
 function draw() {
+	rgb_to_array(curveColorString,curveColor);
 	translate(canvasSize/2,canvasSize/2);
 	noFill();
 
 	createPoints(_nbPoints);
 
-	rgb_to_array(curveColorString,curveColor)
 	stroke(curveColor[0]);
 
 	isGeometryRevealed();

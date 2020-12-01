@@ -6,8 +6,8 @@
     <meta content="Axel AVININ" name="author">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.lex-agone.fr/bulma.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.lex-agone.fr/jquery.js" type="text/javascript"></script>
     <script src="https://cdn.lex-agone.fr/p5.js" type="text/javascript"></script>
     <script src="https://cdn.lex-agone.fr/color-picker.js" type="text/javascript"></script>
@@ -17,59 +17,65 @@
 </head>
 
 <body>
-    <div id="canvas" class="has-text-centered"></div>
-    <main class="parametres container mt-6 is-flex is-flex-direction-column">
-      <div class="container">
-        <script type="text/javascript">jscolor.presets.default = {format:'rgb', backgroundColor:'rgba(227,227,227,1)', borderColor:'rgba(255,255,255,1)', mode:'HSV',shadow:false, position:'bottom'};</script>
-        <label for="nbPoints" class="label">Nombre de points :
+  <div class="is-flex is-flex-wrap-wrap is-justify-content-center is-align-items-center">
+    <div id="canvas" class="has-text-centered flex1"></div>
+    <main class="parametres container is-flex flex1 p-6">
+      <div class="container is-flex is-flex-direction-column">
+        <!-- Bouttons -->
+        <div class="container m-6 is-flex is-justify-content-center">
+          <ul class="buttonList">
+            <li><input class="button is-danger mr-4" id="stopGeneration" name="stopGeneration" value="Stop Generation" type="button"></li>
+            <li><input class="button is-primary mr-4" id="showGeometry" name="showGeometry" value="Start Generation" type="button"></li>
+            <li><input class="button is-link" id="newCurve" name="newCurve" value="New Curve" type="button"></li>
+            <li><input class="button is-info mr-4" id="saveCanvas" name="saveCanvas" value="Download" type="button"></li>
+          </ul>
+        </div>
+        <!-- Couleurs -->
+        <div class="container is-flex">
+          <label class="mr-6 mb-6" for="curveColor" class="label">Shape color :
+            <input class="input" id="curveColor" name="curveColor" data-jscolor="{value:'#FFFFFF'}">
+          </label>
+          <label id="bgColorLabel" class="mb-6" for="bgColor" class="label">Background :
+            <input class="input" id="bgColor" name="bgColor" data-jscolor="{value:'#000000'}">
+          </label>
+          <!-- <label for="timeGeneration">Generation duration :
+          <input class="input" type="number" name="timeGeneration" id="timeGeneration" min="1" max="300" step="1">
+        </label> -->
+      </div>
+      <!-- Sliders -->
+      <div class="is-flex is-justify-content-center">
+        <label for="nbPoints" class="label flex1 to-right mr-3">Number of points :
           <input name="nbPoints" id="nbPoints" max="30" min="4" step="1" type="range" value="4">
           <span id="valeur_nbPoints">4</span>
         </label>
-        <label for="rotate" class="label">Rotation :
+        <label for="rotate" class="label flex1 ml-3">Rotation :
           <input id="rotate" name="rotate" type="checkbox">
-          <input id="rotateSpeed" max="15" min="0" step="1" type="range" value="5">
           <span class="speed">
+            <input id="rotateSpeed" max="15" min="0" step="1" type="range" value="5">
             <span id="valeur_rotateSpeed">5</span>
             <span> || </span>
             <span id="rotateSpeedComment">normal</span>
           </span>
         </label>
       </div>
-        <!-- Crossed Lines :
-        <input checked id="crossLine" name="CrossedLine" type="checkbox">-->
+      <!-- Checkbox -->
+      <div class="container is-flex">
         <label for="closeShape" class="label">Close shape :
-          <input checked id="closeShape" name="closeShape" type="checkbox">
+          <input checked class="mr-6" id="closeShape" name="closeShape" type="checkbox">
         </label>
         <label for="staticCenter" class="label">Static center :
-          <input checked id="staticCenter" name="staticCenter" type="checkbox">
+          <input checked class="mr-6" id="staticCenter" name="staticCenter" type="checkbox">
         </label>
         <label for="angularNoise" class="label">Angular Noise :
-          <input checked id="angularNoise" name="angularNoise" type="checkbox">
+          <input checked class="mr-6" id="angularNoise" name="angularNoise" type="checkbox">
         </label>
         <label for="radiusNoise" class="label">Radius Noise :
           <input checked id="radiusNoise" name="radiusNoise" type="checkbox">
         </label>
-        <label for="curveColor" class="label">Shape color :
-          <input class="input" id="curveColor" name="curveColor" data-jscolor="{value:'#FFFFFF'}">
-        </label>
-        <label for="bgColor" class="label">Background :
-          <input class="input" id="bgColor" name="bgColor" data-jscolor="{value:'#000000'}">
-        </label>
-        <label for="timeGeneration">Generation duration :
-          <input class="input" type="number" name="timeGeneration" id="timeGeneration" min="1" max="300" step="1">
-        </label>
       </div>
-      <div class="container">
-        <!-- |start generation| |new curve| -->
-        <!-- |stop generation| |reset| -->
-        <ul class="buttonList">
-          <li><input class="button" id="stopGeneration" name="stopGeneration" value="Stop Generation" type="button"></li>
-          <li><input class="button is-primary" id="showGeometry" name="showGeometry" value="Start Generation" type="button"></li>
-          <li><input class="button is-link ml-4" id="newCurve" name="newCurve" value="New Curve" type="button"></li>
-          <li><input class="button" id="saveCanvas" name="saveCanvas" value="Télécharger" type="button"></li>
-        </ul>
-      </div>
-    </main>
+    </div>
+  </main>
+  </div>
 </body>
 
 </html>

@@ -1,11 +1,10 @@
 
 #defaultCanvas0{
-    width: 40% !important;
-    height: 40% !important;
+    width: 100% !important;
+    height: auto !important;
 }
 
-
-body {padding: 0;margin: 0;}
+body {padding: 0;margin: 0; overflow: hidden;}
 
 input[type="button"]{}
 
@@ -14,4 +13,35 @@ input[type="button"]{}
 .buttonList{display: flex;}
 #saveCanvas{
   display:none;
+}
+
+.flex1{
+  flex: 1;
+}
+
+.to-right{
+  text-align: right;
+}
+
+.fade{
+  transition: 1000ms;
+  opacity: 0;
+}
+
+.speed{
+  transition: 1000ms;
+}
+
+@media (max-width:1180px) {
+  body>div.is-flex{
+    display: block !important;
+  }
+}
+@media (max-width:840px) {
+  body>div>main>div>div:nth-child(1),body>div>main>div>div:nth-child(n+3):nth-child(-n+4){
+    align-self: center;
+  }
+  body>div>main>div>div.is-flex{
+    display: block !important;
+  }
 }
