@@ -1,5 +1,6 @@
 jscolor.presets.default = {format:'rgb', backgroundColor:'rgba(227,227,227,1)', borderColor:'rgba(255,255,255,1)', mode:'HSV',shadow:false, position:'bottom'};
 
+
 // ------------ Cookie de bienvenue
 
 $(function(){
