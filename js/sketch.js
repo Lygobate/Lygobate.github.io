@@ -177,6 +177,12 @@ $(function () {
 		$('#saveCanvas').on("click",function(){
 			saveCanvas(document.getElementById("defaultCanvas0") ,'generation'+'_'+jour+'-'+mois+'-'+annee+'_'+timeCode, 'png');
 		});
+		$('#infos').on('click', function(){
+			$('.modal').addClass('is-active');
+		});
+		$('.delete,.modal-background,.modal-card-foot>button').on('click', function(){
+			$('.modal').removeClass('is-active');
+		});
 	}
 );
 
@@ -274,7 +280,6 @@ function setup() {
 	canvahtml=createCanvas(canvasSize, canvasSize);
 	canvahtml.parent('canvas');
 	frameRate(65);
-	background(100);
 
 	rotate= 0; //variable incrémentale
 
@@ -300,45 +305,32 @@ function createPoints(nb){ // crée un point dont les coordonées sont relatives
 
 	if (_angleNoiseSetter){
 		for (var i = 0; i < _nbPoints; i++) {
-			predefAngle[i] += 0.00003;
-			//console.log("ok");
+			predefAngle[i] += 0.00003; //puissance de bruit angulaire
 		}
 	}
 	if (_radiusNoiseSetter){
 		for (var i = 0; i < _nbPoints; i++) {
-			predefRadiusKeyNoiseRand[i] += 0.0020; //puissance de bruit
-			//console.log("ok");
+			predefRadiusKeyNoiseRand[i] += 0.0020; //puissance de bruit de rayon
 		}
 	}
 	if (_rotate==true){
-		rotate += listOfSpeed[_rotateSpeedLvl][0];
+		rotate += listOfSpeed[_rotateSpeedLvl][0]; //rotation
 	}
 
-//console.log(predefRadiusKeyNoiseRand[0]);
-
 	for (var i = 0; i < nb ; i++) {
-
-		//if (_radiusNoiseSetter) {
 			radius[i] = (noise(predefRadiusKeyNoiseRand[i]) * 350) + predefRadius[i];  //création bruit sur la longueur du rayon
 			angles[i] = ((noise(predefAngle[i] * 200)) + predefAngle[i]) + rotate; //création bruit sur l'angle du rayon
-		//}
-
-
-
 			centerX = (noise(centerXNoise) *100)-50;//"* 100)-50"-->moyen"* 200)-100"-->Fort
 			centerY = (noise(centerYNoise) *100)-50;
-			//correctif a faire : le centre se déplace den diagonale : X = Y ?
-			//log centerY et center X, si =, générer une clé de randomisation
 
 		if (_staticCenter){
 			centerX = 0;
 			centerY = 0;
 		}
-		//console.log("Y=" + centerY + " ||X=" + centerX);
+		//console.log("Y=" + centerY + " ||X=" + centerX); //position courante du centre
 
 		x[i] = centerX + (radius[i] * cos(angles[i]));
 		y[i] = centerY + (radius[i] * sin(angles[i]));
-
 
 		//console.log(predefAngle[0]); //valeur incrémentale
 		//console.log(predefRadiusKeyNoiseRand[0]); //valeur incrémentale
@@ -347,7 +339,6 @@ function createPoints(nb){ // crée un point dont les coordonées sont relatives
 		//console.log(angles[0]); //bruit naturel (Perlin noise)
 
 	}
-
 	//console.log(x);
 }
 
