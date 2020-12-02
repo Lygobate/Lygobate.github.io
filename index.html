@@ -41,40 +41,41 @@
           <!-- <label for="timeGeneration">Generation duration :
           <input class="input" type="number" name="timeGeneration" id="timeGeneration" min="1" max="300" step="1">
         </label> -->
+        </div>
+        <!-- Sliders -->
+        <div class="is-flex is-justify-content-center">
+          <label for="nbPoints" class="label flex1 to-right mr-3">Number of points :
+            <input name="nbPoints" id="nbPoints" max="30" min="4" step="1" type="range" value="4">
+            <span id="valeur_nbPoints">4</span>
+          </label>
+          <label for="rotate" class="label flex1 ml-3">Rotation :
+            <input id="rotate" name="rotate" type="checkbox">
+            <span class="speed">
+              <input id="rotateSpeed" max="15" min="0" step="1" type="range" value="5">
+              <span id="valeur_rotateSpeed">5</span>
+              <span> || </span>
+              <span id="rotateSpeedComment">normal</span>
+            </span>
+          </label>
+        </div>
+        <!-- Checkbox -->
+        <div class="container is-flex">
+          <label for="closeShape" class="label">Close shape :
+            <input checked class="mr-6" id="closeShape" name="closeShape" type="checkbox">
+          </label>
+          <label for="staticCenter" class="label">Static center :
+            <input checked class="mr-6" id="staticCenter" name="staticCenter" type="checkbox">
+          </label>
+          <label for="angularNoise" class="label">Angular Noise :
+            <input checked class="mr-6" id="angularNoise" name="angularNoise" type="checkbox">
+          </label>
+          <label for="radiusNoise" class="label">Radius Noise :
+            <input checked id="radiusNoise" name="radiusNoise" type="checkbox">
+          </label>
+        </div>
       </div>
-      <!-- Sliders -->
-      <div class="is-flex is-justify-content-center">
-        <label for="nbPoints" class="label flex1 to-right mr-3">Number of points :
-          <input name="nbPoints" id="nbPoints" max="30" min="4" step="1" type="range" value="4">
-          <span id="valeur_nbPoints">4</span>
-        </label>
-        <label for="rotate" class="label flex1 ml-3">Rotation :
-          <input id="rotate" name="rotate" type="checkbox">
-          <span class="speed">
-            <input id="rotateSpeed" max="15" min="0" step="1" type="range" value="5">
-            <span id="valeur_rotateSpeed">5</span>
-            <span> || </span>
-            <span id="rotateSpeedComment">normal</span>
-          </span>
-        </label>
-      </div>
-      <!-- Checkbox -->
-      <div class="container is-flex">
-        <label for="closeShape" class="label">Close shape :
-          <input checked class="mr-6" id="closeShape" name="closeShape" type="checkbox">
-        </label>
-        <label for="staticCenter" class="label">Static center :
-          <input checked class="mr-6" id="staticCenter" name="staticCenter" type="checkbox">
-        </label>
-        <label for="angularNoise" class="label">Angular Noise :
-          <input checked class="mr-6" id="angularNoise" name="angularNoise" type="checkbox">
-        </label>
-        <label for="radiusNoise" class="label">Radius Noise :
-          <input checked id="radiusNoise" name="radiusNoise" type="checkbox">
-        </label>
-      </div>
-    </div>
-  </main>
+    </main>
+  </div>
   <img id="infos" src="https://portfolio.lex-agone.fr/images/infos.svg" alt="Infos">
   <div class="modal">
     <div class="modal-background"></div>

@@ -38,11 +38,19 @@ input[type="button"]{}
   }
 }
 @media (max-width:840px) {
+  body>div.is-flex{
+    display: flex !important;
+  }
   body>div>main>div>div:nth-child(1),body>div>main>div>div:nth-child(n+3):nth-child(-n+4){
     align-self: center;
   }
   body>div>main>div>div.is-flex{
     display: block !important;
+  }
+  body>div>main.p-6{
+    padding-bottom:.75rem!important;
+    padding-top: 0 !important;
+    margin: 0;
   }
 }
 

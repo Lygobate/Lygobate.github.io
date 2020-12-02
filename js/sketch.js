@@ -386,6 +386,7 @@ function isGeometryRevealed() {
 			drawingContext.setLineDash([])
 		}
 
+		//adapte la couleur des markers et croix de centre en Noir ou blanc en fonction de la couleur du background
 		colorMoyBg = 0;
 		colorMoyBg = (parseInt(bgColor[0][0]) + parseInt(bgColor[0][1]) + parseInt(bgColor[0][2]))/3;
 		if(colorMoyBg >= 200){//seuil de clareté
