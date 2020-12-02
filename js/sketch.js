@@ -1,5 +1,8 @@
 jscolor.presets.default = {format:'rgb', backgroundColor:'rgba(227,227,227,1)', borderColor:'rgba(255,255,255,1)', mode:'HSV',shadow:false, position:'bottom'};
 
+/*_______________ LIRAG VERSION __________________*/
+var liragVersion = "1.0";
+/*________________________________________________*/
 
 // ------------ Cookie de bienvenue
 
@@ -88,114 +91,116 @@ var timeCode  = now.getTime()
 
 $(function () {
 
-		$('#nbPoints').on("input change", function () {
-			_nbPoints = $('#nbPoints').val();
-			$('#valeur_nbPoints').html(_nbPoints);
-		});
+	$('.liragVersion').html(liragVersion);
 
-		rotateSpeedMenuInit();
-		$('#rotate').on("click", function () {
-			if (_rotate === true){
-				_rotate = false;
-			}else{
-				_rotate = true;
-			}
-			$('.speed').toggleClass('fade');
-			if ($('#rotateSpeed').prop('disabled')){
-				$('#rotateSpeed').removeAttr('disabled');
-			}else{
-				$('#rotateSpeed').attr('disabled', 'disabled');
-			}
-		});
-		$('#rotateSpeed').on("input change", function () {
-			_rotateSpeedLvl = $('#rotateSpeed').val();
-			$('#valeur_rotateSpeed').html(_rotateSpeedLvl);
-			$('#rotateSpeedComment').html(listOfSpeed[_rotateSpeedLvl][1]);
-		});
+	$('#nbPoints').on("input change", function () {
+		_nbPoints = $('#nbPoints').val();
+		$('#valeur_nbPoints').html(_nbPoints);
+	});
 
-		$('#closeShape').on("click", function () {
-			_closeShape = $('#closeShape').prop("checked");
-		});
+	rotateSpeedMenuInit();
+	$('#rotate').on("click", function () {
+		if (_rotate === true){
+			_rotate = false;
+		}else{
+			_rotate = true;
+		}
+		$('.speed').toggleClass('fade');
+		if ($('#rotateSpeed').prop('disabled')){
+			$('#rotateSpeed').removeAttr('disabled');
+		}else{
+			$('#rotateSpeed').attr('disabled', 'disabled');
+		}
+	});
+	$('#rotateSpeed').on("input change", function () {
+		_rotateSpeedLvl = $('#rotateSpeed').val();
+		$('#valeur_rotateSpeed').html(_rotateSpeedLvl);
+		$('#rotateSpeedComment').html(listOfSpeed[_rotateSpeedLvl][1]);
+	});
 
-		/*$('#crossLine').on("click", function () {
-			_crossLine = $('#crossLine').prop("checked");
-		});*/
+	$('#closeShape').on("click", function () {
+		_closeShape = $('#closeShape').prop("checked");
+	});
 
-		$('#staticCenter').on("click", function () {
-			_staticCenter = $('#staticCenter').prop("checked");
-		});
-		$('#angularNoise').on("click", function () {
-			_angleNoiseSetter = $('#angularNoise').prop("checked");
-		});
-		$('#radiusNoise').on("click", function () {
-			_radiusNoiseSetter = $('#radiusNoise').prop("checked");
-		});
+	/*$('#crossLine').on("click", function () {
+		_crossLine = $('#crossLine').prop("checked");
+	});*/
 
-
-
-		$('#curveColor').on("input change", function () {
-			curveColorString = $('#curveColor').val();
-			//console.log(color);
-		});
-		$('#bgColor').on("input change", function () {
-			bgColorString = $('#bgColor').val();
-			//console.log(color);
-		});
+	$('#staticCenter').on("click", function () {
+		_staticCenter = $('#staticCenter').prop("checked");
+	});
+	$('#angularNoise').on("click", function () {
+		_angleNoiseSetter = $('#angularNoise').prop("checked");
+	});
+	$('#radiusNoise').on("click", function () {
+		_radiusNoiseSetter = $('#radiusNoise').prop("checked");
+	});
 
 
-		$('#showGeometry').on("click", function () {//show géometry fait office de start generation et de reset
-			if (_showGeometry === true){
-				_showGeometry = false;
-				$('#showGeometry').prop("value", 'Reset');
-				$('#showGeometry').toggleClass('is-primary')
-				$('#showGeometry').toggleClass('is-warning');
-				$('#stopGeneration').css("display", 'block');
-				$('#newCurve').css("display", 'none');
-				// $('#bgColorLabel').css("display", 'none');
-				$('#bgColorLabel>input').attr("disabled", 'disabled');
-				$('#saveCanvas').css("display", 'block');
-			} else {
-				_showGeometry = true;
-				$('#showGeometry').prop("value", 'Start Generation');
-				$('#showGeometry').toggleClass('is-warning');
-				$('#showGeometry').toggleClass('is-primary')
-				$('#stopGeneration').css("display", 'none');
-				$('#newCurve').css("display", 'block');
-				// $('#bgColorLabel').css("display", 'inline-block');
-				$('#bgColorLabel>input').removeAttr("disabled");
-				$('#saveCanvas').css("display", 'none');
-				loop();//débloque si le noLoop est activé, et qu'on retourne sur le showGeometry
-			}
-		});
-		$('#stopGeneration').on("click", function () {
-			if (_stop == false){
-				_stop = true;
-				$('#stopGeneration').prop("value", 'Play Generation');
-				$('#stopGeneration').toggleClass('is-primary')
-				$('#stopGeneration').toggleClass('is-danger');
-				noLoop();
-			} else {
-				_stop = false;
-				loop();
-				$('#stopGeneration').prop("value", 'Stop Generation');
-				$('#stopGeneration').toggleClass('is-primary')
-				$('#stopGeneration').toggleClass('is-danger');
-			}
-		});
-		$('#newCurve').on("click",function(){
-			setup();
-		});
-		$('#saveCanvas').on("click",function(){
-			saveCanvas(document.getElementById("defaultCanvas0") ,'generation'+'_'+jour+'-'+mois+'-'+annee+'_'+timeCode, 'png');
-		});
-		$('#infos').on('click', function(){
-			$('.modal').addClass('is-active');
-		});
-		$('.delete,.modal-background,.modal-card-foot>button').on('click', function(){
-			$('.modal').removeClass('is-active');
-		});
-	}
-);
+
+	$('#curveColor').on("input change", function () {
+		curveColorString = $('#curveColor').val();
+		//console.log(color);
+	});
+	$('#bgColor').on("input change", function () {
+		bgColorString = $('#bgColor').val();
+		//console.log(color);
+	});
+
+
+	$('#showGeometry').on("click", function () {//show géometry fait office de start generation et de reset
+		if (_showGeometry === true){
+			_showGeometry = false;
+			$('#showGeometry').prop("value", 'Reset');
+			$('#showGeometry').toggleClass('is-primary')
+			$('#showGeometry').toggleClass('is-warning');
+			$('#stopGeneration').css("display", 'block');
+			$('#newCurve').css("display", 'none');
+			// $('#bgColorLabel').css("display", 'none');
+			$('#bgColorLabel>input').attr("disabled", 'disabled');
+			$('#saveCanvas').css("display", 'block');
+		} else {
+			_showGeometry = true;
+			$('#showGeometry').prop("value", 'Start Generation');
+			$('#showGeometry').toggleClass('is-warning');
+			$('#showGeometry').toggleClass('is-primary')
+			$('#stopGeneration').css("display", 'none');
+			$('#newCurve').css("display", 'block');
+			// $('#bgColorLabel').css("display", 'inline-block');
+			$('#bgColorLabel>input').removeAttr("disabled");
+			$('#saveCanvas').css("display", 'none');
+			loop();//débloque si le noLoop est activé, et qu'on retourne sur le showGeometry
+		}
+	});
+	$('#stopGeneration').on("click", function () {
+		if (_stop == false){
+			_stop = true;
+			$('#stopGeneration').prop("value", 'Play Generation');
+			$('#stopGeneration').toggleClass('is-primary')
+			$('#stopGeneration').toggleClass('is-danger');
+			noLoop();
+		} else {
+			_stop = false;
+			loop();
+			$('#stopGeneration').prop("value", 'Stop Generation');
+			$('#stopGeneration').toggleClass('is-primary')
+			$('#stopGeneration').toggleClass('is-danger');
+		}
+	});
+	$('#newCurve').on("click",function(){
+		setup();
+	});
+	$('#saveCanvas').on("click",function(){
+		saveCanvas(document.getElementById("defaultCanvas0") ,'generation'+'_'+jour+'-'+mois+'-'+annee+'_'+timeCode, 'png');
+	});
+	$('#infos').on('click', function(){
+		$('.modal').addClass('is-active');
+	});
+	$('.delete,.modal-background,.modal-card-foot>button').on('click', function(){
+		$('.modal').removeClass('is-active');
+	});
+
+});
 
 /*A faire en front pour le moment____________________________________
 
