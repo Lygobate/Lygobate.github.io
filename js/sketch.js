@@ -1,5 +1,15 @@
 jscolor.presets.default = {format:'rgb', backgroundColor:'rgba(227,227,227,1)', borderColor:'rgba(255,255,255,1)', mode:'HSV',shadow:false, position:'bottom'};
 
+// ------------ Cookie de bienvenue
+
+$(function(){
+	if (typeof $.cookie("firstVisit") == 'undefined') {
+		$.cookie("firstVisit",false);
+		$('.modal').addClass('is-active');
+	}
+});
+
+
 // ------------ les boutons
 
 //max recommamdé 10pts
