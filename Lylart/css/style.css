@@ -1,1 +1,76 @@
-*{padding:0;margin:0;box-sizing:border-box}header{display:flex;justify-content:space-between;align-items:center;border-bottom:solid 2px black;border-bottom-left-radius:20px;border-bottom-right-radius:20px;padding:1%}header>a{text-decoration:none}header>a:nth-child(2n+1)>div{display:flex;justify-content:center;align-items:center;font-size:16px;border:solid 2px black;border-radius:100px;width:5em;height:5em}header>a:nth-child(2){font-size:65px}
+/*
+Error: Undefined variable: "$grey".
+        on line 7 of D:/Logiciels/Xampp/htdocs/Projets_Perso/Art-Processing/Lygobate.github.io/Lylart/css/parts/_user.scss
+        from line 8 of D:\Logiciels\Xampp\htdocs\Projets_Perso\Art-Processing\Lygobate.github.io\Lylart\css\main.scss
+
+2:     padding: 0;
+3:     margin: 0;
+4:     box-sizing: border-box;
+5: }
+6: @import "parts/imports";
+7: @import "parts/header";
+8: @import "parts/user";
+9: @import "parts/colors";
+
+Backtrace:
+D:/Logiciels/Xampp/htdocs/Projets_Perso/Art-Processing/Lygobate.github.io/Lylart/css/parts/_user.scss:7
+D:\Logiciels\Xampp\htdocs\Projets_Perso\Art-Processing\Lygobate.github.io\Lylart\css\main.scss:8
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/script/tree/variable.rb:49:in `_perform'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/script/tree/node.rb:50:in `perform'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:402:in `visit_prop'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `visit'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `block in with_base'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:135:in `with_frame'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `with_base'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `visit'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:444:in `block (2 levels) in visit_rule'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:444:in `map'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:444:in `block in visit_rule'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:442:in `visit_rule'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `visit'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `block in with_base'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:135:in `with_frame'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `with_base'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `visit'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:329:in `block (2 levels) in visit_import'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:329:in `map'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:329:in `block in visit_import'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:88:in `block in with_import'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:135:in `with_frame'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:88:in `with_import'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:326:in `visit_import'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `visit'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `block in with_base'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:135:in `with_frame'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `with_base'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `visit'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:52:in `map'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:171:in `block in visit_children'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:170:in `visit_children'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:190:in `visit_root'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `visit'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:161:in `visit'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:10:in `visit'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/root_node.rb:36:in `css_tree'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/tree/root_node.rb:20:in `render'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/engine.rb:290:in `render'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/exec/sass_scss.rb:400:in `run'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/exec/sass_scss.rb:63:in `process_result'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/exec/base.rb:52:in `parse'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/lib/sass/exec/base.rb:19:in `parse!'
+D:/Logiciels/Koala (SCSS)/rubygems/gems/sass-3.5.2/bin/sass:13:in `<top (required)>'
+D:/Logiciels/Koala (SCSS)/bin/sass:22:in `load'
+D:/Logiciels/Koala (SCSS)/bin/sass:22:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined variable: \"$grey\".\A         on line 7 of D:/Logiciels/Xampp/htdocs/Projets_Perso/Art-Processing/Lygobate.github.io/Lylart/css/parts/_user.scss\A         from line 8 of D:\Logiciels\Xampp\htdocs\Projets_Perso\Art-Processing\Lygobate.github.io\Lylart\css\main.scss\A \A 2:     padding: 0;\A 3:     margin: 0;\A 4:     box-sizing: border-box;\A 5: }\A 6: @import \"parts/imports\";\A 7: @import \"parts/header\";\A 8: @import \"parts/user\";\A 9: @import \"parts/colors\";"; }
