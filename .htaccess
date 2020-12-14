@@ -1,0 +1,10 @@
+Options +Indexes
+RewriteEngine On
+	## www -> no-www
+RewriteCond %{HTTP_HOST} ^www\.(.+)$
+RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L,NE,QSA]
+	## http -> https
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L,NE,QSA]
+ErrorDocument 403 https://lex-agone.fr/403.html
+ErrorDocument 404 https://lex-agone.fr/404.html
