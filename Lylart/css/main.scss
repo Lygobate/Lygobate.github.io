@@ -4,6 +4,9 @@
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
+body{
+    background: #040404;
+}
 @import "parts/imports";
 @import "parts/colors";
 @import "parts/header";

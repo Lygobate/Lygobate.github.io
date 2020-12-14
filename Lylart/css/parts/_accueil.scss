@@ -1,5 +1,6 @@
 #accueil{
     padding-bottom: 100px;
+    margin-top: 8vh;
     & > .video{
         position: relative;
         overflow: hidden;
@@ -19,6 +20,10 @@
                 & > h1{
                     text-align: right;
                     font-size: 2em;
+                }
+                & > h2{
+                    text-align: right;
+                    font-size: 1em;
                 }
             }
             & > a{
