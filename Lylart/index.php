@@ -7,8 +7,7 @@
         <div>
             <div>
                 <h1>Slogan</h1>
-                <h2>Autre chose ?</h2>
-                <h2>Peut-être...</h2>
+                <h2>Autre chose ? Peut-être que oui ^^</h2>
             </div>
             <a href="gen/"><div class="button">Créer</div></a>
         </div>
