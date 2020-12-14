@@ -2,12 +2,18 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: solid 2px black;
-    //border-bottom-left-radius: 10px;
-    //border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
     padding: 1%;
+    height: 8vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    background: #1E1E1E;
     & > a{
         text-decoration: none;
+        color: white;
         &:nth-child(2n+1){
             & > div{
                 display: flex;
@@ -21,7 +27,17 @@ header{
             }
         }
         &:nth-child(2){
-            font-size: 65px;
+            color: white;
+            text-align: justify-all;
+            & > div:nth-child(1){
+                font-size: 2em;
+            }
+            & > div:nth-child(2){
+                font-size: 0.75em;
+                & > span{
+                    color: #00FF4C;
+                }
+            }
         }
     }
 }

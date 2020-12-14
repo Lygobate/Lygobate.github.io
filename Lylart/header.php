@@ -25,6 +25,7 @@
         </a>
         <a href="">
             <div>Lylart</div> <!-- à remplacer avec le logo ? -->
+            <div>THINK, CREATE, <span>SHARE</span>.</div>
         </a>
         <a href="">
             <div>
