@@ -20,16 +20,14 @@
     <header>
         <a href="">
             <div>
-                <p>Générateur</p>
             </div>
         </a>
         <a href="">
-            <div>Lylart</div> <!-- à remplacer avec le logo ? -->
+            <div>LYLART</div> <!-- à remplacer avec le logo ? -->
             <div>THINK, CREATE, <span>SHARE</span>.</div>
         </a>
         <a href="">
             <div>
-                <p>Utilisateur</p>
             </div>
         </a>
     </header>
