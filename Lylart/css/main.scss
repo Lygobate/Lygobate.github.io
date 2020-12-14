@@ -2,8 +2,10 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 @import "parts/imports";
 @import "parts/colors";
 @import "parts/header";
+@import "parts/accueil";
 @import "parts/user";
