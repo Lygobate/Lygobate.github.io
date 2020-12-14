@@ -15,8 +15,17 @@
             <source src="video/EEEAAAOOO.mp4" type="video/mp4">
         </video>
     </div>
+    <div class="card">
+        <div class="card_login">Mia Khalifa</div>
+        <div class="card_gen">
+            <img src="images/gen_test.jpg" alt="gen">
+        </div>
+        <div class="card_desc">
+            <p>Description, description description description description description description ...</p>
+            <span>Suite</span>
+        </div>
+    </div>
 </div>
-
 <?php
-    require "footer.php";
+    require_once "footer.php";
 ?>

@@ -1,44 +1,50 @@
-header{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    padding: 1%;
-    height: 8vh;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    z-index: 100;
-    background: $div_back;
-    & > a{
-        text-decoration: none;
-        color: white;
-        &:nth-child(2n+1){
-            & > div{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 16px;
-                border: solid 2px white;
-                border-radius: 100px;
-                width: 2em;
-                height: 2em;
-                background: white;
-            }
-        }
-        &:nth-child(2){
-            color: white;
-            text-align: center;
-            & > div:nth-child(1){
-                font-size: 1.6em;
-            }
-            & > div:nth-child(2){
-                font-size: 0.5em;
-                & > span{
-                    color: #00FF4C;
-                }
-            }
-        }
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding: 1%;
+  height: 8vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  background: $div_back;
+  
+  & > a {
+    text-decoration: none;
+    color: white;
+    
+    &:nth-child(2n+1) {
+      & > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        border: solid 2px white;
+        border-radius: 100px;
+        width: 2em;
+        height: 2em;
+        background: white;
+      }
     }
+    
+    &:nth-child(2) {
+      color: white;
+      text-align: center;
+      
+      & > div:nth-child(1) {
+        font-size: 1.6em;
+      }
+      
+      & > div:nth-child(2) {
+        font-size: 0.5em;
+        
+        & > span {
+          color: #00FF4C;
+        }
+      }
+    }
+  }
 }

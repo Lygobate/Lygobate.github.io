@@ -1,35 +1,40 @@
-.footer-mobile{
+.footer-mobile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  width: 100%;
+  border-top: solid 2px black;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background: $background;
+  height: 15vh;
+  
+  & > select {
+    background: $div_back;
+    padding: 0.5em;
+    align-self: center;
+    border-radius: 8px;
+    color: white;
+    border: none;
+    margin: 0.5em;
+  }
+  
+  & > div {
+    padding: 0.75em 0;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: fixed;
-    z-index: 100;
-    bottom: 0;
-    width: 100%;
-    border-top: solid 2px black;
+    justify-content: space-evenly;
+    background: $div_back;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    padding-top: 0.75em;
-    background: $background;
-    & > select{
-        margin: 0 3em;
-        background: $div_back;
-        padding: 1em;
-        align-self: center;
-        border-radius: 15px;
-        color: white;
-        border: none;
+    
+    & > div {
+      border-radius: 100px;
+      width: 2em;
+      height: 2em;
+      background: white;
     }
-    & > div{
-        padding: 0.75em 0;
-        margin-top: 1em;
-        display: flex;
-        justify-content: space-evenly;
-        & > div{
-            border: solid 2px black;
-            border-radius: 100px;
-            width: 2em;
-            height: 2em;
-        }
-    }
+  }
 }

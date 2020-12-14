@@ -1,49 +1,81 @@
-#accueil{
-    padding-bottom: 100px;
-    margin-top: 8vh;
-    & > .video{
-        position: relative;
-        overflow: hidden;
-        object-fit: cover;
-        & > div{
-            position: absolute;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            height: 100%;
-            justify-content: center;
-            color: #ffffff;
-            font-size: 1.5em;
-            padding: 0.5em;
-            & > div{
-                & > h1{
-                    text-align: right;
-                    font-size: 2em;
-                }
-                & > h2{
-                    text-align: right;
-                    font-size: 1em;
-                }
-            }
-            & > a{
-                text-decoration: none;
-                color: white;
-                width: fit-content;
-                margin-top: 5em;
-                & > div{
-                    background: $red;
-                    padding: 0.5em;
-                    border-radius: 10px;
-                    margin-top: 0.5em;
-                }
-            }
+#accueil {
+  margin-top: 8vh;
+  margin-bottom: 15vh;
+  & > .video {
+    position: relative;
+    overflow: hidden;
+    object-fit: cover;
+    
+    & > div {
+      position: absolute;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1.5em;
+      padding: 0.5em;
+      
+      & > div {
+        & > h1 {
+          text-align: right;
+          font-size: 2em;
         }
-        & > video{
-            width: 235%;
-            height: 100%;
-            filter: brightness(0.4);
-            object-position: -17em;
+        
+        & > h2 {
+          text-align: right;
+          font-size: 1em;
+          padding-left: 4em;
         }
+      }
+      
+      & > a {
+        text-decoration: none;
+        color: white;
+        width: fit-content;
+        margin-top: 5em;
+        
+        & > div {
+          background: $red;
+          padding: 0.5em;
+          border-radius: 10px;
+          margin-top: 0.5em;
+        }
+      }
     }
+    
+    & > video {
+      width: 235%;
+      height: 100%;
+      filter: brightness(0.4);
+      object-position: -17em;
+    }
+  }
+  
+  & > .card{
+    display: flex;
+    flex-direction: column;
+    background: $div_back;
+    border-radius: 10px;
+    overflow: hidden;
+    color: white;
+    margin: 2em;
+    & > .card_login, .card_desc{
+      width: 100%;
+      padding: 0.5em;
+    }
+    & > .card_gen{
+      object-fit: cover;
+      width: 100%;
+    }
+    & > .card_desc{
+      & > span{
+        float: right;
+        text-decoration: underline;
+        font-size: small;
+      }
+    }
+  }
 }
