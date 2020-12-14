@@ -24,9 +24,7 @@
             </div>
         </a>
         <a href="">
-            <div>
-                <p>Lylart</p> <!-- à remplacer avec le logo ? -->
-            </div>
+            <div>Lylart</div> <!-- à remplacer avec le logo ? -->
         </a>
         <a href="">
             <div>
