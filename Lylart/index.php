@@ -12,7 +12,7 @@
             </div>
             <a href="gen/"><div class="button">Créer</div></a>
         </div>
-        <video loop> <!-- autoplay loop controls -->
+        <video loop controls playsinline > <!-- autoplay loop controls playsinline-->
             <source src="video/EEEAAAOOO.mp4" type="video/mp4">
         </video>
     </div>
