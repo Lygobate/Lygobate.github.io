@@ -10,16 +10,17 @@
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     padding-top: 0.75em;
-    background: white;
+    background: $background;
     & > select{
         margin: 0 3em;
-        border: 1px solid #ebebeb;
-        background: white;
-        padding: 0.25em;
+        background: $div_back;
+        padding: 1em;
         align-self: center;
+        border-radius: 15px;
+        color: white;
+        border: none;
     }
     & > div{
-        border-top: solid 2px black;
         padding: 0.75em 0;
         margin-top: 1em;
         display: flex;
