@@ -1,0 +1,67 @@
+<<<<<<< Updated upstream
+=======
+
+
+.user > div{
+  border: solid thin red;
+  padding: 10px;
+}
+
+.user{
+    height: 100vh;
+    background-color: $grey;
+    color: white;
+    & .grid{
+        margin-top:8vh;
+        height: 100%;
+        margin: 0px 10%;
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: 30% repeat(4,5vh) 10vh;
+        grid-gap: 10px;
+        & .pdp-container{
+            display: flex;
+            flex-direction: column;
+            grid-column: 1 / span 4;
+            align-items: center;
+            align-self: center;
+            & .pdp-box{
+                width: 20vw;
+                height: 20vw;
+                border: solid thin white;
+                border-radius: 100%;
+                & img{
+
+                }
+            }
+            & div:nth-child(2){
+                margin-top: 10px;
+                & p{
+                    width: 20vw;
+                    text-align: center;
+                    font-size: 10px;
+                }
+            }
+        }
+    & .info-box{
+      grid-column: 1 / span 4;
+      display: grid;
+      grid-template-columns: 2fr, 1fr;
+      grid-template-rows: repeat(2,1fr);
+      grid-column-gap: 5px;
+      grid-template-areas:
+      "label button"
+      "data button";
+          & .label{
+            grid-area: label;
+          }
+          & .data{
+            grid-area: data;
+          }
+          & input[type="button"]{
+            grid-area: button;
+          }
+    }
+    }
+}
+>>>>>>> Stashed changes

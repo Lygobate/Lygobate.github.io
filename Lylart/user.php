@@ -2,15 +2,34 @@
     require_once "header.php";
 ?>
 
-    <main>
+    <main class="user">
       <div class="grid">
-        <div class="pdp-box">
-          <img src="" alt="">
+
+        <div class="pdp-container">
+          <div class="pdp-box">
+            <img src="" alt="">
+          </div>
+          <div>
+            <p>Changer photo de profil</p>
+          </div>
         </div>
-        <div>
-          <p>Changer de photo de profil</p>
+
+        <div class="info-box">
+          <div class="label">Nom d'utilisateur</div>
+          <input type="text" class="data"></input>
+          <input type="button" value="Changer pseudo"></input>
         </div>
-        <div class="infos-box">
+        <div class="info-box">
+          <div class="label">Email</div>
+          <input type="text" class="data"></input>
+          <input type="button" value="Changer d'Email"></input>
+        </div>
+        <div class="info-box">
+          <div class="label">Mot de passe</div>
+          <input type="text" class="data"></input>
+          <input type="button" value="Changer mdp"></input>
+        </div>
+        <div class="osef-tous">
 
         </div>
       </div>
