@@ -1,0 +1,12 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    & > a{
+        text-decoration: none;
+        & > div{
+            padding: 1em;
+            border: solid 2px black;
+            border-radius: 0.5em;
+        }
+    }
+}
