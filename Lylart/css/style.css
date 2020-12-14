@@ -1,1 +1,1 @@
-*{padding:0;margin:0}header{display:flex;justify-content:space-between}header>a{text-decoration:none}header>a>div{padding:1em;border:solid 2px black;border-radius:0.5em}
+*{padding:0;margin:0;box-sizing:border-box}header{display:flex;justify-content:space-between}header>a{text-decoration:none}header>a>div{padding:0.5em;border:solid 2px black;border-radius:100px;width:5em;height:5em}
