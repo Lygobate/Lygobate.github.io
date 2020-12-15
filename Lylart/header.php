@@ -14,7 +14,21 @@
     <!-- Titre de l'onglet -->
     <title>Lylart Gallery</title>
     <!-- Importer CSS et scripts -->
-    <link rel="stylesheet" href="css/style.css">
+    <?php
+        if (empty($style)){
+            echo '<link rel="stylesheet" href="css/style.css">';
+        } else {
+            echo '<link rel="stylesheet" href="../css/style.css">
+                  <script src="https://cdn.lex-agone.fr/jquery.js" type="text/javascript"></script>
+                  <script src="https://cdn.lex-agone.fr/jquery.cookie.js" type="text/javascript"></script>';
+            if (isset($gen)){
+                echo '<script src="https://cdn.lex-agone.fr/p5.js" type="text/javascript"></script>
+                      <script src="https://cdn.lex-agone.fr/color-picker.js" type="text/javascript"></script>
+                      <script src="js/functions.js" type="text/javascript"></script>
+                      <script src="js/sketch.js" type="text/javascript"></script>';
+            }
+        }
+    ?>
 </head>
 <body>
     <header>

@@ -1,5 +1,7 @@
 <?php
-    require_once "header.php";
+    $style="gen";
+    $gen=true;
+    require_once "../header.php";
 ?>
 
 <div id="generator">
