@@ -1,0 +1,19 @@
+#generator{
+  margin: 8vh 0 15vh 0;
+  color: white;
+  & > #canvas{
+    width: 100%;
+    & > canvas{
+      width: 100% !important;
+      height: auto !important;
+    }
+  }
+}
+
+.footer-mobile{
+  justify-content: flex-end !important;
+  height: 7vh !important;
+  & > select{
+    display: none;
+  }
+}
