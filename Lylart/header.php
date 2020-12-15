@@ -20,7 +20,8 @@
             $index="";
             if (isset($jquery)){
                 echo '<script src="https://cdn.lex-agone.fr/jquery.js" type="text/javascript"></script>
-                      <script src="https://cdn.lex-agone.fr/jquery.cookie.js" type="text/javascript"></script>';
+                      <script src="https://cdn.lex-agone.fr/jquery.cookie.js" type="text/javascript"></script>
+                      <script src="js/ajax.js" type="text/javascript"></script>';
             }
         } else {
             echo '<link rel="stylesheet" href="../css/style.css">
