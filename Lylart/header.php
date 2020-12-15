@@ -15,7 +15,7 @@
     <title>Lylart Gallery</title>
     <!-- Importer CSS et scripts -->
     <?php
-        if (empty($style)){
+        if (empty($style)||$style!="gen"){
             echo '<link rel="stylesheet" href="css/style.css">';
             if (isset($jquery)){
                 echo '<script src="https://cdn.lex-agone.fr/jquery.js" type="text/javascript"></script>

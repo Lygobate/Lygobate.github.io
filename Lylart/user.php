@@ -1,5 +1,6 @@
 <?php
-  $jquery = true;
+  $jquery=true;
+  $style="user";
   require_once "header.php";
 ?>
 
