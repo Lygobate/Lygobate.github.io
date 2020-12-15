@@ -1,17 +1,8 @@
-      <?php
-        $jquery=true;
-        $style="user";
-        require_once "header.php";
-      ?>
-      <script type="text/javascript" src="js/ajax.js"></script>
-      <style media="screen">
-        body{
-          background: white;
-        }
-      </style>
-    </head>
-
-    <body>
+<?php
+    $jquery=true;
+    require_once "header.php"
+?>
+<style>body{margin-top: 10vh;background: white;}</style>
 
       <div id="is_registed"></div>
       <form id="new_user_form" action="" method="post">
