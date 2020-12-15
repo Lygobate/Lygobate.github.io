@@ -1,32 +1,3 @@
-<?php
-require 'config.php';
-
-$newUser=$pass->prepare("INSERT INTO utilisateur VALUES(1, :mail, :user, :password, 0, date('Y/m/d H:i:s'), :pays, 0,0)");
-                                                      //token,mail,pseudo,mdp,verifie,date_inscription,pays,nb_strike,role
-$connexionTry=$pass->prepare("SELECT pseudo,mdp FROM utilisateur WHERE pseudo = :pseudo");
-
-
-
-  if (isset($_POST["action"])) {
-    switch ($_POST["action"]) {
-      case 'creer':
-        $newUser->execute([":mail"=>$_POST["mail"], ":user"=>$_POST["login"], ":password"=>$_POST["password"], ":pays"=>$_POST["pays"]]);
-
-        break;
-
-      case 'connexion':
-        //voir fonction try/except
-        $connexionTry=execute([":pseudo"=>$_POST["login"]]);
-        $resConnexion=$connexionTry->fetchAll(PDO::FETCH_ASSOC);
-        /*if (empty($resConnexion)) {
-          echo "<script type='text/javascript'>$('#wrong_pseudo').html('Ce nom d'utilisateur n'existe pas)</script>";
-        }//pas très conventionnel TOUT CA X"D.... pour l'instant ya une Uncaught Error.*/
-        break;
-    }
-  }
-
-?>
-
 <!DOCTYPE html>
   <html lang="fr">
     <head>
@@ -58,7 +29,7 @@ $connexionTry=$pass->prepare("SELECT pseudo,mdp FROM utilisateur WHERE pseudo = 
           }
           ?>
         </select><br>
-        <input type="hidden" name="action" value="creer"><br><br>
+        <input type="hidden" name="from" value="creer"><br><br>
         <input type="submit" id="submit_new_user" name="submit" value="Créer un compte" disabled>
       </form>
 
@@ -67,7 +38,7 @@ $connexionTry=$pass->prepare("SELECT pseudo,mdp FROM utilisateur WHERE pseudo = 
         <input type="text" name="login" placeholder="votre login/pseudo..." required>
         <span id="wrong_pseudo"></span>
         <input type="password" name="password" placeholder="Mot de passe" required>
-        <input type="hidden" name="action" value="connexion">
+        <input type="hidden" name="from" value="connexion">
         <input type="submit" id="submit_login" name="submit" value="Se connecter">
       </form>
 

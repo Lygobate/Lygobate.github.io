@@ -1,5 +1,6 @@
 <?php
-    require_once "header.php";
+  $jquery = true;
+  require_once "header.php";
 ?>
 
 <main class="user">
