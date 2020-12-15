@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-  <html lang="fr">
-    <head>
-      <meta charset="utf-8">
-      <meta name="description" content="">
-      <meta name="keywords" content="HTML,CSS,XML,JavaScript">
-      <meta name="author" content="">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Titre de mon site</title>
-
-      <?php require_once('cdn.html'); ?>
-  		<link rel="icon" type="image/x-icon" href="../images/Logo.png">
-      <link rel="stylesheet" href="css/style.css">
+      <?php
+        $jquery=true;
+        $style="user";
+        require_once "header.php";
+      ?>
       <script type="text/javascript" src="js/ajax.js"></script>
       <style media="screen">
         body{
@@ -75,7 +67,7 @@
               var form_data = $(this).serialize();
 
               $.ajax(
-                url :'new_user_and_connection.php',
+                url :'requetes/new_user_and_connection.php',
                 type :'POST',
                 dataType : 'text',
                 data : form_data,
