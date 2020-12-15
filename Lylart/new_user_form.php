@@ -11,11 +11,18 @@
       <?php require_once('cdn.html'); ?>
   		<link rel="icon" type="image/x-icon" href="../images/Logo.png">
       <link rel="stylesheet" href="css/style.css">
+      <script type="text/javascript" src="js/ajax.js"></script>
+      <style media="screen">
+        body{
+          background: white;
+        }
+      </style>
     </head>
 
     <body>
 
-      <form action="" method="post">
+      <div id="is_registed"></div>
+      <form id="new_user_form" action="" method="post">
         <input type="text" name="login" placeholder="Login/pseudo..." required><br>
         <input type="mail" name="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Addresse mail" required><br>
         <input type="password" name="password" placeholder="Mot de passe" required><br>
@@ -30,21 +37,26 @@
           ?>
         </select><br>
         <input type="hidden" name="from" value="creer"><br><br>
-        <input type="submit" id="submit_new_user" name="submit" value="Créer un compte" disabled>
+        <input type="button" id="submit_new_user" name="submit" value="Créer un compte" disabled>
       </form>
 
 
+
+      <div id="is_connected"></div>
       <form action="" method="post">
         <input type="text" name="login" placeholder="votre login/pseudo..." required>
         <span id="wrong_pseudo"></span>
         <input type="password" name="password" placeholder="Mot de passe" required>
         <input type="hidden" name="from" value="connexion">
-        <input type="submit" id="submit_login" name="submit" value="Se connecter">
+        <input type="button" id="submit_login" name="submit" value="Se connecter">
       </form>
 
       <script type="text/javascript">
       $(function(){
 
+        //_______________________NEW USER
+
+        //éviter que le mot de passe soit différent
         $('input[name="password_repeat"]').on('input change', function(){
           console.log($('input[name="password_repeat"]').val());
 
@@ -55,6 +67,36 @@
             $('#wrong_repeat').html('Cool, bienvenue');
             $('#submit_new_user').removeAttr('disabled');
           }
+
+          //envoi des données
+          $('#submit_new_user').on('click', function(){
+            $('#new_user_form').submit(function(e){
+              e.preventDefault();
+              var form_data = $(this).serialize();
+
+              $.ajax(
+                url :'new_user_and_connection.php',
+                type :'POST',
+                dataType : 'text',
+                data : form_data,
+                success : isRegisted(registed){
+                  if (registed == "registed") {
+                    $('#is_registed').html("vous avez bien été enregistré")
+                  }
+                  else if(registed == "mail_error"){
+                    $('#is_registed').html("un compte utilisateur existe déjà sous ce mail")
+                  }
+                  else if (registed == "userName_error") {
+                    $('#is_registed').html("un compte utilisateur existe déjà sous ce login/pseudonyme")
+                  }
+                  else {
+                    $('#is_registed').html("un compte utilisateur existe déjà sous ce login/pseudonyme et sous ce mail. Tu as déjà un compte ? connecte toi ICI")
+                  }
+                }
+              );//end Ajax
+            }
+          })//end  $('#submit_new_user').submit
+
         });
       });
       </script>
