@@ -1,8 +1,8 @@
 <?php
 require 'config.php';
 
-$checkUserName=$pass->prepare("SELECT pseudo FROM utilisateur WHERE pseudo = :user")
-$checkMail=$pass->prepare("SELECT mail FROM utilisateur WHERE mail = :mail")
+$checkUserName=$pass->prepare("SELECT pseudo FROM utilisateur WHERE pseudo = :user");
+$checkMail=$pass->prepare("SELECT mail FROM utilisateur WHERE mail = :mail");
 $newUser=$pass->prepare("INSERT INTO utilisateur VALUES(1, :mail, :user, :password, 0, date('Y/m/d H:i:s'), :pays, 0,0)");
                                                       //token,mail,pseudo,mdp,verifie,date_inscription,pays,nb_strike,role
 $connectionTry=$pass->prepare("SELECT mdp FROM utilisateur WHERE pseudo = :pseudo");
@@ -12,10 +12,10 @@ $connectionTry=$pass->prepare("SELECT mdp FROM utilisateur WHERE pseudo = :pseud
   if (isset($_POST["from"])) {
     switch ($_POST["from"]) {
       case 'creer':
-        $checkUserName->execute([":user"=>$_POST["login"]);
-        $similarUserName->$checkUserName->fetch(PDO::FETCH_ASSOC);
+        $checkUserName->execute([":user"=>$_POST["login"]]);
+        $similarUserName=$checkUserName->fetch(PDO::FETCH_ASSOC);
         $checkMail->execute([":mail"=>$_POST["mail"]]);
-        $similarMail->$checkMail->fetch(PDO::FETCH_ASSOC);
+        $similarMail=$checkMail->fetch(PDO::FETCH_ASSOC);
 
         if (empty($similarMail)) {
           $doubleMail= "false";
@@ -41,7 +41,7 @@ $connectionTry=$pass->prepare("SELECT mdp FROM utilisateur WHERE pseudo = :pseud
           $registed = "userName_error";
         }
         else {
-          $registed = "registed"
+          $registed = "registed";
           $newUser->execute([":mail"=>$_POST["mail"], ":user"=>$_POST["login"], ":password"=>$_POST["password"], ":pays"=>$_POST["pays"]]);
 
           //session_start();
