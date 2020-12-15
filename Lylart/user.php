@@ -37,6 +37,11 @@
         <input type="text" class="data-form data-form-user-input"></input>
         <span>█</span>
       </div>
+
+      <div class="label-form label-form-user-confirm">Confirmer mot de passe</div>
+      <div class="data-form data-form-user-confirm">
+        <input type="text" class="data-form data-form-user-input"></input>
+      </div>
       <input type="button" class="button-form button-form-user" value="Changer mdp"></input>
     </div>
 
