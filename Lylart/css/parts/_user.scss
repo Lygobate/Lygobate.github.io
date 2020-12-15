@@ -117,7 +117,7 @@
       grid-column: 1 / span 4;
       display: grid;
       grid-template-columns: 3fr 2fr;
-      grid-template-rows: 1fr 2fr;
+      grid-template-rows: repeat(2, 1fr 2fr);
       grid-column-gap: 5px;
       border-bottom: solid 2px $div_back;
       padding-bottom: 10px;
@@ -132,14 +132,25 @@
           height: 25px;
         }
       }
+      & .label-form-user-confirm{
+        grid-row: 3 / span 1;
+      }
+      & .data-form-user-confirm{
+        grid-row: 4 / span 1;
+        height: 100%;
+        & .data-form-user-input{
+          width: 90%;
+          height: 25px;
+        }
+      }
       & .button-form-user{
-        grid-row: span 2;
+        grid-row: 2 / span 2;
         width: 100%;
       }
     }
 
 
-    
+
     & .osef-tous{
       height: 100%;
       width: 100%;
