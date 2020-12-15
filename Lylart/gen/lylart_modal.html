@@ -1,0 +1,226 @@
+<div class="modal_body_background">
+    <span class="c34">Lygobate Interactive Random Art-Generator </span></p>
+    <p class="c39 title" id="h.juqyvspnhlp"><span class="c34">(LIRAG)</span></p>
+    <p class="c42 subtitle" id="h.vgb1or8kwa5i"><span class="c14">par Lygobate</span><span class="c13 c29 c35">&nbsp;(Axel.A)</span>
+    </p>
+    <p class="c0"><span class="c41 c13"></span></p>
+    <h1 class="c16" id="h.xdkg41zcv7su"><span class="c14">Sommaire</span></h1>
+    <ul class="c2 lst-kix_5hgl0nu8ile0-0 start">
+        <li class="c8"><span class="c5"><a class="c28"
+                                           href="#h.9k09hm1x6prn">Pr&eacute;sentation et Utilisation de LIRAG</a></span>
+        </li>
+        <li class="c8"><span class="c5"><a class="c28"
+                                           href="#h.sp2xn1x9hxes">Exemples de g&eacute;n&eacute;rations</a></span>
+        </li>
+        <li class="c8"><span class="c5"><a class="c28" href="#h.jbqylm9z1bts">Acc&eacute;der au projet</a></span></li>
+        <li class="c8"><span class="c5"><a class="c28"
+                                           href="#h.30se48gbou7m">Architecture et fonctionnement du script</a></span>
+        </li>
+    </ul>
+    <ul class="c2 lst-kix_5hgl0nu8ile0-1 start">
+        <li class="c7"><span class="c5"><a class="c28" href="#h.saiflh6jzh9i">Presets</a></span></li>
+        <li class="c7"><span class="c5"><a class="c28" href="#h.u4qlx8r9ex8r">Initialisation (fonction setup)</a></span>
+        </li>
+        <li class="c7"><span class="c5"><a class="c28" href="#h.vp0jp4ja8qrc">Fonctions</a></span></li>
+        <li class="c7"><span class="c5"><a class="c28"
+                                           href="#h.yb52hlr5j7hs">G&eacute;n&eacute;ration (fonction draw)</a></span>
+        </li>
+    </ul>
+    <ul class="c2 lst-kix_5hgl0nu8ile0-0">
+        <li class="c8"><span class="c5"><a class="c28" href="#h.ncuujkai2oni">Langages et librairies</a></span></li>
+        <li class="c8"><span class="c5"><a class="c28" href="#h.2pmr1wdi9bz4">Versions et nouveaut&eacute;s de mises-&agrave;-jour</a></span>
+        </li>
+    </ul>
+    <ul class="c2 lst-kix_5hgl0nu8ile0-1 start">
+        <li class="c7"><span class="c5"><a class="c28" href="#h.85u1mdp7ggr4">Version actuelle</a></span></li>
+        <li class="c7"><span class="c5"><a class="c28" href="#h.llfivf23srgs">&Agrave; venir</a></span></li>
+        <li class="c7"><span class="c5"><a class="c28"
+                                           href="#h.6ry30ypg2469">Versions pr&eacute;c&eacute;dentes</a></span></li>
+    </ul>
+    <ul class="c2 lst-kix_5hgl0nu8ile0-0">
+        <li class="c8"><span class="c5"><a class="c28" href="#h.6t5ooa13byex">Droits d&rsquo;auteurs et mentions l&eacute;gales</a></span>
+        </li>
+    </ul>
+    <p class="c0"><span class="c41 c13"></span></p>
+    <h1 class="c16" id="h.9k09hm1x6prn"><span class="c14">Pr&eacute;sentation et Utilisation de LIRAG</span></h1>
+    <p class="c19"><span class="c14">Le </span><span class="c14">random art generator</span><span class="c14">&nbsp;est une plateforme permettant de </span><span
+            class="c14">g&eacute;n&eacute;rer des &oelig;uvres d&rsquo;art randomis&eacute;es</span><span
+            class="c12 c13">&nbsp;gr&acirc;ce &agrave; du processing JS.</span></p>
+    <p class="c0"><span class="c12 c13"></span></p>
+    <p class="c19"><span class="c14">Le programme se base sur une </span><span class="c10">m&eacute;canique simple et classique dite &ldquo;d&rsquo;horloge&rdquo;</span><span
+            class="c12 c13">, c&#39;est-&agrave;-dire avec la rotation d&rsquo;un &eacute;l&eacute;ment qui vient dessiner sur le canevas.</span>
+    </p>
+    <p class="c0"><span class="c12 c13"></span></p>
+    <p class="c19"><span class="c14">Cette m&eacute;canique est appliqu&eacute;e ici, sur une forme randomis&eacute;e cr&eacute;&eacute;e par </span><span
+            class="c10">ensemble de </span><span class="c10">curveVertex</span><span class="c10">,</span><span
+            class="c14">&nbsp;dont la morphologie et ses d&eacute;placements &eacute;voluent gr&acirc;ce &agrave; </span><span
+            class="c10">un bruit math&eacute;matique &ldquo;naturel&rdquo;</span><span class="c14">&nbsp;</span><span
+            class="c14 c29">(</span><span class="c11"><a class="c28"
+                                                         href="https://www.google.com/url?q=https://fr.wikipedia.org/wiki/Bruit_de_Perlin&amp;sa=D&amp;ust=1608034396788000&amp;usg=AOvVaw0RqkTrnriaMPlVFUkAXoZo">bruit de Perlin</a></span><span
+            class="c14 c29">) </span><span class="c12 c13">qui vient perturber les coordonn&eacute;es math&eacute;matique de notre forme.</span>
+    </p>
+    <p class="c0"><span class="c12 c13"></span></p>
+    <p class="c19"><span class="c12 c13">L&rsquo;interaction utilisateur se fait uniquement via le projet en lui-m&ecirc;me : Pas besoin de modifier quoi que ce soit dans les entrailles du code.</span>
+    </p>
+    <p class="c19"><span class="c14">Une interface a &eacute;t&eacute; cr&eacute;&eacute;e afin de permettre &agrave; l&rsquo;utilisateur de modifier des param&egrave;tres, qui </span><span
+            class="c14">influenceront</span><span class="c12 c13">&nbsp;le rendu de la g&eacute;n&eacute;ration.</span>
+    </p>
+    <p class="c0"><span class="c13 c41"></span></p>
+    <h1 class="c16 c22" id="h.sp2xn1x9hxes"><span class="c14">Exemples de g&eacute;n&eacute;rations</span></h1>
+    <h1 class="c16" id="h.iwesjuczdtyu"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 1.33px solid #ffffff; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 333.50px; height: 331.69px;"><img
+            alt="" src="images/image3.png"
+            style="width: 333.50px; height: 331.69px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+            title=""></span><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 333.56px; height: 332.66px;"><img
+            alt="" src="images/image2.png"
+            style="width: 333.56px; height: 332.66px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+            title=""></span><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 335.50px; height: 335.50px;"><img
+            alt="" src="images/image1.png"
+            style="width: 335.50px; height: 335.50px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+            title=""></span></h1>
+    <p class="c0"><span class="c12 c33"></span></p>
+    <h1 class="c16" id="h.j91qwpqwnrhv"><span class="c14">Acc&eacute;der au projet</span></h1>
+    <p class="c19"><span class="c14">Pour acc&eacute;der au projet, il vous suffira de vous rendre (via n&rsquo;importe quel navigateur) sur ce lien : &nbsp;</span><span
+            class="c10 c12">https://lygobate.github.io/</span></p>
+    <p class="c0"><span class="c12 c13"></span></p>
+    <h1 class="c16" id="h.30se48gbou7m"><span class="c14">Architecture et fonctionnement du script</span></h1>
+    <ol class="c2 lst-kix_a4hc1gayme9n-0 start" start="1">
+        <li class="c16 c32"><h2 id="h.saiflh6jzh9i" style="display:inline"><span class="c26 c37">Presets</span></h2>
+        </li>
+    </ol>
+    <ol class="c2 lst-kix_a4hc1gayme9n-1 start" start="1">
+        <li class="c4"><h3 id="h.so3650wccyko" style="display:inline"><span class="c1">D&eacute;claration des variables li&eacute;es au boutons et aux inputs g&eacute;r&eacute;s par l&rsquo;utilisateur</span>
+        </h3></li>
+        <li class="c4"><h3 id="h.g3jfo2sgmp9t" style="display:inline"><span class="c1">Jquery pour dynamiser les boutons HTML et faire le lien entre HTML/JS (entre affichage/saisie/variables du script)</span>
+        </h3></li>
+        <li class="c4"><h3 id="h.ff2653ymyc8q" style="display:inline"><span class="c6">D&eacute;claration des variables/constantes n&eacute;cessaires au script</span>
+        </h3></li>
+    </ol>
+    <ol class="c2 lst-kix_a4hc1gayme9n-0" start="2">
+        <li class="c31 c32"><h2 id="h.u4qlx8r9ex8r" style="display:inline"><span class="c30">Initialisation </span><span
+                class="c30">(fonction</span><span class="c30">&nbsp;setup)</span></h2></li>
+    </ol>
+    <ol class="c2 lst-kix_a4hc1gayme9n-1 start" start="1">
+        <li class="c4"><h3 id="h.58cvxt7wcwbt" style="display:inline"><span class="c1">Cr&eacute;ation du canvas et param&egrave;tres associ&eacute;s</span>
+        </h3></li>
+        <li class="c4"><h3 id="h.bo385k27cvjd" style="display:inline"><span class="c6">G&eacute;n&eacute;rations de 30 coordonn&eacute;es (angle + rayon) des points et des cl&eacute;s de randomisations</span>
+        </h3></li>
+    </ol>
+    <ol class="c2 lst-kix_a4hc1gayme9n-0" start="3">
+        <li class="c31 c32"><h2 id="h.vp0jp4ja8qrc" style="display:inline"><span class="c30">Fonctions</span></h2></li>
+    </ol>
+    <ol class="c2 lst-kix_a4hc1gayme9n-1 start" start="1">
+        <li class="c4"><h3 id="h.8h6g1pjt1d24" style="display:inline"><span class="c6">createPoints(</span><span
+                class="c6">nb</span><span class="c6">)</span><span class="c1">&nbsp;: g&eacute;n&eacute;ration des amplitudes de bruits et rotations des coordonn&eacute;es + remplissage dynamique d&rsquo;un tableau de toutes les coordonn&eacute;es relatives au centre XY</span>
+        </h3></li>
+        <li class="c4"><h3 id="h.5tv2l4lhojll" style="display:inline"><span class="c6">&nbsp;drawCurveVertex</span><span
+                class="c6">(</span><span class="c6">_nbPoints</span><span class="c1">) : Trace les curveVertex &agrave; partir du tableau dynamique de coordonn&eacute;es pour g&eacute;n&eacute;rer la forme, et affiche en fonction de si la forme est ferm&eacute;e ou ouverte (doublage des coordonn&eacute;es)</span>
+        </h3></li>
+        <li class="c4"><h3 id="h.x18mxreh776c" style="display:inline"><span class="c6">rgb_to_array</span><span
+                class="c6">(</span><span class="c6">color, array</span><span class="c1">) : convertit un string sous la forme &ldquo;rgb(r,g,b)&rdquo; (valeur retour des color-pickers) en un array, puis les stocke les valeurs dans un tableau dynamique (r&eacute;cup&eacute;ration en temps r&eacute;el des valeurs d&rsquo;un color-picker)</span>
+        </h3></li>
+        <li class="c4"><h3 id="h.nc2lbjhh6hmd" style="display:inline"><span class="c6">isGeometryRevealed</span><span
+                class="c6">() : permet l&rsquo;affichage de la g&eacute;om&eacute;trie de construction de la forme avant le lancement de la g&eacute;n&eacute;ration</span>
+        </h3></li>
+    </ol>
+    <ol class="c2 lst-kix_a4hc1gayme9n-2 start" start="1">
+        <li class="c31 c38"><span class="c15 c13">marker() : ligne de pointill&eacute;es reliant un point-coordonn&eacute; et le centre</span>
+        </li>
+        <li class="c31 c38"><span class="c15 c13">Optimisation de la couleur des markers, markers libre(en forme ouverte) &nbsp;et croix centrale</span>
+        </li>
+        <li class="c31 c38"><span class="c13 c15">g&eacute;n&egrave;re pour chacuns des points un marker et isole les markers non reli&eacute;s (markers libres)</span>
+        </li>
+        <li class="c31 c38"><span class="c15 c13">g&eacute;n&egrave;re la croix centrale</span></li>
+    </ol>
+    <ol class="c2 lst-kix_a4hc1gayme9n-0" start="4">
+        <li class="c31 c32"><h2 id="h.yb52hlr5j7hs" style="display:inline"><span class="c30">G&eacute;n&eacute;ration (fonction draw)</span>
+        </h2></li>
+    </ol>
+    <ol class="c2 lst-kix_a4hc1gayme9n-1 start" start="1">
+        <li class="c4"><h3 id="h.cmn5sevs9ru" style="display:inline"><span
+                class="c1">Appel de toutes les fonctions</span></h3></li>
+        <li class="c4"><h3 id="h.penlb3ydnpq6" style="display:inline"><span
+                class="c1">Amplitude du bruit du centre XY</span></h3></li>
+    </ol>
+    <p class="c0"><span class="c12 c13"></span></p>
+    <h1 class="c16" id="h.ncuujkai2oni"><span class="c14">Langages et librairies</span></h1>
+    <p class="c0"><span class="c12 c13"></span></p>
+    <p class="c19"><span
+            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 248.50px; height: 77.94px;"><img
+            alt="" src="images/image4.png"
+            style="width: 248.50px; height: 77.94px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+            title=""></span></p>
+    <p class="c19"><span class="c13 c29 c44">(donn&eacute;s &agrave; jour du &nbsp;01/12/2020)</span></p>
+    <p class="c0"><span class="c12 c13"></span></p>
+    <p class="c19"><span class="c10 c12">Librairies CDN :</span></p>
+    <ul class="c2 lst-kix_p8zxpsurgs8c-0 start">
+        <li class="c8"><span class="c12 c13">p5.js</span></li>
+    </ul>
+    <ul class="c2 lst-kix_bl1c14tg0nv7-0 start">
+        <li class="c8"><span class="c12 c13">jquery.js</span></li>
+        <li class="c8"><span class="c14">color-picker.js</span></li>
+        <li class="c8"><span class="c12 c13">jquery.cookie.js</span></li>
+        <li class="c8"><span class="c12 c13">bulma.css</span></li>
+    </ul>
+    <p class="c0"><span class="c12 c13"></span></p>
+    <p class="c19"><span class="c14">Librairies h&eacute;berg&eacute;s par mon grand-ami </span><span
+            class="c10">Lex-Agone </span><span
+            class="c12 c13">&#10084;</span></p>
+    <p class="c0"><span class="c12 c13"></span></p>
+    <h1 class="c16" id="h.2pmr1wdi9bz4"><span
+            class="c17 c25">Versions et nouveaut&eacute;s de mises-&agrave;-jour</span></h1>
+    <p class="c0"><span class="c12 c13"></span></p>
+    <h3 class="c31" id="h.85u1mdp7ggr4"><span class="c26">Version Actuelle :</span></h3>
+    <ul class="c2 lst-kix_p31r9r9a8kkp-0 start">
+        <li class="c31 c32"><span class="c17">Version 1.0 :</span><span class="c12 c13">&nbsp;Lancement du projet</span>
+        </li>
+    </ul>
+    <h3 class="c31" id="h.llfivf23srgs"><span class="c26">&Agrave; venir :</span></h3>
+    <ul class="c2 lst-kix_yvk9sybbehsl-0 start">
+        <li class="c8"><span class="c14">Possibilit&eacute; de </span><span class="c17">r&eacute;gler l&rsquo;intensit&eacute;/amplitude des bruits</span><span
+                class="c12 c13">&nbsp;: angulaires, de rayons et de centre</span></li>
+        <li class="c8"><span class="c14">Possibilit&eacute; de</span><span class="c14">&nbsp;</span><span class="c17">temps de g&eacute;n&eacute;ration</span><span
+                class="c12 c13">&nbsp;pr&eacute;d&eacute;fini en secondes</span></li>
+        <li class="c8"><span class="c14">Possibilit&eacute; de </span><span class="c12 c17 c40">Gestion automatique de d&eacute;grad&eacute;s</span>
+        </li>
+        <li class="c8"><span class="c14">Possibilit&eacute;</span><span
+                class="c17">&nbsp;Couleurs 100% autonomes</span><span
+                class="c12 c13">&nbsp;:</span></li>
+    </ul>
+    <ul class="c2 lst-kix_yvk9sybbehsl-1 start">
+        <li class="c7"><span class="c12 c13">gestion de d&eacute;grad&eacute; + choix automatique des couleurs</span>
+        </li>
+        <li class="c7"><span class="c12 c13">Couleur g&eacute;n&eacute;r&eacute;es en bruit de perlin</span></li>
+    </ul>
+    <ul class="c2 lst-kix_yvk9sybbehsl-0">
+        <li class="c8"><span class="c17">Mode crossed-lines (on/off) : </span><span class="c12 c13">permet de restructurer les points pour &eacute;viter des croisements de lignes (permettra de g&eacute;n&eacute;rer un style rosace)</span>
+        </li>
+        <li class="c8"><span
+                class="c17">Cr&eacute;ation d&rsquo;un portfolio de vos plus belles g&eacute;n&eacute;rations :</span><span
+                class="c12 c13">&nbsp;possibilit&eacute; de partager sa g&eacute;n&eacute;ration (a condition d&rsquo;avoir un compte et d&rsquo;&ecirc;tre connect&eacute; [syst&egrave;me signIn/signUp]) qui sera stock&eacute;e sur un serveur en attente d&rsquo;approbation, puis apr&egrave;s validation sera g&eacute;n&eacute;r&eacute;e parmis les plus belles oeuvres des utilisateurs)</span>
+        </li>
+    </ul>
+    <ul class="c2 lst-kix_yvk9sybbehsl-1 start">
+        <li class="c7"><span class="c12 c13">Int&eacute;gration de syst&egrave;mes de votes</span></li>
+        <li class="c7"><span class="c12 c13">Page de mise en avant des mieux not&eacute;s</span></li>
+    </ul>
+    <p class="c0"><span class="c12 c13"></span></p>
+    <h3 class="c31" id="h.6ry30ypg2469"><span class="c26">Version P&eacute;c&eacute;dentes :</span></h3>
+    <ul class="c2 lst-kix_n3s3ssawprqc-0 start">
+        <li class="c8"><span>Aucune</span></li>
+    </ul>
+    <h1 class="c16" id="h.6t5ooa13byex"><span class="c14">Droits d&rsquo;auteurs et mentions l&eacute;gales</span></h1>
+    <p class="c19"><span
+            class="c14 c21">Le code source dans son int&eacute;gralit&eacute; fait preuve d&rsquo;</span><span
+            class="c9">une propri&eacute;t&eacute; intellectuelle tacite</span><span
+            class="c14 c21">. Il reste </span><span
+            class="c10 c21">cependant libre d&#39;acc&egrave;s sur gitHub</span><span
+            class="c14 c21">, merci de me contacter pour l&#39;utilisation de ce code : </span><span class="c17 c36"><a
+            class="c28" href="mailto:axel.avinin42@gmail.com">axel.avinin42@gmail.com</a></span></p>
+    <p class="c0"><span class="c13 c24 c21"></span></p>
+    <p class="c19"><span class="c10 c21">Mention l&eacute;gale :</span><span class="c14 c21">&nbsp;&ldquo;Lygobate (Axel.A)&rdquo;</span>
+    </p>
+    <p class="c0"><span class="c13 c24 c21"></span></p>
+</div>

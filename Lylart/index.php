@@ -21,6 +21,7 @@
             <img src="images/gen_test.jpg" alt="gen">
         </div>
         <div class="card_desc">
+            <h3>Titre</h3>
             <p>Description, description description description description description description ...</p>
             <span>Suite</span>
         </div>

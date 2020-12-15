@@ -7,10 +7,10 @@ var liragVersion = "1.0";
 // ------------ Cookie de bienvenue
 
 $(function(){
-	/*if (typeof $.cookie("firstVisit") == 'undefined') {
+	if (typeof $.cookie("firstVisit") == 'undefined') {
 		$.cookie("firstVisit",false);
-		$('.modal').addClass('is-active');
-	}*/
+		$('.modal').addClass('hidden');
+	}
 });
 
 

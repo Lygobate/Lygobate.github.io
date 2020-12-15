@@ -25,7 +25,7 @@
             echo '<link rel="stylesheet" href="../css/style.css">
                   <script src="https://cdn.lex-agone.fr/jquery.js" type="text/javascript"></script>
                   <script src="https://cdn.lex-agone.fr/jquery.cookie.js" type="text/javascript"></script>';
-            if (isset($gen)){
+            if ($style=="gen"){
                 echo '<script src="https://cdn.lex-agone.fr/p5.js" type="text/javascript"></script>
                       <script src="https://cdn.lex-agone.fr/color-picker.js" type="text/javascript"></script>
                       <script src="js/functions.js" type="text/javascript"></script>

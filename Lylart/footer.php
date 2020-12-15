@@ -1,6 +1,6 @@
-<div class="footer-mobile <?php if (isset($gen)){echo "gen";} ?>">
+<div class="footer-mobile <?php if (isset($style)){echo "gen";} ?>">
     <?php
-        if(empty($gen)){
+        if(empty($style)){
             echo '<select>
                       <option value="cre">Les dernières créations</option>
                       <option value="fav">Les favoris des modérateurs</option>
