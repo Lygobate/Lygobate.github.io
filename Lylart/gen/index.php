@@ -64,8 +64,10 @@
         </div>
     </div>
     
-<!--    Modal -->
+    <!-- Ouvrir le modal -->
     <div id="infos" alt="Infos">En savoir plus sur Lylart Générator</div>
+
+    <!-- Modal -->
     <div class="modal hidden">
         <div class="modal-card">
             <div class="modal-card-head">
