@@ -56,7 +56,7 @@
           $('#new_user_form').submit(function(e){
             e.preventDefault();
             let form_data = $(this).serialize();
-
+//<3 supprime ça et push moi ton nouveau fichier
             $.ajax({
                 url: 'requetes/new_user_and_connection.php',
                 type: 'POST',
