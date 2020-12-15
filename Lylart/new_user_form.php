@@ -55,28 +55,25 @@
         $('#submit_new_user').on('click', function(){
           $('#new_user_form').submit(function(e){
             e.preventDefault();
-            var form_data = $(this).serialize();
+            let form_data = $(this).serialize();
 
-            $.ajax(
-              url :'requetes/new_user_and_connection.php',
-              type :'POST',
-              dataType : 'text',
-              data : form_data,
-              success : isRegisted(registed){
-                if (registed == "registed") {
-                  $('#is_registed').html("vous avez bien été enregistré")
-                }
-                else if(registed == "mail_error"){
-                  $('#is_registed').html("un compte utilisateur existe déjà sous ce mail")
-                }
-                else if (registed == "userName_error") {
-                  $('#is_registed').html("un compte utilisateur existe déjà sous ce login/pseudonyme")
-                }
-                else {
-                  $('#is_registed').html("un compte utilisateur existe déjà sous ce login/pseudonyme et sous ce mail. Tu as déjà un compte ? connecte toi ICI")
-                }
+            $.ajax({
+                url: 'requetes/new_user_and_connection.php',
+                type: 'POST',
+                dataType: 'text',
+                data: form_data,
+                success: function(registed){
+                  if (registed == "registed") {
+                      $('#is_registed').html("vous avez bien été enregistré")
+                  } else if (registed == "mail_error") {
+                      $('#is_registed').html("un compte utilisateur existe déjà sous ce mail")
+                  } else if (registed == "userName_error") {
+                      $('#is_registed').html("un compte utilisateur existe déjà sous ce login/pseudonyme")
+                  } else {
+                      $('#is_registed').html("un compte utilisateur existe déjà sous ce login/pseudonyme et sous ce mail. Tu as déjà un compte ? connecte toi ICI")
+                  }
               }
-            );//end Ajax
+          });//end Ajax
           });
         });//end  $('#submit_new_user').submit
       });//end of function (load)
