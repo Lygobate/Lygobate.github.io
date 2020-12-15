@@ -81,6 +81,5 @@
         });//end  $('#submit_new_user').submit
       });//end of function (load)
       </script>
-
     </body>
   </html>
