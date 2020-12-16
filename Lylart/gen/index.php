@@ -61,42 +61,67 @@
             <input class="startGeneration" id="showGeometry" name="showGeometry" value="Start Generation" type="button">
             <input class="stopGeneration" id="stopGeneration" name="stopGeneration" value="Stop Generation" type="button">
             <input class="saveCanvas" id="saveCanvas" name="saveCanvas" value="Download" type="button">
-            <input class="shareCanvas" id="shareCanvas" name="shareCanvas" value="Share" type="button">
+            <input class="shareCanvas reserved_to_member" id="shareCanvas" name="shareCanvas" value="Share" type="button" bringMeTo="">
         </div>
     </div>
 
-    <form hidden="transmit_data" action="new_user_and_connection_form.php" method="post">
-      <input type="hidden" name="from-url" value="<?=$url?>">
-    </form>
+
 
 
     <?php
+
     function getCookieContent($name){
       $cookie = $name;
       $cookieContent = $_COOKIE[$cookie];
       return $cookieContent;
     }
+
     $session = @getCookieContent("statut");//le @ masque l'erreur dans la page quand le cookie n'existe pas
-    $from = $style; //récupère le "nom" de la page
+    $from = $style; //récupère le "nom" de la page donné dans $style
     ?>
 
+    <form hidden="transmit_data" action="new_user_and_connection_form.php" method="post">
+      <input type="hidden" name="from-url" value="<?=$from?>">
+      <input type="hidden" name="target-url" value=""><!-- value ajoutée en jquery -->
+    </form>
 
     <script type="text/javascript">
     var session = "<?=$session?>";
     var from = "<?=$from?>";
     var currentUrl = "<?=$url?>";
+
     console.log(currentUrl);
     console.log("session : " + session);
     console.log("from : " + from);
 
-    if (session == "") {
-      console.log("pas connecté");
-      if (from == "gen") {
-      var targetUrl = currentUrl.concat('../new_user_and_connection_form.php');
+    $('.reserved_to_member').on('click',function(){//bizarrement ca fonctionne avec $('#shareCanvas')
+      console.log("OK");
+      var bringMeTo = $(this).attr('bringMeTo');//relative URL
+      if (session == "") {//le cookie n'exite pas ()
+        console.log("pas connecté");
 
-      //window.location.href = targetUrl;
+        if (from == "gen") {
+        var connection_form_Url = currentUrl.concat('../new_user_and_connection_form.php');
+        window.location.href = connection_form_Url;
+        }
+        else{
+          var connection_form_Url = currentUrl.concat('new_user_and_connection_form.php');
+          window.location.href = connection_form_Url;
+        }
       }
-    }
+      else {
+        console.log("connecté");
+        if (from == "gen") {
+          //script récup génération + toDataURL() + compression hexa lz-string + envoi dn la BDD
+          //lz-string doc : https://pieroxy.net/blog/pages/lz-string/index.html
+          //lz-string démo : https://pieroxy.net/blog/pages/lz-string/demo.html
+        }
+        else {
+          window.location.href = currentUrl.concat(bringMeTo);
+        }
+      }
+    });
+
 
     </script>
 
