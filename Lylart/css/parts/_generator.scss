@@ -15,6 +15,7 @@
     align-items: center;
   }
   & > #canvas{
+    flex: 1;
     width: 100%;
     @include md{
       width: 100% !important;
@@ -30,6 +31,7 @@
     }
   }
   & > #interface{
+    flex: 1;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 0.5em;

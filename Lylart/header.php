@@ -26,7 +26,7 @@
     <?php
         if (empty($style)||$style!="gen"){
             echo '<link rel="stylesheet" href="css/style.css">';
-            $index="";
+            $index="./";
             if (isset($jquery)){
                 echo '<script src="https://cdn.lex-agone.fr/jquery.js" type="text/javascript"></script>
                       <script src="https://cdn.lex-agone.fr/jquery.cookie.js" type="text/javascript"></script>
@@ -57,7 +57,7 @@
             <div>THINK, CREATE, <span>SHARE</span>.</div>
         </a>
         <input type="text" placeholder="Rechercher">
-        <a href="">
+        <a href="user.php">
             <div>
             </div>
         </a>

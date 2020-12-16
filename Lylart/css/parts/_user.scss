@@ -47,8 +47,18 @@
 .user{
   background: $background;
   color: white;
-  margin-top: 8vh;
-  height: 71.7vh;;
+  margin-top: 12vh;
+  height: 70vh;
+  @include md{
+    margin-top: 13.5vh;
+  }
+  @include lg{
+    margin-top: 15vh;
+  }
+  @include hg{
+    margin-top: 20vh;
+    margin-bottom: 80vh;
+  }
   & .grid{
     height: 100%;
     margin: 0px 10%;
@@ -65,12 +75,16 @@
       align-items: center;
       justify-content: center;
       & .pdp-box{
-        width: 20vw;
-        height: 20vw;
         border: solid thin white;
         border-radius: 100%;
+        width: 20vw;
+        height: 20vw;
+        min-width: 150px;
+        min-height: 150px;
         & img{
           //ma PDP
+        }
+        @include sm{
         }
       }
       & div:nth-child(2){
