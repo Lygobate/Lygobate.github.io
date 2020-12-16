@@ -60,7 +60,8 @@
             <input class="newCurve" id="newCurve" name="newCurve" value="New Curve" type="button">
             <input class="startGeneration" id="showGeometry" name="showGeometry" value="Start Generation" type="button">
             <input class="stopGeneration" id="stopGeneration" name="stopGeneration" value="Stop Generation" type="button">
-            <input class="share" id="saveCanvas" name="saveCanvas" value="Share" type="button">
+            <input class="saveCanvas" id="saveCanvas" name="saveCanvas" value="Download" type="button">
+            <input class="shareCanvas" id="shareCanvas" name="shareCanvas" value="Share" type="button">
         </div>
     </div>
 

@@ -67,8 +67,12 @@
         &.stopGeneration{
           background: $background;
         }
-        &.share{
+        &.saveCanvas{
           background: #00C0CE;
+        }
+        &.shareCanvas{
+          background: #00C0CE;
+          grid-column: span 2;
         }
       }
     }
