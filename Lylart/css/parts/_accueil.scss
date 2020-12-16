@@ -1,6 +1,12 @@
 #accueil {
-  margin-top: 8vh;
-  padding-bottom: 25vh;
+  padding-top: 8vh;
+  padding-bottom: 12vh;
+  @include md{
+    padding-bottom: 15vh;
+  }
+  @media (max-height:450px){
+    padding-bottom: 20vh;
+  }
   & > .video {
     position: relative;
     overflow: hidden;
@@ -70,15 +76,16 @@
   & > .grid-card{
     display: grid;
     grid-template-columns: 1fr;
-    margin: 2em 3em;
+    padding: 2em 3em;
     grid-column-gap: 5%;
-    grid-row-gap: 1%;
+    grid-row-gap: 2em;
     @include md{
       grid-template-columns: 1fr 1fr;
-      margin: 2em;
+      padding: 2em;
     }
     @include lg{
       grid-template-columns: 1fr 1fr 1fr;
+      padding: 2em;
     }
     & > .card{
       display: flex;

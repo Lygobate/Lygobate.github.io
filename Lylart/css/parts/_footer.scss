@@ -10,7 +10,7 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   background: $background;
-  height: 15vh;
+  height: fit-content;
   
   & > select {
     background: $div_back;
