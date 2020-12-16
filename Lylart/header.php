@@ -26,7 +26,7 @@
     <?php
         if (empty($style)||$style!="gen"){
             echo '<link rel="stylesheet" href="css/style.css">';
-            $index="/./";
+            $index="./";
             if (isset($jquery)){
                 echo '<script src="https://cdn.lex-agone.fr/jquery.js" type="text/javascript"></script>
                       <script src="https://cdn.lex-agone.fr/jquery.cookie.js" type="text/javascript"></script>
@@ -36,7 +36,7 @@
             echo '<link rel="stylesheet" href="../css/style.css">
                   <script src="https://cdn.lex-agone.fr/jquery.js" type="text/javascript"></script>
                   <script src="https://cdn.lex-agone.fr/jquery.cookie.js" type="text/javascript"></script>';
-            $index="/../";
+            $index="../";
             if ($style=="gen"){
                 echo '<script src="https://cdn.lex-agone.fr/p5.js" type="text/javascript"></script>
                       <script src="https://cdn.lex-agone.fr/color-picker.js" type="text/javascript"></script>

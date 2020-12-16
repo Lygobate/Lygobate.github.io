@@ -86,6 +86,7 @@
     <form hidden="transmit_data" action="new_user_and_connection_form.php" method="post">
       <input type="hidden" class="from-url" name="from-url" value="<?=$url?>">
       <input type="hidden" class="target-url" name="target-url" value=""><!-- value ajoutée en jquery -->
+      <input type="hidden" class="compressed-generation" name="compressed-generation" value="">
     </form>
 
     <script type="text/javascript">
@@ -96,7 +97,7 @@
     console.log(currentUrl);
     console.log("session : " + session);
     console.log("from : " + from);
-
+    console.log();
     $('.reserved_to_member').on('click',function(){ // listener for reserved_to_member
       var bringMeTo = $(this).attr('bringMeTo');//relative URL
       var targetUrl_from_newUserAndConnectionForm = "";
@@ -105,7 +106,12 @@
         console.log("pas connecté");
         $('.target-url').attr('value', bringMeTo);
         if (from == "gen") {
-          var newUserAndConnectionForm_Url = currentUrl.concat('../new_user_and_connection_form.php');
+          if (currentUrl[currentUrl.length - 1] == '/') {
+            var newUserAndConnectionForm_Url = currentUrl.concat('../new_user_and_connection_form.php');
+          }
+          else{
+            var newUserAndConnectionForm_Url = currentUrl.concat('/../new_user_and_connection_form.php');
+          }
           window.location.href = newUserAndConnectionForm_Url;
         }
         else{
