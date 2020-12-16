@@ -76,7 +76,7 @@ if (isset($_POST["from"])) {
     case 'connection':
       $connectionTry->execute([":pseudo"=>$_POST["login"]]);
       $mdp = $connectionTry->fetchAll(PDO::FETCH_ASSOC);
-      print_r($mdp);
+      //print_r($mdp);
       if (empty($mdp)) {
         $connection = "false";
       }
@@ -84,7 +84,8 @@ if (isset($_POST["from"])) {
         if (password_verify($_POST["password"], $mdp[0]["mdp"])){
           session_start();
           $_SESSION['token'] = $mdp[0]["token"];
-          setcookie("token_ma_gueule_!", $mdp[0]["token"]);
+          //setcookie("token_ma_gueule_!", $mdp[0]["token"]);
+          setcookie("statut","connected",time()+60*60*24);
           $connection = "true";
         }
         else {

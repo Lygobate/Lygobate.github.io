@@ -16,7 +16,7 @@
                 <input class="input" id="bgColor" name="bgColor" data-jscolor="{value:'#000000'}" readonly>
             </label>
         </div>
-        
+
         <!-- <label for="timeGeneration">Generation duration :
         <input class="input" type="number" name="timeGeneration" id="timeGeneration" min="1" max="300" step="1">
         </label> -->
@@ -63,7 +63,17 @@
             <input class="share" id="saveCanvas" name="saveCanvas" value="Share" type="button">
         </div>
     </div>
-    
+
+
+    <?php
+    $session = $_COOKIE[$statut];
+    ?>
+    <script type="text/javascript">
+    var session = '<?=$session?>';
+    console.log(session);
+    </script>
+
+
     <!-- Ouvrir le modal -->
     <div id="infos" alt="Infos">En savoir plus sur Lylart Générator</div>
 
