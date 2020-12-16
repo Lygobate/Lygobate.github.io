@@ -69,7 +69,7 @@
     </div>
 
     <form hidden="transmit_data" action="new_user_and_connection_form.php" method="post">
-      <input type="hidden" name="" value="">
+      <input type="hidden" name="from-url" value="<?=$url?>">
     </form>
 
 
@@ -99,7 +99,6 @@
 
       //window.location.href = targetUrl;
       }
-
     }
 
     </script>
