@@ -61,7 +61,7 @@
             <input class="startGeneration" id="showGeometry" name="showGeometry" value="Start Generation" type="button">
             <input class="stopGeneration" id="stopGeneration" name="stopGeneration" value="Stop Generation" type="button">
             <input class="saveCanvas" id="saveCanvas" name="saveCanvas" value="Download" type="button">
-            <input class="shareCanvas reserved_to_member" id="shareCanvas" name="shareCanvas" value="Share" type="button" bringMeTo="">
+            <input class="shareCanvas reserved_to_member" id="shareCanvas" name="shareCanvas" value="Share" type="button" bringMeTo="/../gen/index.php"><!-- target link depuis le formulaire-->
         </div>
 
         <!-- Ouvrir le modal -->
@@ -84,8 +84,8 @@
     ?>
 
     <form hidden="transmit_data" action="new_user_and_connection_form.php" method="post">
-      <input type="hidden" name="from-url" value="<?=$from?>">
-      <input type="hidden" name="target-url" value=""><!-- value ajoutée en jquery -->
+      <input type="hidden" class="from-url" name="from-url" value="<?=$url?>">
+      <input type="hidden" class="target-url" name="target-url" value=""><!-- value ajoutée en jquery -->
     </form>
 
     <script type="text/javascript">
@@ -97,20 +97,22 @@
     console.log("session : " + session);
     console.log("from : " + from);
 
-    $('.reserved_to_member').on('click',function(){//bizarrement ca fonctionne avec $('#shareCanvas')
-      console.log("OK");
+    $('.reserved_to_member').on('click',function(){ // listener for reserved_to_member
       var bringMeTo = $(this).attr('bringMeTo');//relative URL
+      var targetUrl_from_newUserAndConnectionForm = "";
+
       if (session == "") {//le cookie n'exite pas ()
         console.log("pas connecté");
-
+        $('.target-url').attr('value', bringMeTo);
         if (from == "gen") {
-        var connection_form_Url = currentUrl.concat('../new_user_and_connection_form.php');
-        window.location.href = connection_form_Url;
+          var newUserAndConnectionForm_Url = currentUrl.concat('../new_user_and_connection_form.php');
+          window.location.href = newUserAndConnectionForm_Url;
         }
         else{
-          var connection_form_Url = currentUrl.concat('new_user_and_connection_form.php');
-          window.location.href = connection_form_Url;
+          var newUserAndConnectionForm_Url = currentUrl.concat('new_user_and_connection_form.php');
+          window.location.href = newUserAndConnectionForm_Url;
         }
+        //submit formulaire transmit_data
       }
       else {
         console.log("connecté");
