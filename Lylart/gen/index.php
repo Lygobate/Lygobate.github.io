@@ -64,6 +64,10 @@
         </div>
     </div>
 
+    <form hidden="transmit_data" action="new_user_and_connection_form.php" method="post">
+      <input type="hidden" name="" value="">
+    </form>
+
 
     <?php
     function getCookieContent($name){
@@ -72,23 +76,25 @@
       return $cookieContent;
     }
     $session = @getCookieContent("statut");//le @ masque l'erreur dans la page quand le cookie n'existe pas
-    $from = $style;
+    $from = $style; //récupère le "nom" de la page
     ?>
 
 
     <script type="text/javascript">
     var session = "<?=$session?>";
     var from = "<?=$from?>";
-    var url = "<?=$url?>";
-    console.log(url);
+    var currentUrl = "<?=$url?>";
+    console.log(currentUrl);
     console.log("session : " + session);
     console.log("from : " + from);
 
     if (session == "") {
       console.log("pas connecté");
-      /*if (from == "gen") {
-        window.location.href =
-      }*/
+      if (from == "gen") {
+      var targetUrl = currentUrl.concat('../new_user_and_connection_form.php');
+
+      //window.location.href = targetUrl;
+      }
 
     }
 
