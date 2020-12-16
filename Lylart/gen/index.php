@@ -66,11 +66,32 @@
 
 
     <?php
-    $session = $_COOKIE[$statut];
+    function getCookieContent($name){
+      $cookie = $name;
+      $cookieContent = $_COOKIE[$cookie];
+      return $cookieContent;
+    }
+    $session = @getCookieContent("statut");//le @ masque l'erreur dans la page quand le cookie n'existe pas
+    $from = $style;
     ?>
+
+
     <script type="text/javascript">
-    var session = '<?=$session?>';
-    console.log(session);
+    var session = "<?=$session?>";
+    var from = "<?=$from?>";
+    var url = "<?=$url?>";
+    console.log(url);
+    console.log("session : " + session);
+    console.log("from : " + from);
+
+    if (session == "") {
+      console.log("pas connecté");
+      /*if (from == "gen") {
+        window.location.href =
+      }*/
+
+    }
+
     </script>
 
 
