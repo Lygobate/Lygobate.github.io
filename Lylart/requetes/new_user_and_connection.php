@@ -69,6 +69,7 @@ if (isset($_POST["from"])) {
 
         session_start();
         $_SESSION['token'] = $token;
+        setcookie("statut","connected",time()+60*60*24);
       }
       echo($registed);
       break;
