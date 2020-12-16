@@ -21,7 +21,7 @@
     <!-- Icone de l'onglet -->
     <link rel="icon" type="image/x-icon" href="">
     <!-- Titre de l'onglet -->
-    <title>Lylart Gallery</title>
+    <title><?php if (!empty($style) && $style=="gen"){echo "Lylart Generator";}else{echo "Lylart Gallery";};?></title>
     <!-- Importer CSS et scripts -->
     <?php
         if (empty($style)||$style!="gen"){
