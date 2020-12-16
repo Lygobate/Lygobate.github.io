@@ -1,3 +1,12 @@
+<?php
+    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+        $url = "https://";
+    } else {
+        $url = "http://";
+    }
+    $url .= $_SERVER['HTTP_HOST'];
+    $url .= $_SERVER['REQUEST_URI'];
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -39,14 +48,15 @@
 </head>
 <body>
     <header>
-        <a href="">
+        <a class="generatorButton" href="">
             <div>
             </div>
         </a>
-        <a href=<?=$index?>>
+        <a class="logo" href="<?=$index?>">
             <div>LYLART</div> <!-- à remplacer avec le logo ? -->
             <div>THINK, CREATE, <span>SHARE</span>.</div>
         </a>
+        <input type="text" placeholder="Rechercher">
         <a href="">
             <div>
             </div>
