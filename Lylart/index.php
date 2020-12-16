@@ -1,5 +1,5 @@
 <?php
-  $style="index"
+  $style="index";
   require_once "header.php";
 ?>
 
