@@ -73,6 +73,31 @@
       }
     }
   }
+  & > .choix{
+    width: 100%;
+    text-align: center;
+    justify-content: space-evenly;
+    display: none;
+    padding: 2%;
+    & > div {
+      display: inline-block;
+      width: 25%;
+      background: $div_back;
+      padding: 0.5em;
+      align-self: center;
+      border-radius: 8px;
+      color: white;
+      border: none;
+      margin: 0.5em;
+      text-align: center;
+      &:hover{
+        cursor: pointer;
+      }
+    }
+    @include lg{
+      display: flex;
+    }
+  }
   & > .grid-card{
     display: grid;
     grid-template-columns: 1fr;
@@ -85,9 +110,9 @@
     }
     @include lg{
       grid-template-columns: 1fr 1fr 1fr;
-      padding: 2em;
+      padding: 0 6em;
     }
-    & > .card{
+    & .card{
       display: flex;
       flex-direction: column;
       background: $div_back;

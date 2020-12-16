@@ -11,9 +11,14 @@
             </div>
             <a href="gen/"><div class="button">Créer</div></a>
         </div>
-        <video autoplay loop playsinline > <!-- autoplay loop controls playsinline-->
+        <video loop playsinline > <!-- autoplay loop controls playsinline-->
             <source src="video/EEEAAAOOO.mp4" type="video/mp4">
         </video>
+    </div>
+    <div class="choix">
+        <div>Les dernières créations</div>
+        <div>Les favoris des modérateurs</div>
+        <div>Ma galerie</div>
     </div>
     <div class="grid-card">
         <?php

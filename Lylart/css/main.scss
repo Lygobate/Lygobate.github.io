@@ -21,3 +21,9 @@ body {
 .hidden{
   display: none !important;
 }
+
+.footer-mobile{
+  @include lg{
+    display: none;
+  }
+}
