@@ -1,25 +1,51 @@
 #generator{
-  margin-top: 8vh;
-  padding-bottom: 11vh;
+  padding-top: 8vh;
+  padding-bottom: 7vh;
   color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media (max-height: 430px){
+    padding-bottom: 12vh;
+  }
+  @include lg{
+    flex-direction: row;
+    padding: 0;
+    padding-top: 8vh;
+    align-items: center;
+  }
   & > #canvas{
     width: 100%;
+    @include md{
+      width: 100% !important;
+      height: auto !important;
+    }
     & > canvas{
       width: 100% !important;
       height: auto !important;
+      @include lg{
+        width: auto !important;
+        height: 90vh !important;
+      }
     }
   }
   & > #interface{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 1em;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    grid-gap: 0.5em;
+    border-radius: 10px;
     border-top: solid 2px white;
     padding: 1em;
     font-size: 12px;
     align-items: center;
     background: $div_back;
+    width: 100%;
+    grid-template-rows: 15em 5em 13em 4em;
+    @include lg{
+      width: 60%;
+      border: none;
+      grid-row-gap: 2em;
+    }
     & input{
       width: 100%;
     }
@@ -32,6 +58,9 @@
         padding: 0.5em;
         border: none;
         border-radius: 6px;
+        @include md{
+          padding: 0.8em;
+        }
       }
     }
     & > .sliders{
@@ -41,14 +70,27 @@
         color: white;
       }
     }
+    & > .couleurs, & > .sliders, & > .checkboxes, & > .buttonList{
+      display: flex;
+      height: 100%;
+      justify-content: space-evenly;
+    }
+    & > .couleurs, & > .sliders{
+      flex-direction: column;
+    }
     & > .checkboxes, & > .buttonList{
       grid-column: span 2;
-      display: grid;
-      grid-gap: 0.5em;
-      grid-template-columns: 1fr 1fr;
-      & > label{
-        display: flex;
-        justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    & > .checkboxes label{
+      width: 50%;
+      display: flex;
+      justify-content: space-between;
+      &:nth-child(2n+1){
+        padding-right: 1em;
+      }
+      &:nth-child(2n){
+        padding-left: 1em;
       }
     }
     & > .buttonList{
@@ -57,7 +99,12 @@
         color: white;
         border: none;
         border-radius: 6px;
-        font-size: 20px;
+        font-size: 14px;
+        width: 40%;
+        height: 6vh;
+        @media (max-height: 430px){
+          height: 12vh;
+        }
         &.newCurve{
           background: $red;
         }
@@ -74,16 +121,20 @@
           background: #00C0CE;
           grid-column: span 2;
         }
+        &:not(:last-child){
+          margin-bottom: 0.75em;
+        }
       }
     }
-  }
-  & > #infos{
-    width: 100%;
-    text-align: center;
-    text-decoration: underline;
-    padding-top: 1em;
-    &:hover{
-      cursor:pointer;
+    & > #infos{
+      grid-column: span 2;
+      width: 100%;
+      text-align: center;
+      text-decoration: underline;
+      padding: 1em 0;
+      &:hover{
+        cursor:pointer;
+      }
     }
   }
   & > .modal{

@@ -63,6 +63,9 @@
             <input class="saveCanvas" id="saveCanvas" name="saveCanvas" value="Download" type="button">
             <input class="shareCanvas" id="shareCanvas" name="shareCanvas" value="Share" type="button">
         </div>
+
+        <!-- Ouvrir le modal -->
+        <div id="infos" alt="Infos">En savoir plus sur Lylart Générator</div>
     </div>
 
     <form hidden="transmit_data" action="new_user_and_connection_form.php" method="post">
@@ -100,10 +103,6 @@
     }
 
     </script>
-
-
-    <!-- Ouvrir le modal -->
-    <div id="infos" alt="Infos">En savoir plus sur Lylart Générator</div>
 
     <!-- Modal -->
     <div class="modal hidden">
