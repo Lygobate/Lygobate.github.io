@@ -90,8 +90,9 @@
             dataType: 'text',
             data: form_data,
             success: function(connection,statut){
-              console.log(connection);
+              //console.log(connection);
               if (connection == "true"){
+                //console.log("FDDDDPPPP");
                 $('#is_connected').html("vous êtes bien connecté");
               } else if (connection == "false") {
                 $('#is_connected').html("Fils deupe d'haïzaïmeure");
