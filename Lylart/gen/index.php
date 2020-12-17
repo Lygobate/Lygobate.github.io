@@ -144,7 +144,7 @@
             `);
 
             $(".modal").toggleClass("hidden");
-            $('.modal-card-body').removeClass("modalInfo");
+            $('.modal,.modal-card,.modal-card-body').removeClass("modalInfo");
             $("html").scrollTop(0);
             data = {
               image: compressed_image,
@@ -163,7 +163,7 @@
       });
       saveModalTitle=$(".modal-card-title").html();
       saveModalbody=$(".modal-card-body").html();
-      $("#infos").on("click", function(){$('.modal').toggleClass("hidden");$('.modal-card-body').addClass("modalInfo");$("html").scrollTop(0);});
+      $("#infos").on("click", function(){$('.modal').toggleClass("hidden");$('.modal,.modal-card,.modal-card-body').addClass("modalInfo");$("html").scrollTop(0);});
       $(".modal button").on("click", function(){$(".modal-card-title").html(saveModalTitle);$(".modal-card-body").html(saveModalbody);$('.modal').toggleClass("hidden");});
     });
 

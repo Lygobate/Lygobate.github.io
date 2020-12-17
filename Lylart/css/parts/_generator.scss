@@ -140,16 +140,24 @@
     }
   }
   & > .modal{
-    display: block;
+    display: flex;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 101;
-    .modal.modalInfo {
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: brightness(0.2);
+    & .modal-card.modalInfo {
       width: 100%;
     }
     & > .modal-card{
-      width: 100%;
+      width: 50%;
+      @include sm{
+      
+      }
       & > .modal-card-head{
         border-top-left-radius: 6px;
         border-top-right-radius: 6px;
@@ -232,6 +240,9 @@
       & .modal-card-body.modalInfo{
         overflow: hidden;
         text-align: center;
+        & > div{
+          align-items: unset;
+        }
         & .modal_body_background{
           background: white;
           padding: 1.5em;
@@ -241,6 +252,9 @@
         }
       }
     }
+  }
+  & > .modal.modalInfo{
+    height: unset;
   }
 }
 
