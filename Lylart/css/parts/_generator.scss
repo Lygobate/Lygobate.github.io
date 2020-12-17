@@ -269,11 +269,12 @@
                 border-radius: 8px;
                 border: $div_back solid 1px;
             }
-            & input[type="textarea"] {
-                border-radius: 8px;
-                border: $div_back solid 1px;
-                resize: none;
-                height: 5em;
+            & textarea {
+              border-radius: 8px;
+              border: $div_back solid 1px;
+              resize: none;
+              height: 5em;
+              padding: 0.5em;
             }
           }
           & input#shareGen {
