@@ -1,3 +1,23 @@
+#loader{
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 2000;
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  background: $background;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  & > img{
+    width: 20%;
+    min-width: 150px;
+  }
+}
+
 header {
   display: flex;
   justify-content: space-around;
@@ -19,6 +39,11 @@ header {
   & > a {
     text-decoration: none;
     color: white;
+    flex: 1;
+    text-align: -webkit-center;
+    &:hover{
+      transform: scale(1.05);
+    }
     & > div {
       display: flex;
       justify-content: center;

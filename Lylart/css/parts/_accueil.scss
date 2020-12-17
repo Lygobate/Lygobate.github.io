@@ -59,13 +59,15 @@
           border-radius: 10px;
           margin-top: 0.5em;
         }
+        &:hover{
+          transform: scale(1.05);
+        }
       }
     }
     
     & > video {
-      object-position: center;
-      filter: brightness(0.4);
-      object-position: -75vw;
+      //filter: brightness(0.4);
+      object-position: -63vw;
       width: 235%;
       @include sm{
         width: 100%;
@@ -92,6 +94,7 @@
       text-align: center;
       &:hover{
         cursor: pointer;
+        transform: scale(1.05);
       }
     }
     @include lg{

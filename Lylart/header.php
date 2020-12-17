@@ -1,5 +1,6 @@
 <?php
-  session_start();
+  session_start(['cookie_lifetime' => 86400]);
+
   if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
       $url = "https://";
   } else {
@@ -25,16 +26,19 @@
     <title><?php if (!empty($style) && $style=="gen"){echo "Lylart Generator";}else{echo "Lylart Gallery";};?></title>
     <!-- Importer CSS et scripts -->
     <?php
-        if (empty($style)||$style!="gen"){
-            echo '<link rel="stylesheet" href="css/style.css">';
+        if (empty($style)||(isset($style)&&$style!="gen")){
+            echo '<link rel="stylesheet" href="css/style.css">
+                  <script src="https://cdn.lex-agone.fr/fontawesome.js" type="text/javascript"></script>';
             $index="./";
             if (isset($jquery)){
                 echo '<script src="https://cdn.lex-agone.fr/jquery.js" type="text/javascript"></script>
                       <script src="https://cdn.lex-agone.fr/jquery.cookie.js" type="text/javascript"></script>
+                      <script src="js/js_site.js" type="text/javascript"></script>
                       <script src="js/ajax.js" type="text/javascript"></script>';
             }
         } else {
             echo '<link rel="stylesheet" href="../css/style.css">
+                  <script src="https://cdn.lex-agone.fr/fontawesome.js" type="text/javascript"></script>
                   <script src="https://cdn.lex-agone.fr/jquery.js" type="text/javascript"></script>
                   <script src="https://cdn.lex-agone.fr/jquery.cookie.js" type="text/javascript"></script>';
             $index="../";
@@ -43,13 +47,16 @@
                       <script src="https://cdn.lex-agone.fr/color-picker.js" type="text/javascript"></script>
                       <script src="https://cdn.lex-agone.fr/lz-string.js" type="text/javascript"></script>
                       <script src="js/version.js" type="text/javascript"></script>
+                      <script src="../js/js_site.js" type="text/javascript"></script>
                       <script src="js/functions.js" type="text/javascript"></script>
                       <script src="js/sketch.js" type="text/javascript"></script>';
             }
         }
     ?>
+    
 </head>
 <body>
+    <div id="loader"><img src="<?php if(isset($style)&&$style=="gen"){echo "../images/loader.gif";}else{echo "images/loader.gif";}?>" alt="loader">Loading...</div>
     <header>
         <?php if(isset($style)&&$style!="gen"){
             echo '<a class="generatorButton" href="./gen">
@@ -64,7 +71,7 @@
         }
         ?>
         <a class="logo" href="<?=$index?>">
-            <img src="<?php if(isset($style)&&$style=="gen"){echo "../images/logo.png";}else{echo "images/logo.png";}?>" alt="">
+            <img src="<?php if(isset($style)&&$style=="gen"){echo "../images/logo.png";}else{echo "images/logo.png";}?>" alt="Logo">
         </a>
         <input type="text" placeholder="Rechercher">
         <?php

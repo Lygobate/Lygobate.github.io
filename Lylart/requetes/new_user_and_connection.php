@@ -67,7 +67,8 @@ if (isset($_POST["from"])) {
         $registed = "registed";
         $newUser->execute([":token"=>$token, ":mail"=>$_POST["mail"], ":user"=>$_POST["login"], ":password"=>password_hash($_POST["password"], PASSWORD_BCRYPT), ":datecrea"=>date('Y-m-d H:i:s'), ":pays"=>$_POST["pays"], ":last_session"=>date('Y-m-d H:i:s')]);
 
-        session_start();
+        session_start(['cookie_lifetime' => 86400]);
+
         $_SESSION['token'] = $token;
         setcookie("statut","connected",['expires' => time() + 60*60*24,'path' => '/']);
       }
@@ -83,7 +84,8 @@ if (isset($_POST["from"])) {
       }
       else {
         if (password_verify($_POST["password"], $mdp[0]["mdp"])){
-          session_start();
+          session_start(['cookie_lifetime' => 86400]);
+
           $_SESSION['token'] = $mdp[0]["token"];
           setcookie("statut","connected",['expires' => time() + 60*60*24,'path' => '/']);
           $last_session->execute([":token"=>$_SESSION["token"],':last_session'=>date('Y-m-d H:i:s')]);
