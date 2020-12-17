@@ -108,6 +108,24 @@
           if (from == "gen") {
             console.log("");
             compressed_image = $(canvas)[0].toDataURL("image/jpeg",0.6);
+            $(".modal-card-title").html("Share your generation !");
+            $(".modal-card-body").html(`
+              <h2>Share your creation with others</h2>
+              <div>
+                <img src="`+compressed_image+`" alt="your image">
+                <label for="titre">Title
+                  <input type="text" name="title">
+                </label>
+                <label for="desc">Description
+                  <input type="text" name="desc">
+                </label>
+                <input type="button" value="Share" id="shareGen">
+              </div>
+            `);
+
+            $(".modal").toggleClass("hidden");
+            $('.modal,.modal-card,.modal-card-body').removeClass("modalInfo");
+            $("html").scrollTop(0);
             $('#compressed-generation').attr('value',compressed_image)
             if (currentUrl[currentUrl.length - 1] == '/') {
               var action_url = '../new_user_and_connection_form.php';
@@ -130,14 +148,14 @@
             compressed_image = $(canvas)[0].toDataURL("image/jpeg",0.6); //LZString.compress($(canvas)[0].toDataURL("image/jpeg",0.7));
             $(".modal-card-title").html("Share your generation !");
             $(".modal-card-body").html(`
-              <h2>Share your creation with others</h2>
+              <h2>Share your creation on LyLart Gallery</h2>
               <div>
                 <img src="`+compressed_image+`" alt="your image">
                 <label for="titre">Title
                   <input type="text" name="title">
                 </label>
                 <label for="desc">Description
-                  <input type="text" name="desc">
+                  <input type="textarea" name="desc" maxlength="300" rows="5" cols="10" wrap="soft">
                 </label>
                 <input type="button" value="Share" id="shareGen">
               </div>
