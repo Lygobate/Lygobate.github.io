@@ -87,6 +87,9 @@
       <input type="hidden" class="from-url" name="from-url" value="<?=$url?>">
       <input type="hidden" class="target-url" name="target-url" value=""><!-- value ajoutée en jquery -->
       <input type="hidden" class="compressed-generation" name="compressed-generation" value="">
+      <input type="hidden" class="lylart_generator_version" name="lylart_generator_version" value="">
+      <input type="hidden" class="given_title" name="given_title" value="">
+      <input type="hidden" class="given_description" name="given_description" value="">
     </form>
 
     <script type="text/javascript">
@@ -102,12 +105,17 @@
       $('.reserved_to_member').on('click',function(){ // listener for reserved_to_member
         var bringMeTo = $(this).attr('bringMeTo');//relative URL
         console.log(bringMeTo);
+
         if (session == "") {//le cookie n'exite pas ()
           console.log("pas connecté");
           $('.target-url').attr('value', bringMeTo);
+          $('.lylart_generator_version').attr('value',lylart_generator_version);
+
           if (from == "gen") {
             console.log("");
             compressed_image = $(canvas)[0].toDataURL("image/jpeg",0.6);
+            $('#compressed-generation').attr('value',compressed_image)
+
             $(".modal-card-title").html("Share your generation !");
             $(".modal-card-body").html(`
               <h2>Share your creation with others</h2>
@@ -126,7 +134,7 @@
             $(".modal").toggleClass("hidden");
             $('.modal,.modal-card,.modal-card-body').removeClass("modalInfo");
             $("html").scrollTop(0);
-            $('#compressed-generation').attr('value',compressed_image)
+
             if (currentUrl[currentUrl.length - 1] == '/') {
               var action_url = '../new_user_and_connection_form.php';
             }
@@ -136,11 +144,19 @@
             $('.transmit_data').attr('action', action_url);
           }
           else{
-
+            //not connected and not from gen
           }
-
-          $('#transmit_data').submit();
-          //submit formulaire transmit_data
+          $('#shareGen').on('click',function(){
+            $('.given_title').val() = $('input[name="title"]');
+            $('.given_description').val() = $('input[name="desc"]');
+            console.log($('.given_title').val());
+            console.log($('.given_description').val());
+            console.log($('.lylart_generator_version').val());
+            console.log($('.compressed-generation').val());
+            console.log($('.target-url').val());
+            console.log($('.from-url').val());
+            //$('#transmit_data').submit();
+          });
         }
         else {
           console.log("connecté");
