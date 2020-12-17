@@ -150,39 +150,49 @@ $(function () {
 		if (_showGeometry === true){
 			_showGeometry = false;
 			$('#showGeometry').prop("value", 'Reset');
-			$('#showGeometry').toggleClass('is-primary')
-			$('#showGeometry').toggleClass('is-warning');
+			$('#showGeometry').toggleClass('buttonYellow');
 			$('#stopGeneration').css("display", 'block');
 			$('#newCurve').css("display", 'none');
 			// $('#bgColorLabel').css("display", 'none');
 			$('#bgColorLabel>input').attr("disabled", 'disabled');
 			$('#saveCanvas').css("display", 'block');
+			$('#shareCanvas').css("display", 'block');
+			$('#saveCanvas').attr("disabled", 'disabled');
+			$('#shareCanvas').attr("disabled", 'disabled');
 		} else {
 			_showGeometry = true;
 			$('#showGeometry').prop("value", 'Start Generation');
-			$('#showGeometry').toggleClass('is-warning');
-			$('#showGeometry').toggleClass('is-primary')
+			$('#showGeometry').toggleClass('buttonYellow');
+			$('#showGeometry').toggleClass('buttonGreen')
 			$('#stopGeneration').css("display", 'none');
 			$('#newCurve').css("display", 'block');
 			// $('#bgColorLabel').css("display", 'inline-block');
 			$('#bgColorLabel>input').removeAttr("disabled");
 			$('#saveCanvas').css("display", 'none');
+			$('#shareCanvas').css("display", 'none');
 			loop();//débloque si le noLoop est activé, et qu'on retourne sur le showGeometry
+			$('#saveCanvas').removeAttr("disabled");
+			$('#shareCanvas').removeAttr("disabled");
 		}
 	});
 	$('#stopGeneration').on("click", function () {
 		if (_stop == false){
 			_stop = true;
 			$('#stopGeneration').prop("value", 'Play Generation');
-			$('#stopGeneration').toggleClass('is-primary')
-			$('#stopGeneration').toggleClass('is-danger');
+			$('#stopGeneration').removeClass('buttonRed');
+			$('#stopGeneration').toggleClass('buttonGreen')
 			noLoop();
+			$('#saveCanvas').removeAttr("disabled");
+			$('#shareCanvas').removeAttr("disabled");
+
 		} else {
 			_stop = false;
 			loop();
 			$('#stopGeneration').prop("value", 'Stop Generation');
-			$('#stopGeneration').toggleClass('is-primary')
-			$('#stopGeneration').toggleClass('is-danger');
+			$('#stopGeneration').toggleClass('buttonGreen')
+			$('#stopGeneration').toggleClass('buttonRed');
+			$('#saveCanvas').attr("disabled", 'disabled');
+			$('#shareCanvas').attr("disabled", 'disabled');
 		}
 	});
 	$('#newCurve').on("click",function(){

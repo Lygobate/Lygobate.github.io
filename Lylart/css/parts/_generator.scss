@@ -43,10 +43,14 @@
     background: $div_back;
     width: 100%;
     grid-template-rows: 15em 5em 13em 4em;
+    @include sm{
+      font-size: 14px;
+    }
     @include lg{
       width: 60%;
       border: none;
       grid-row-gap: 2em;
+      font-size: 14px;
     }
     & input{
       width: 100%;
@@ -102,29 +106,48 @@
         border: none;
         border-radius: 6px;
         font-size: 14px;
+        font-weight: 700;
         width: 40%;
         height: 6vh;
         @media (max-height: 430px){
           height: 12vh;
         }
         &.newCurve{
-          background: $red;
+          background: #3273dc;
         }
         &.startGeneration{
-          background: #2CE600;
+          background: #00d1b2;
         }
         &.stopGeneration{
-          background: $background;
+          background: $red;
+          display: none;
         }
         &.saveCanvas{
           background: #00C0CE;
+          display: none;
         }
         &.shareCanvas{
           background: #00C0CE;
           grid-column: span 2;
+          display: none;
+        }
+        &.buttonGreen{
+          background: #00d1b2;
+        }
+        &.buttonRed{
+          background: $red;
+        }
+        &.buttonBlue{
+          background: #3273dc;
+        }
+        &.buttonYellow{
+          background: #ffdb4a;
         }
         &:not(:last-child){
           margin-bottom: 0.75em;
+        }
+        &:disabled{
+          filter: grayscale(0.8);
         }
       }
     }
@@ -162,7 +185,7 @@
         border-top-left-radius: 6px;
         border-top-right-radius: 6px;
         & > .delete{
-          background-color: rgba(10,10,10,.2);
+          background-color: $red;
           border: none;
           cursor: pointer;
           pointer-events: auto;
@@ -171,6 +194,9 @@
           border-radius: 100px;
           position: relative;
           width: 20px;
+          &:hover{
+            transform: scale(1.1);
+          }
           &::after, &::before {
             background-color: #fff;
             content: "";
@@ -202,6 +228,10 @@
           border-radius: 6px;
           font-size: 20px;
           background: $red;
+          &:hover{
+            cursor: pointer;
+            transform: scale(1.05);
+          }
         }
       }
       & > .modal-card-head, & > .modal-card-footer {
