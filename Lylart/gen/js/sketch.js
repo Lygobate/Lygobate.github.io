@@ -6,7 +6,8 @@ jscolor.presets.default = {format:'rgb', backgroundColor:'rgba(227,227,227,1)', 
 $(function(){
 	if (typeof $.cookie("firstVisit") == 'undefined') {
 		$.cookie("firstVisit",false);
-		$('.modal').addClass('hidden');
+		$('.modal').removeClass('hidden');
+		$('.modal,.modal-card,.modal-card-body').addClass("modalInfo");
 	}
 });
 
