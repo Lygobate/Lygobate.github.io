@@ -48,7 +48,7 @@
               <div>
                 <div class="label-form">Login</div>
                 <div class="data-form">
-                  <input type="text" class="data-form data-form-user-input" name="login" placeholder="..." required>
+                  <input type="text" class="data-form data-form-user-input" name="login" required>
                   <span>█</span>
                 </div>
               </div>
@@ -58,7 +58,7 @@
               <div>
                 <div class="label-form">Password</div>
                 <div class="data-form">
-                  <input type="password" class="data-form data-form-user-input" name="password" placeholder="..." required>
+                  <input type="password" class="data-form data-form-user-input" name="password" required>
                   <span>█</span>
                 </div>
               </div>
@@ -66,12 +66,12 @@
 
             <input type="hidden" name="from" value="connection">
             <div class="button-box">
-              <input type="submit" id="submit_login" class="button-form" name="submit" value="Se connecter" bringMeTo="./">
+              <input type="submit" id="submit_login" class="button-form" name="submit" value="Connection" bringMeTo="./">
+              <div class="no-account">
+                <p>I haven't got account yet</p>
+              </div>
             </div>
           </form>
-          <div class="no-account">
-            <p>I haven't got account yet</p>
-          </div>
         </div>
       </main>
 
