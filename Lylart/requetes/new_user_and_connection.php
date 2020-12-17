@@ -4,10 +4,10 @@ require 'config.php';
 $checkToken=$pass->prepare("SELECT token FROM utilisateur WHERE token = :token");
 $checkUserName=$pass->prepare("SELECT pseudo FROM utilisateur WHERE pseudo = :user");
 $checkMail=$pass->prepare("SELECT mail FROM utilisateur WHERE mail = :mail");
-$newUser=$pass->prepare("INSERT INTO utilisateur VALUES(:token, :mail, :user, :password, 0, :datecrea, :pays, 0,0)");
-                                                      //token,mail,pseudo,mdp,verifie,date_inscription,pays,nb_strike,role
+$newUser=$pass->prepare("INSERT INTO utilisateur VALUES(:user, :token, :mail, :password, 0, :datecrea, :pays, 0,0,:last_session)");
+                                                    //token,mail,pseudo,mdp,verifie,date_inscription,pays,nb_strike,role
 $connectionTry=$pass->prepare("SELECT mdp,token FROM utilisateur WHERE pseudo = :pseudo");
-
+$last_session=$pass->prepare("UPDATE utilisateur SET derniere_session=:last_session WHERE token = :token");
 
 function createToken(){
   $token="";
@@ -65,7 +65,7 @@ if (isset($_POST["from"])) {
       }
       else {
         $registed = "registed";
-        $newUser->execute([":token"=>$token, ":mail"=>$_POST["mail"], ":user"=>$_POST["login"], ":password"=>password_hash($_POST["password"], PASSWORD_BCRYPT), ":datecrea"=>date('Y-m-d H:i:s'), ":pays"=>$_POST["pays"]]);
+        $newUser->execute([":token"=>$token, ":mail"=>$_POST["mail"], ":user"=>$_POST["login"], ":password"=>password_hash($_POST["password"], PASSWORD_BCRYPT), ":datecrea"=>date('Y-m-d H:i:s'), ":pays"=>$_POST["pays"], ":last_session"=>date('Y-m-d H:i:s')]);
 
         session_start();
         $_SESSION['token'] = $token;
@@ -86,6 +86,7 @@ if (isset($_POST["from"])) {
           session_start();
           $_SESSION['token'] = $mdp[0]["token"];
           setcookie("statut","connected",['expires' => time() + 60*60*24,'path' => '/']);
+          $last_session->execute([":token"=>$_SESSION["token"],':last_session'=>date('Y-m-d H:i:s')]);
           $connection = "true";
         }
         else {

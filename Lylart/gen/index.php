@@ -118,22 +118,29 @@
 
             $(".modal-card-title").html("Share your generation !");
             $(".modal-card-body").html(`
-              <h2>Share your creation with others</h2>
+              <h2>Share your creation on LyLart Gallery</h2>
               <div>
                 <img src="`+compressed_image+`" alt="your image">
-                <label for="titre">Title
-                  <input type="text" name="title">
+                <label for="titre">Title*
+                  <input type="text" name="title" id="titleImage" placeholder="3 chars minimum">
                 </label>
                 <label for="desc">Description
-                  <input type="text" name="desc">
+                  <textarea id="titleDesc" name="desc" maxlength="300" rows="5" cols="40" wrap="soft" placeholder="300 chars maximum"></textarea>
                 </label>
-                <input type="button" value="Share" id="shareGen">
+                <input type="button" value="Share" id="shareGen" disabled>
               </div>
             `);
 
             $(".modal").toggleClass("hidden");
             $('.modal,.modal-card,.modal-card-body').removeClass("modalInfo");
             $("html").scrollTop(0);
+            $('#titleImage').on("input change", function(){
+                if ($('#titleImage').val().length>=3){
+                    $('#shareGen').removeAttr("disabled");
+                } else{
+                    $('#shareGen').attr("disabled", "disabled");
+                }
+            });
 
             if (currentUrl[currentUrl.length - 1] == '/') {
               var action_url = '../new_user_and_connection_form.php';
@@ -147,15 +154,15 @@
             //not connected and not from gen
           }
           $('#shareGen').on('click',function(){
-            $('.given_title').val() = $('input[name="title"]');
-            $('.given_description').val() = $('input[name="desc"]');
+            $('.given_title').val($('#titleImage').val());
+            $('.given_description').val($('#titleDesc').val());
             console.log($('.given_title').val());
             console.log($('.given_description').val());
             console.log($('.lylart_generator_version').val());
             console.log($('.compressed-generation').val());
             console.log($('.target-url').val());
             console.log($('.from-url').val());
-            //$('#transmit_data').submit();
+            $('#transmit_data').submit();
           });
         }
         else {
@@ -189,18 +196,19 @@
               $('#titleImage').on("input change", function(){
                   if ($('#titleImage').val().length>=3){
                       $('#shareGen').removeAttr("disabled");
-                      $('#shareGen').on("click", function(){
-                          $.post("../requetes/img_to_bdd.php",
-                              data,
-                              function(resultat){
-                                console.log(resultat);
-                                $('.modal').addClass("hidden");
-                              },
-                              "text");
-                      });
                   } else{
                       $('#shareGen').attr("disabled", "disabled");
                   }
+              });
+              $('#shareGen').on("click", function(){
+                $('#shareGen').attr("disabled", "disabled");
+                $.post("../requetes/img_to_bdd.php",
+                    data,
+                    function(resultat){
+                      console.log(resultat);
+                      $('.modal').addClass("hidden");
+                    },
+                    "text");
               });
           }
           else {
