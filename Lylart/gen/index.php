@@ -155,7 +155,7 @@
                   <input type="text" name="title">
                 </label>
                 <label for="desc">Description
-                  <input type="textarea" name="desc" maxlength="300" rows="5" cols="10" wrap="soft">
+                  <textarea name="desc" maxlength="300" rows="5" cols="40" wrap="soft"></textarea>
                 </label>
                 <input type="button" value="Share" id="shareGen">
               </div>
