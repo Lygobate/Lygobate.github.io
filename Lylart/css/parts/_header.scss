@@ -19,16 +19,17 @@ header {
   & > a {
     text-decoration: none;
     color: white;
-    &:not(.logo) > div {
+    & > div {
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 16px;
-      border: solid 2px white;
       border-radius: 100px;
       width: 2em;
       height: 2em;
-      background: white;
+      & > img{
+        width: 3em;
+      }
     }
     &:last-child{
       order: 4;
@@ -43,17 +44,8 @@ header {
       order: 1;
       color: white;
       text-align: center;
-      
-      & > div:nth-child(1) {
-        font-size: 1.6em;
-      }
-      
-      & > div:nth-child(2) {
-        font-size: 0.5em;
-        
-        & > span {
-          color: #00FF4C;
-        }
+      & > img{
+        width: 7em;
       }
     }
   }

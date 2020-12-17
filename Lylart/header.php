@@ -20,7 +20,7 @@
     <!-- Description pour le référencement -->
     <meta name="description" content="Lylart est un site de génération et de partage de ces derniers.">
     <!-- Icone de l'onglet -->
-    <link rel="icon" type="image/x-icon" href="">
+    <link rel="icon" type="image/x-icon" href="<?php if(isset($style)&&$style=="gen"){echo "../images/fav.png";}else{echo "images/fav.png";}?>">
     <!-- Titre de l'onglet -->
     <title><?php if (!empty($style) && $style=="gen"){echo "Lylart Generator";}else{echo "Lylart Gallery";};?></title>
     <!-- Importer CSS et scripts -->
@@ -51,17 +51,41 @@
 </head>
 <body>
     <header>
-        <a class="generatorButton" href="">
-            <div>
-            </div>
-        </a>
+        <?php if(isset($style)&&$style!="gen"){
+            echo '<a class="generatorButton" href="./gen">
+                <div>
+                    <img src="images/gen.png" alt="Generator">
+                </div>
+            </a>';
+        }else{
+            echo '<a class="generatorButton" href="../">
+                <div>Accueil</div>
+            </a>';
+        }
+        ?>
         <a class="logo" href="<?=$index?>">
-            <div>LYLART</div> <!-- à remplacer avec le logo ? -->
-            <div>THINK, CREATE, <span>SHARE</span>.</div>
+            <img src="<?php if(isset($style)&&$style=="gen"){echo "../images/logo.png";}else{echo "images/logo.png";}?>" alt="">
         </a>
         <input type="text" placeholder="Rechercher">
-        <a href="user.php">
-            <div>
-            </div>
-        </a>
+        <?php
+            if(isset($style)&&$style!="gen"){
+                if(isset($_COOKIE["statut"])){
+                    echo '<a href="user.php">
+                    <div id="is-connected">
+                    </div>
+                </a>';
+                }else{
+                    echo '<a href="new_user_and_connection_form.php">Se connecter</a>';
+                }
+            }else{
+                if(isset($_COOKIE["statut"])){
+                    echo '<a href="../user.php">
+                    <div id="is-connected">
+                    </div>
+                </a>';
+                }else{
+                    echo '<a href="../new_user_and_connection_form.php">Se connecter</a>';
+                }
+            }
+        ?>
     </header>
