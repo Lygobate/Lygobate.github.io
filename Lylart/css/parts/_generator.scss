@@ -173,6 +173,9 @@
     justify-content: center;
     align-items: center;
     backdrop-filter: brightness(0.2);
+    @include hg{
+      padding-top: 78vh;
+    }
     & .modal-card.modalInfo {
       width: 100%;
     }
@@ -249,6 +252,7 @@
         display: flex;
         flex-direction: column;
         color: black;
+        padding: 0 1em;
         & > h2{
           color: black;
         }
@@ -266,14 +270,17 @@
             display: flex;
             flex-direction: column;
             & input[type="text"] {
-                border-radius: 8px;
-                border: $div_back solid 1px;
+              border-radius: 5px;
+              border: $div_back solid 1px;
+              width: 100%;
+              padding: 0.5em;
             }
             & textarea {
-              border-radius: 8px;
+              border-radius: 5px;
               border: $div_back solid 1px;
               resize: none;
               height: 5em;
+              width: 100%;
               padding: 0.5em;
             }
           }
@@ -285,6 +292,9 @@
             border-radius: 6px;
             font-size: 20px;
             background: #00BCD4;
+            &:disabled{
+              filter: grayscale(0.8);
+            }
           }
         }
       }

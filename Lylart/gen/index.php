@@ -151,13 +151,13 @@
               <h2>Share your creation on LyLart Gallery</h2>
               <div>
                 <img src="`+compressed_image+`" alt="your image">
-                <label for="titre">Title
-                  <input type="text" name="title">
+                <label for="titre">Title*
+                  <input type="text" name="title" id="titleImage" placeholder="3 chars minimum">
                 </label>
                 <label for="desc">Description
-                  <textarea name="desc" maxlength="300" rows="5" cols="40" wrap="soft"></textarea>
+                  <textarea name="desc" maxlength="300" rows="5" cols="40" wrap="soft" placeholder="300 chars maximum"></textarea>
                 </label>
-                <input type="button" value="Share" id="shareGen">
+                <input type="button" value="Share" id="shareGen" disabled>
               </div>
             `);
 
@@ -170,9 +170,22 @@
               title: $("input[name='title']").val(),
               desc: $("input[name='desc']").val()
             }
-            $('#shareGen').on("click", function(){
-              $.post("../requetes/img_to_bdd.php",data,function(resultat){console.log(resultat);},"text");
-            });
+              $('#titleImage').on("input change", function(){
+                  if ($('#titleImage').val().length>=3){
+                      $('#shareGen').removeAttr("disabled");
+                      $('#shareGen').on("click", function(){
+                          $.post("../requetes/img_to_bdd.php",
+                              data,
+                              function(resultat){
+                                console.log(resultat);
+                                $('.modal').addClass("hidden");
+                              },
+                              "text");
+                      });
+                  } else{
+                      $('#shareGen').attr("disabled", "disabled");
+                  }
+              });
           }
           else {
             window.location.href = currentUrl.concat(bringMeTo);
@@ -181,8 +194,8 @@
       });
       saveModalTitle=$(".modal-card-title").html();
       saveModalbody=$(".modal-card-body").html();
-      $("#infos").on("click", function(){$('.modal').toggleClass("hidden");$('.modal,.modal-card,.modal-card-body').addClass("modalInfo");$("html").scrollTop(0);});
-      $(".modal button").on("click", function(){$(".modal-card-title").html(saveModalTitle);$(".modal-card-body").html(saveModalbody);$('.modal').toggleClass("hidden");});
+      $("#infos").on("click", function(){$('.modal').removeClass("hidden");$('.modal,.modal-card,.modal-card-body').addClass("modalInfo");$(".modal-card-title").html(saveModalTitle);$(".modal-card-body").html(saveModalbody);$("html").scrollTop(0);});
+      $(".modal button").on("click", function(){$('.modal').addClass("hidden");});
     });
 
 
