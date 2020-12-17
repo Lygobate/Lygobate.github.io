@@ -1,0 +1,16 @@
+.info-box.top{ //1ere des infobox, permet de lui mette une ligne en plus
+  border-top: solid 2px $div_back;
+  padding-top: 10px;
+}
+
+
+
+.form-page{
+  background: $background;
+  color: white;
+  margin-top: 12vh;
+  height: 80vh;
+  & #submit_login{
+    padding: 15px;
+  }
+}
