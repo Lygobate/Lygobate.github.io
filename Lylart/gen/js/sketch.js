@@ -1,8 +1,5 @@
 jscolor.presets.default = {format:'rgb', backgroundColor:'rgba(227,227,227,1)', borderColor:'rgba(255,255,255,1)', mode:'HSV',shadow:false, position:'bottom'};
 
-/*_______________ LIRAG VERSION __________________*/
-var liragVersion = "1.0";
-/*________________________________________________*/
 
 // ------------ Cookie de bienvenue
 
@@ -91,7 +88,7 @@ var timeCode = now.getTime()
 
 $(function () {
 
-	$('.liragVersion').html(liragVersion);
+	$('.lylart_generator_version').html(lylart_generator_version);
 
 	$('#nbPoints').on("input change", function () {
 		_nbPoints = $('#nbPoints').val();
@@ -193,13 +190,6 @@ $(function () {
 	$('#saveCanvas').on("click",function(){
 		saveCanvas(document.getElementById("defaultCanvas0") ,'generation'+'_'+jour+'-'+mois+'-'+annee+'_'+timeCode, 'png');
 	});
-	$('#infos').on('click', function(){
-		$('.modal').addClass('is-active');
-	});
-	$('.delete,.modal-background,.modal-card-foot>button').on('click', function(){
-		$('.modal').removeClass('is-active');
-	});
-
 });
 
 /*A faire en front pour le moment____________________________________

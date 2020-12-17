@@ -1,11 +1,12 @@
 <?php
-    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
-        $url = "https://";
-    } else {
-        $url = "http://";
-    }
-    $url .= $_SERVER['HTTP_HOST'];
-    $url .= $_SERVER['REQUEST_URI'];
+  session_start();
+  if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+      $url = "https://";
+  } else {
+      $url = "http://";
+  }
+  $url .= $_SERVER['HTTP_HOST'];
+  $url .= $_SERVER['REQUEST_URI'];
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -40,6 +41,8 @@
             if ($style=="gen"){
                 echo '<script src="https://cdn.lex-agone.fr/p5.js" type="text/javascript"></script>
                       <script src="https://cdn.lex-agone.fr/color-picker.js" type="text/javascript"></script>
+                      <script src="https://cdn.lex-agone.fr/lz-string.js" type="text/javascript"></script>
+                      <script src="js/version.js" type="text/javascript"></script>
                       <script src="js/functions.js" type="text/javascript"></script>
                       <script src="js/sketch.js" type="text/javascript"></script>';
             }

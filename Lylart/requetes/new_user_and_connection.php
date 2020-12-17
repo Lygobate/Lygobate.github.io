@@ -69,7 +69,7 @@ if (isset($_POST["from"])) {
 
         session_start();
         $_SESSION['token'] = $token;
-        setcookie("statut","connected",time()+60*60*24);
+        setcookie("statut","connected",['expires' => time() + 60*60*24,'path' => '/']);
       }
       echo($registed);
       break;
@@ -85,8 +85,7 @@ if (isset($_POST["from"])) {
         if (password_verify($_POST["password"], $mdp[0]["mdp"])){
           session_start();
           $_SESSION['token'] = $mdp[0]["token"];
-          //setcookie("token_ma_gueule_!", $mdp[0]["token"]);
-          setcookie("statut","connected",time()+60*60*24);
+          setcookie("statut","connected",['expires' => time() + 60*60*24,'path' => '/']);
           $connection = "true";
         }
         else {

@@ -65,7 +65,7 @@
         </div>
 
         <!-- Ouvrir le modal -->
-        <div id="infos" alt="Infos">En savoir plus sur Lylart Générator</div>
+        <div id="infos" alt="Infos">More about Lylart Generator</div>
     </div>
 
 
@@ -83,7 +83,7 @@
     $from = $style; //récupère le "nom" de la page donné dans $style
     ?>
 
-    <form hidden="transmit_data" action="new_user_and_connection_form.php" method="post">
+    <form id="transmit_data" action="../new_user_and_connection_form.php" method="post">
       <input type="hidden" class="from-url" name="from-url" value="<?=$url?>">
       <input type="hidden" class="target-url" name="target-url" value=""><!-- value ajoutée en jquery -->
       <input type="hidden" class="compressed-generation" name="compressed-generation" value="">
@@ -94,43 +94,74 @@
     var from = "<?=$from?>";
     var currentUrl = "<?=$url?>";
 
-    console.log(currentUrl);
+    //console.log(currentUrl);
     console.log("session : " + session);
     console.log("from : " + from);
-    console.log();
-    $('.reserved_to_member').on('click',function(){ // listener for reserved_to_member
-      var bringMeTo = $(this).attr('bringMeTo');//relative URL
-      var targetUrl_from_newUserAndConnectionForm = "";
+    //console.log();
+    $(function(){
+      $('.reserved_to_member').on('click',function(){ // listener for reserved_to_member
+        var bringMeTo = $(this).attr('bringMeTo');//relative URL
 
-      if (session == "") {//le cookie n'exite pas ()
-        console.log("pas connecté");
-        $('.target-url').attr('value', bringMeTo);
-        if (from == "gen") {
-          if (currentUrl[currentUrl.length - 1] == '/') {
-            var newUserAndConnectionForm_Url = currentUrl.concat('../new_user_and_connection_form.php');
+        if (session == "") {//le cookie n'exite pas ()
+          console.log("pas connecté");
+          $('.target-url').attr('value', bringMeTo);
+          if (from == "gen") {
+            console.log("");
+            compressed_image = $(canvas)[0].toDataURL("image/jpeg",0.6);
+            $('#compressed-generation').attr('value',compressed_image)
+            if (currentUrl[currentUrl.length - 1] == '/') {
+              var action_url = '../new_user_and_connection_form.php';
+            }
+            else{
+              var action_url = '/../new_user_and_connection_form.php';
+            }
+            $('.transmit_data').attr('action', action_url);
           }
           else{
-            var newUserAndConnectionForm_Url = currentUrl.concat('/../new_user_and_connection_form.php');
+
           }
-          window.location.href = newUserAndConnectionForm_Url;
-        }
-        else{
-          var newUserAndConnectionForm_Url = currentUrl.concat('new_user_and_connection_form.php');
-          window.location.href = newUserAndConnectionForm_Url;
-        }
-        //submit formulaire transmit_data
-      }
-      else {
-        console.log("connecté");
-        if (from == "gen") {
-          //script récup génération + toDataURL() + compression hexa lz-string + envoi dn la BDD
-          //lz-string doc : https://pieroxy.net/blog/pages/lz-string/index.html
-          //lz-string démo : https://pieroxy.net/blog/pages/lz-string/demo.html
+
+          //$('#transmit_data').submit();
+          //submit formulaire transmit_data
         }
         else {
-          window.location.href = currentUrl.concat(bringMeTo);
+          console.log("connecté");
+          if (from == "gen") {
+            compressed_image = $(canvas)[0].toDataURL("image/jpeg",0.6); //LZString.compress($(canvas)[0].toDataURL("image/jpeg",0.7));
+            $(".modal-card-title").html("Share your generation !");
+            $(".modal-card-body").html(`
+              <h2>Share your creation with others</h2>
+              <div>
+                <img src="`+compressed_image+`" alt="your image">
+                <label for="titre">Title
+                  <input type="text" name="title">
+                </label>
+                <label for="desc">Description
+                  <input type="text" name="desc">
+                </label>
+                <input type="button" value="Share" id="shareGen">
+              </div>
+            `);
+
+            $(".modal").toggleClass("hidden");
+            $("html").scrollTop(0);
+            data = {
+              image: compressed_image,
+              version: lylart_generator_version
+            }
+            $('#shareGen').on("click", function(){
+              $.post("../requetes/img_to_bdd.php",data,function(resultat){console.log(resultat);},"text");
+            });
+          }
+          else {
+            window.location.href = currentUrl.concat(bringMeTo);
+          }
         }
-      }
+      });
+      saveModalTitle=$(".modal-card-title").html();
+      saveModalbody=$(".modal-card-body").html();
+      $("#infos").on("click", function(){$('.modal').toggleClass("hidden"),$("html").scrollTop(0);});
+      $(".modal button").on("click", function(){$(".modal-card-title").html(saveModalTitle);$(".modal-card-body").html(saveModalbody);$('.modal').toggleClass("hidden");});
     });
 
 
@@ -140,7 +171,7 @@
     <div class="modal hidden">
         <div class="modal-card">
             <div class="modal-card-head">
-                <p class="modal-card-title">About Lylart Generator v<span class="liragVersion"></span></p>
+                <p class="modal-card-title">About Lylart Generator v<span class="lylart_generator_version"></span></p>
                 <button class="delete"></button>
             </div>
             <section class="modal-card-body">
