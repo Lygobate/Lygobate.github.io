@@ -101,7 +101,7 @@
     $(function(){
       $('.reserved_to_member').on('click',function(){ // listener for reserved_to_member
         var bringMeTo = $(this).attr('bringMeTo');//relative URL
-
+        console.log(bringMeTo);
         if (session == "") {//le cookie n'exite pas ()
           console.log("pas connecté");
           $('.target-url').attr('value', bringMeTo);
@@ -148,7 +148,9 @@
             $("html").scrollTop(0);
             data = {
               image: compressed_image,
-              version: lylart_generator_version
+              version: lylart_generator_version,
+              title: $("input[name='title']").val(),
+              desc: $("input[name='desc']")
             }
             $('#shareGen').on("click", function(){
               $.post("../requetes/img_to_bdd.php",data,function(resultat){console.log(resultat);},"text");
