@@ -203,6 +203,31 @@
         position: relative;
       }
       & .modal-card-body{
+        background: white;
+        overflow: hidden;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        color: black;
+        & > h2{
+          color: black;
+        }
+        & > div{
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: center;
+          & > img{
+            width: 40%;
+            height: auto;
+          }
+          & > label{
+            display: flex;
+            flex-direction: column;
+          }
+        }
+      }
+      & .modal-card-body.modalInfo{
         overflow: hidden;
         text-align: center;
         & .modal_body_background{
