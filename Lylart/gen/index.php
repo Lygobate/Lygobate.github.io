@@ -61,7 +61,7 @@
             <input class="startGeneration" id="showGeometry" name="showGeometry" value="Start Generation" type="button">
             <input class="stopGeneration" id="stopGeneration" name="stopGeneration" value="Stop Generation" type="button">
             <input class="saveCanvas" id="saveCanvas" name="saveCanvas" value="Download" type="button">
-            <input class="shareCanvas reserved_to_member" id="shareCanvas" name="shareCanvas" value="Share" type="button" bringMeTo="/../gen/index.php"><!-- target link depuis le formulaire-->
+            <input class="shareCanvas reserved_to_member" id="shareCanvas" name="shareCanvas" value="Share" type="button" bringMeTo="/../gen/"><!-- target link depuis le formulaire-->
         </div>
 
         <!-- Ouvrir le modal -->
@@ -114,7 +114,7 @@
           if (from == "gen") {
             console.log("");
             compressed_image = $(canvas)[0].toDataURL("image/jpeg",0.6);
-            $('#compressed-generation').attr('value',compressed_image)
+            $('.compressed-generation').attr('value',compressed_image)
 
             $(".modal-card-title").html("Share your generation !");
             $(".modal-card-body").html(`
@@ -122,10 +122,10 @@
               <div>
                 <img src="`+compressed_image+`" alt="your image">
                 <label for="titre">Title*
-                  <input type="text" name="title" id="titleImage" placeholder="3 chars minimum">
+                  <input id="titleImage" type="text" name="title"  placeholder="3 chars minimum">
                 </label>
                 <label for="desc">Description
-                  <textarea id="titleDesc" name="desc" maxlength="300" rows="5" cols="40" wrap="soft" placeholder="300 chars maximum"></textarea>
+                  <textarea id="descImage" name="desc" maxlength="300" rows="5" cols="40" wrap="soft" placeholder="300 chars maximum"></textarea>
                 </label>
                 <input type="button" value="Share" id="shareGen" disabled>
               </div>
@@ -134,6 +134,7 @@
             $(".modal").toggleClass("hidden");
             $('.modal,.modal-card,.modal-card-body').removeClass("modalInfo");
             $("html").scrollTop(0);
+
             $('#titleImage').on("input change", function(){
                 if ($('#titleImage').val().length>=3){
                     $('#shareGen').removeAttr("disabled");
@@ -155,13 +156,13 @@
           }
           $('#shareGen').on('click',function(){
             $('.given_title').val($('#titleImage').val());
-            $('.given_description').val($('#titleDesc').val());
-            console.log($('.given_title').val());
-            console.log($('.given_description').val());
-            console.log($('.lylart_generator_version').val());
-            console.log($('.compressed-generation').val());
-            console.log($('.target-url').val());
-            console.log($('.from-url').val());
+            $('.given_description').val($('#descImage').val());
+            // console.log($('.given_title').val());
+            // console.log($('.given_description').val());
+            // console.log($('.lylart_generator_version').val());
+            // console.log($('.compressed-generation').val());
+            // console.log($('.target-url').val());
+            // console.log($('.from-url').val());
             $('#transmit_data').submit();
           });
         }
@@ -175,10 +176,10 @@
               <div>
                 <img src="`+compressed_image+`" alt="your image">
                 <label for="titre">Title*
-                  <input type="text" name="title" id="titleImage" placeholder="3 chars minimum">
+                  <input id="titleImage" type="text" name="title"  placeholder="3 chars minimum">
                 </label>
                 <label for="desc">Description
-                  <textarea name="desc" maxlength="300" rows="5" cols="40" wrap="soft" placeholder="300 chars maximum"></textarea>
+                  <textarea id="descImage" name="desc" maxlength="300" rows="5" cols="40" wrap="soft" placeholder="300 chars maximum"></textarea>
                 </label>
                 <input type="button" value="Share" id="shareGen" disabled>
               </div>
@@ -187,29 +188,29 @@
             $(".modal").toggleClass("hidden");
             $('.modal,.modal-card,.modal-card-body').removeClass("modalInfo");
             $("html").scrollTop(0);
-            data = {
-              image: compressed_image,
-              version: lylart_generator_version,
-              title: $("input[name='title']").val(),
-              desc: $("input[name='desc']").val()
-            }
-              $('#titleImage').on("input change", function(){
-                  if ($('#titleImage').val().length>=3){
-                      $('#shareGen').removeAttr("disabled");
-                  } else{
-                      $('#shareGen').attr("disabled", "disabled");
-                  }
-              });
-              $('#shareGen').on("click", function(){
-                $('#shareGen').attr("disabled", "disabled");
-                $.post("../requetes/img_to_bdd.php",
-                    data,
-                    function(resultat){
-                      console.log(resultat);
-                      $('.modal').addClass("hidden");
-                    },
-                    "text");
-              });
+            $('#titleImage').on("input change", function(){
+                if ($('#titleImage').val().length>=3){
+                    $('#shareGen').removeAttr("disabled");
+                } else{
+                    $('#shareGen').attr("disabled", "disabled");
+                }
+            });
+            $('#shareGen').on("click", function(){
+              $('#shareGen').attr("disabled", "disabled");
+              data = {
+                image: compressed_image,
+                version: lylart_generator_version,
+                title: $("#titleImage").val(),
+                desc: $("#descImage").val()
+              }
+              $.post("../requetes/img_to_bdd.php",
+                  data,
+                  function(resultat){
+                    console.log(resultat);
+                    $('.modal').addClass("hidden");
+                  },
+                  "text");
+            });
           }
           else {
             window.location.href = currentUrl.concat(bringMeTo);

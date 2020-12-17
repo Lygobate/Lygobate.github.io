@@ -16,7 +16,7 @@ $insertImg=$pass->prepare("INSERT INTO generation (nom,version,description,date_
       ":auteur"=>$_SESSION["token"]
     ]);
 
-    echo"Super, ta création à bien été envoyée. Retrouves la dès maintenant dans ta gallerie !";
+    echo"Super, ta création à bien été envoyée. Retrouves la dès maintenant dans ta galerie !";
   } else {
     echo "/!\Une erreur est survenue. Un problème d'envoie de l'image dans la base de donnée a été détectée.";
   }

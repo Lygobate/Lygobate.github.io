@@ -1,6 +1,6 @@
 <?php
     $jquery=true;
-    require_once "header.php"
+    require_once "header.php";
 ?>
 <style>body{margin-top: 10vh;background: white;}</style>
 
@@ -35,12 +35,23 @@
         <span id="wrong_pseudo"></span>
         <input type="password" name="password" placeholder="Mot de passe" required>
         <input type="hidden" name="from" value="connection">
-        <input type="submit" id="submit_login" name="submit" value="Se connecter">
+        <input type="submit" id="submit_login" name="submit" value="Se connecter" bringMeTo="./">
       </form>
+
+
+
+
+
+
+
+
+
+
+
+
 
       <script type="text/javascript">
       $(function(){
-
         //_______________________NEW USER
 
         //éviter que le mot de passe soit différent
@@ -68,8 +79,27 @@
             dataType: 'text',
             data: form_data,
             success: function(registed,statut){
+              console.log("OK");
               if (registed == "registed") {
                   $('#is_registed').html("vous avez bien été enregistré");
+                  <?php if (isset($_POST["given_title"])) { ?>
+                  data = {
+                    image: "<?=$_POST["compressed-generation"]?>",
+                    version: "<?=$_POST["lylart_generator_version"]?>",
+                    title: "<?=$_POST["given_title"]?>",
+                    desc: "<?=$_POST["given_description"]?>"
+                  }
+                  $.post("requetes/img_to_bdd.php",
+                      data,
+                      function(resultat){
+                        console.log(resultat);
+                      },
+                      "text");
+                window.location.href = "<?=$_POST["target-url"]?>";
+                <?php
+                }
+                ?>
+                window.location.href = $('#submit_login').attr('bringMeTo');
               } else if (registed == "mail_error") {
                   $('#is_registed').html("un compte utilisateur existe déjà sous ce mail");
               } else if (registed == "userName_error") {
@@ -80,8 +110,11 @@
             }
           });//end Ajax
         });
+
+
         $('#connection-form').submit(function(e){
           e.preventDefault();
+          $('#submit_login').attr('disabled','disabled');
           let form_data = $(this).serialize();
           //console.log(form_data);
           $.ajax({
@@ -93,9 +126,28 @@
               //console.log(connection);
               if (connection == "true"){
                 //console.log("FDDDDPPPP");
-                $('#is_connected').html("vous êtes bien connecté");
+                $('#is_connected').html("Vous êtes bien connecté");
+                <?php if (isset($_POST["given_title"])) { ?>
+                data = {
+                  image: "<?=$_POST["compressed-generation"]?>",
+                  version: "<?=$_POST["lylart_generator_version"]?>",
+                  title: "<?=$_POST["given_title"]?>",
+                  desc: "<?=$_POST["given_description"]?>"
+                }
+                $.post("requetes/img_to_bdd.php",
+                    data,
+                    function(resultat){
+                      console.log(resultat);
+                    },
+                    "text");
+                window.location.href = "<?=$_POST["target-url"]?>";
+              <?php
+              }
+              ?>
+              window.location.href = $('#submit_login').attr('bringMeTo');
               } else if (connection == "false") {
-                $('#is_connected').html("Fils deupe d'haïzaïmeure");
+                $('#is_connected').html("Login/Password don't match or don't exist");
+                $('#submit_login').removeAttr('disabled');
               }
             }
           });//end Ajax
