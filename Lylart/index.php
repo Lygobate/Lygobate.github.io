@@ -1,5 +1,6 @@
 <?php
   $style="index";
+  $jquery=true;
   require_once "header.php";
 ?>
 
@@ -12,8 +13,8 @@
             </div>
             <a href="gen/"><div class="button">Créer</div></a>
         </div>
-        <video loop playsinline > <!-- autoplay loop controls playsinline-->
-            <source src="video/EEEAAAOOO.mp4" type="video/mp4">
+        <video autoplay loop playsinline muted> <!-- autoplay loop controls playsinline muted-->
+            <source src="video/video.mp4" type="video/mp4">
         </video>
     </div>
     <div class="choix">
