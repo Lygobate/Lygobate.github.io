@@ -150,7 +150,7 @@
               image: compressed_image,
               version: lylart_generator_version,
               title: $("input[name='title']").val(),
-              desc: $("input[name='desc']")
+              desc: $("input[name='desc']").val()
             }
             $('#shareGen').on("click", function(){
               $.post("../requetes/img_to_bdd.php",data,function(resultat){console.log(resultat);},"text");
