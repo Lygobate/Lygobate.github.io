@@ -88,12 +88,7 @@
     text-align: center;
     justify-content: space-evenly;
     display: none;
-    position: absolute;
     padding: 2%;
-    & .fixed {
-      position: fixed;
-      top: 0;
-    }
     & > div {
       display: inline-block;
       width: 25%;
