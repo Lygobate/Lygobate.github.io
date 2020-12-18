@@ -14,6 +14,14 @@
         <a href="mentions.php" title="Legal disclaimer"><div class="mentions"></div></a>
     </div>
 </div>
-<div class="mentions"><a href="mentions.php">Legal disclaimer</a></div>
+<div class="mentions">
+    <?php
+        if($style=="gen"){
+            echo '<a href="../mentions.php">Legal disclaimer</a>';
+        }else{
+            echo '<a href="mentions.php">Legal disclaimer</a>';
+        };
+    ?>
+</div>
 </body>
 </html>

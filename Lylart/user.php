@@ -1,4 +1,7 @@
 <?php
+    if (!isset($_COOKIE["statut"])){
+        header('Location: ./');
+    }
   $jquery=true;
   $style="user";
   require_once "header.php";
