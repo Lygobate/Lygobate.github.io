@@ -2,6 +2,7 @@
     $jquery=true;
     $style="";
     require_once "header.php";
+    $style = "connection";
 ?>
 
 
