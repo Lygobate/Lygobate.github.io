@@ -25,6 +25,21 @@
     <div class="grid-card">
     </div>
 </div>
+
+<script type="text/javascript">
+var nav = document.querySelector(".choix");
+var header = document.querySelector(".video");
+
+function scrolled(){
+var currentScroll = document.body.scrollTop || document.documentElement.scrollTop;
+
+nav.className = (currentScroll >= header.clientHeight) ? "fixed" : "";
+}
+
+addEventListener("scroll", scrolled, false);
+</script>
+
+
 <?php
     require_once "footer.php";
 ?>

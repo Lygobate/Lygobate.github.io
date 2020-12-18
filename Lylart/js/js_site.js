@@ -8,7 +8,7 @@ $(function(){
         'requetes/cards.php',
         data,
         function(success){
-            console.log(success[0]['image']);
+            //console.log(success[0]['image']);
             for (i=0;i<success.length;i++) {
                 $('.grid-card').append(`
                     <div class="card">

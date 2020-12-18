@@ -12,7 +12,7 @@
     overflow: hidden;
     width: 100%;
     object-fit: none;
-    
+
     & > div {
       position: absolute;
       z-index: 1;
@@ -27,13 +27,13 @@
       @include md{
         padding: 4em;
       }
-      
+
       & > div {
         & > h1 {
           text-align: right;
           font-size: 2em;
         }
-        
+
         & > h2 {
           text-align: right;
           font-size: 1em;
@@ -46,13 +46,13 @@
           }
         }
       }
-      
+
       & > a {
         text-decoration: none;
         color: white;
         width: fit-content;
         margin-top: 5em;
-        
+
         & > div {
           background: $red;
           padding: 0.5em;
@@ -64,7 +64,7 @@
         }
       }
     }
-    
+
     & > video {
       //filter: brightness(0.4);
       object-position: -63vw;
@@ -80,7 +80,12 @@
     text-align: center;
     justify-content: space-evenly;
     display: none;
+    position: absolute;
     padding: 2%;
+    & .fixed {
+      position: fixed;
+      top: 0;
+    }
     & > div {
       display: inline-block;
       width: 25%;
