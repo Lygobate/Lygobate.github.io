@@ -53,7 +53,7 @@
             }
         }
     ?>
-    
+
 </head>
 <body>
     <div id="loader"><img src="<?php if(isset($style)&&$style=="gen"){echo "../images/loader.gif";}else{echo "images/loader.gif";}?>" alt="loader">Loading...</div>

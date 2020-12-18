@@ -31,12 +31,13 @@
     & .message-box{
       width: 100%;
       padding: 10px 0;
-      border-radius: 40px;
-      background-color: $div_back;
+      border-radius: 4px;
       margin-bottom: 5px;
       display: none;
       & .message{
         text-align: center;
+        color: white;
+        font-size: 11px;
       }
     }
     & #connection-form{
@@ -59,26 +60,117 @@
             height: 30px;
             margin-right: 10px;
           }
+          & span i:hover{
+            cursor: pointer;
+          }
         }
       }
       & .button-box{
         width: 100%;
         display:flex;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
         margin-top: 10px;
         & #submit_login{
+          padding: 15px 25px;
+          margin-top: 15px;
+          &:hover{
+            cursor: pointer;
+          }
+        }
+        & .no-account{
+          margin-top: 5px;
+          width: 100%;
+          & .no-account-link{
+            text-align: center;
+            font-size: 10.5px;
+            color: $lighter-grey;
+            text-decoration: underline;
 
+            &:hover{
+              cursor: pointer;
+            }
+          }
         }
       }
     }
-    & .no-account{
-      margin-top: 5px;
+  }
+  & .create_account{
+    width :60vw;
+    max-width: 500px;
+    & .title_form{
       width: 100%;
-      & p{
+      padding: 10px 0;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      & > p{
         text-align: center;
-        font-size: 10px;
-        color: $lighter-grey;
-        text-decoration: underline;
+        font-size: 20px;
+      }
+    }
+    & .message-box2{
+      width: 100%;
+      padding: 10px 0;
+      border-radius: 4px;
+      margin-bottom: 5px;
+      display: none;
+      & .message2{
+        text-align: center;
+        color: white;
+        font-size: 11px;
+      }
+    }
+    & #new_user_form{
+      & .infobox-co-form{
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        align-items: center;
+        & > div{
+          margin: 10px 0;
+          & .label-form{
+            font-size: 15px;
+            margin-bottom: 3px;
+          }
+          & .data-form-user-input{
+            width: 40vw;
+            max-width: 300px;
+            height: 30px;
+            margin-right: 10px;
+          }
+          & span i:hover{
+            cursor: pointer;
+          }
+        }
+      }
+      & .button-box{
+        width: 100%;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+        & #submit_new_user{
+          padding: 15px 25px;
+          margin-top: 15px;
+          &:hover{
+            cursor: pointer;
+          }
+        }
+        & .back{
+          margin-top: 5px;
+          width: 100%;
+          & .back-link{
+            text-align: center;
+            font-size: 10.5px;
+            color: $lighter-grey;
+            text-decoration: underline;
+            &:hover{
+              cursor: pointer;
+            }
+          }
+        }
       }
     }
   }
