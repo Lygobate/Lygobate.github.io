@@ -23,23 +23,6 @@
         <div>Ma galerie</div>
     </div>
     <div class="grid-card">
-        <?php
-            for ($i=0; $i<8; $i++){
-        ?>
-        <div class="card">
-            <div class="card_login">Mia Khalifa</div>
-            <div class="card_gen">
-                <img src="images/gen_test.jpg" alt="gen">
-            </div>
-            <div class="card_desc">
-                <h3>Titre</h3>
-                <p>Description, description description description description description description ...</p>
-                <span>Suite</span>
-            </div>
-        </div>
-        <?php
-            }
-        ?>
     </div>
 </div>
 <?php
