@@ -23,31 +23,31 @@
       <div class="label-form label-form-user">Username</div>
       <div class="data-form data-form-user">
         <input type="text" class="data-form data-form-user-input">
-        <span>█</span>
+        <span><i class="fas fa-lock"></span>
       </div>
-      <input type="button" class="button-form button-form-user" value="Changer pseudo">
+      <input type="button" class="button-form button-form-user" value="Changer Username">
     </div>
     <div class="info-box info-box1">
       <div class="label-form label-form-user">Email</div>
       <div class="data-form data-form-user">
         <input type="text" class="data-form data-form-user-input" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
-        <span>█</span>
+        <span></span>
       </div>
-      <input type="button" class="button-form button-form-user" value="Changer d'Email">
+      <input type="button" class="button-form button-form-user" value="Change Mail">
     </div>
 
     <div class="info-box info-box-mdp">
-      <div class="label-form label-form-user">Mot de passe</div>
+      <div class="label-form label-form-user">Password</div>
       <div class="data-form data-form-user">
         <input type="text" class="data-form data-form-user-input">
-        <span>█</span>
+        <span></span>
       </div>
 
-      <div class="label-form label-form-user-confirm">Confirmer mot de passe</div>
+      <div class="label-form label-form-user-confirm">Confirm password</div>
       <div class="data-form data-form-user-confirm">
         <input type="text" class="data-form data-form-user-input">
       </div>
-      <input type="button" class="button-form button-form-user" value="Changer mdp">
+      <input type="button" class="button-form button-form-user" value="Change password">
     </div>
 
     <div class="osef-tous">
