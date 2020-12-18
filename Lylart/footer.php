@@ -1,4 +1,4 @@
-<div class="footer-mobile <?php if (isset($style)){echo "gen";} ?>">
+<div class="footer-mobile <?php if ($style=="index"){echo "gen";} ?>">
     <div class="choix">
         <div req="lastPosts"><i class="fa fa-sort-amount-asc" aria-hidden="true"></i></div>
         <div req="fav"><i class="fas fa-star"></i></div>

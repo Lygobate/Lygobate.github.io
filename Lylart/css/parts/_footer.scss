@@ -1,4 +1,7 @@
-.footer-mobile {
+.footer-mobile{
+  display: none;
+}
+.footer-mobile.gen {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -35,9 +38,12 @@
       font-size: xx-large;
     }
   }
+  @include lg{
+    display: none;
+  }
 }
 .mentions{
-  display: flex;
+  display: none;
   @include lg {
     width: 100%;
     display: flex;
