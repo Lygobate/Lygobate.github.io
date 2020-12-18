@@ -36,10 +36,18 @@
         
         & > h2 {
           text-align: right;
-          font-size: 1em;
+          font-size: 0.7em;
           padding-left: 2em;
+          & a{
+            text-decoration: underline;
+            color: white;
+            &:active{
+              color: blue;
+            }
+          }
           @include md{
-            padding-left: 10em;
+            padding-left: 8em;
+            font-size: 1em;
           }
           @include lg{
             padding-left: 20em;

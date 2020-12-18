@@ -1,5 +1,15 @@
 $(function(){
     $('#loader').toggleClass('hidden');
+    $(window).scroll(function() {
+        if ($(this).scrollTop()>300)
+        {
+            $('.mentions a').hide(500);
+        }
+        else
+        {
+            $('.mentions a').show(500);
+        }
+    });
     let data={
         iteration:0,
         typeRequete: "lastPosts"
