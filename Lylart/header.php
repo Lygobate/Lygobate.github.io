@@ -61,17 +61,20 @@
 <body>
     <div id="loader"><img src="<?php if(isset($style)&&$style=="gen"){echo "../images/loader.gif";}else{echo "images/loader.gif";}?>" alt="loader">Loading...</div>
     <header>
-        <?php if(isset($style)&&$style!="gen"){
-            echo '<a class="generatorButton" href="./gen" title="Generator">
-                <div>
-                    <img src="images/gen.png" alt="Generator">
-                </div>
-            </a>';
-        }else{
-            echo '<a class="generatorButton" href="../">
-                <div>Home</div>
-            </a>';
-        }
+        <?php
+          if(isset($style)&&$style!="gen"){
+              echo '<a class="generatorButton" href="./gen" title="Generator">
+                  <div>
+                      <img src="images/gen.png" alt="Generator">
+                  </div>
+              </a>';
+          }
+          else if(isset($style)&&$style!="connection"){
+            echo '<a class="generatorButton" href="/index.php" title="Generator"><div>Home</div></a>';
+          }
+          else{
+              echo '<a class="generatorButton" href="../"><div>Home</div></a>';
+          }
         ?>
         <a class="logo" href="<?=$index?>">
             <img src="<?php if(isset($style)&&$style=="gen"){echo "../images/logo.png";}else{echo "images/logo.png";}?>" alt="Logo">

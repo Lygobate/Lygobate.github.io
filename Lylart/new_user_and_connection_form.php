@@ -1,6 +1,7 @@
 <?php
     $jquery=true;
     require_once "header.php";
+    $style = "connection";
 ?>
 
 

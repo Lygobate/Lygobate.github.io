@@ -97,6 +97,10 @@
     var from = "<?=$from?>";
     var currentUrl = "<?=$url?>";
 
+
+    var token = "<?=$_SESSION['token']?>";
+    console.log(token);
+
     //console.log(currentUrl);
     console.log("session : " + session);
     console.log("from : " + from);
