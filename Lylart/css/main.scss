@@ -1,5 +1,6 @@
 @import "parts/imports";
 @import "parts/mediaQueries";
+@import "parts/animations-keyframes";
 @import "parts/colors";
 @import "parts/header";
 @import "parts/accueil";
@@ -7,6 +8,7 @@
 @import "parts/user";
 @import "parts/connection";
 @import "parts/footer";
+
 
 * {
   padding: 0;

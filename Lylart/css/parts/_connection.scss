@@ -4,7 +4,13 @@
 #submit_login{
   padding: 15px;
 }
-.create_account{display: none;}
+
+
+
+.create_account{display: none;}//cacher le formulaire de création de compte
+
+
+
 
 .form-page{
   background: $background;
@@ -60,8 +66,17 @@
             height: 30px;
             margin-right: 10px;
           }
-          & span i:hover{
+          & span .fa-eye-slash, span .fa-eye, {
             cursor: pointer;
+            animation: logo-ico-wait;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+
+          }
+          & span .fa-eye-slash:hover, span .fa-eye:hover, {
+            cursor: pointer;
+            animation: rotateIn;
+            animation-duration: 0.4s;
           }
         }
       }
@@ -139,9 +154,6 @@
             max-width: 300px;
             height: 30px;
             margin-right: 10px;
-          }
-          & span i:hover{
-            cursor: pointer;
           }
         }
       }

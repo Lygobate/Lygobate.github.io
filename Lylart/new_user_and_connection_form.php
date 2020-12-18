@@ -21,7 +21,7 @@
                 <div class="label-form">Login</div>
                 <div class="data-form">
                   <input type="text" class="data-form data-form-user-input" name="login" required>
-                  <span>█</span>
+                  <span><i class="fas fa-sign-in-alt"></i></span>
                 </div>
               </div>
             </div>
@@ -31,7 +31,7 @@
                 <div class="label-form">Mail</div>
                 <div class="data-form">
                   <input type="mail" class="data-form data-form-user-input" name="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  required><br>
-                  <span>█</span>
+                  <span><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
                 </div>
               </div>
             </div>
@@ -52,7 +52,7 @@
               }
               ?>
             </select><br>
-                  <span>█</span>
+                  <span><i class="fa fa-globe" aria-hidden="true"></i></span>
                 </div>
               </div>
             </div>
@@ -62,12 +62,14 @@
                 <div class="label-form">Password</div>
                 <div class="data-form">
                   <input id="ca-password" type="password" class="data-form data-form-user-input" name="password"  required><br>
+                  <span><i class="fas fa-lock"></i></span>
                 </div>
               </div>
               <div>
                 <div class="label-form">Confirm password</div>
                 <div class="data-form">
                   <input id="ca-password-repeat" type="password" class="data-form data-form-user-input" name="password_repeat"  required><br>
+                  <span><i class="fas fa-lock"></i></span>
                 </div>
               </div>
             </div>
@@ -104,7 +106,7 @@
                 <div class="label-form">Login</div>
                 <div class="data-form">
                   <input type="text" class="data-form data-form-user-input" name="login" required>
-                  <span>█</span>
+                  <span><i class="fas fa-sign-in-alt"></i></span>
                 </div>
               </div>
             </div>
