@@ -86,7 +86,6 @@
                     echo '<a href="user.php">
                     <div id="is-connected" title="My account">
                         <i class="fas fa-user-circle"></i>
-                        <div>Disconnect</div>
                     </div>
                 </a>';
                 }else{
