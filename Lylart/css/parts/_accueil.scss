@@ -89,7 +89,13 @@
     justify-content: space-evenly;
     display: none;
     padding: 2%;
-    & > div {
+    & a {
+      width: 25%;
+      & div{
+        width: 100%;
+      }
+    }
+    & div{
       display: inline-block;
       width: 25%;
       background: $div_back;

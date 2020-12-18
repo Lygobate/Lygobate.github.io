@@ -2,6 +2,7 @@
   $style="index";
   $jquery=true;
   require_once "header.php";
+  session_start();
 ?>
 
 <div id="accueil">
@@ -18,9 +19,15 @@
         </video>
     </div>
     <div class="choix">
-        <div>Last posts</div>
-        <div>The bests</div>
-        <div>My gallery</div>
+        <div req="lastPosts">Last posts</div>
+        <div req="fav">The bests</div>
+        <?php
+            if (isset($_SESSION["token"])){
+                echo '<div req="mag">My gallery</div>';
+            } else{
+                echo '<a href="new_user_and_connection_form.php"><div title="Log in">My gallery</div></a>';
+            }
+        ?>
     </div>
     <div class="grid-card">
     </div>

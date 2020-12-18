@@ -68,7 +68,7 @@
                 </div>
             </a>';
         }else{
-            echo '<a class="generatorButton" href="../">
+            echo '<a class="generatorButton" href="./">
                 <div>Home</div>
             </a>';
         }
@@ -87,7 +87,7 @@
                     </div>
                 </a>';
                 }else{
-                    echo '<a href="new_user_and_connection_form.php">Se connecter</a>';
+                    echo '<a href="new_user_and_connection_form.php">Log in</a>';
                 }
             }else{
                 if(isset($_COOKIE["statut"])){
@@ -97,7 +97,7 @@
                     </div>
                 </a>';
                 }else{
-                    echo '<a href="../new_user_and_connection_form.php">Se connecter</a>';
+                    echo '<a href="../new_user_and_connection_form.php">Log in</a>';
                 }
             }
         ?>
