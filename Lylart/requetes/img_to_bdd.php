@@ -12,7 +12,7 @@ $insertImg=$pass->prepare("INSERT INTO generation (nom,version,description,date_
     $image_type_aux = explode("image/", $fileImg_parts[0]);
     $image_type = $image_type_aux[1];
     $image_base64 = base64_decode($fileImg_parts[1]);
-    $img_file = "images/".$_SESSION["token"]."_".$_POST["title"].".".$image_type;
+    $img_file = "images/gens/".$_SESSION["token"]."_".$_POST["title"].".".$image_type;
     file_put_contents("../".$img_file, $image_base64);
     $insertImg->execute([
       ":nom"=>$_POST["title"],
