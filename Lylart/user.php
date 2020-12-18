@@ -23,7 +23,7 @@
       <div class="label-form label-form-user">Username</div>
       <div class="data-form data-form-user">
         <input type="text" class="data-form data-form-user-input">
-        <span><i class="fas fa-lock"></i></span>
+        <span><i class="fas fa-edit"></i></i></span>
       </div>
       <input type="button" class="button-form button-form-user" value="Changer Username">
     </div>
@@ -31,7 +31,7 @@
       <div class="label-form label-form-user">Email</div>
       <div class="data-form data-form-user">
         <input type="text" class="data-form data-form-user-input" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
-        <span></span>
+        <span><i class="fas fa-edit"></i></span>
       </div>
       <input type="button" class="button-form button-form-user" value="Change Mail">
     </div>
@@ -40,7 +40,7 @@
       <div class="label-form label-form-user">Password</div>
       <div class="data-form data-form-user">
         <input type="text" class="data-form data-form-user-input">
-        <span></span>
+        <span><i class="fas fa-edit"></i></span>
       </div>
 
       <div class="label-form label-form-user-confirm">Confirm password</div>
@@ -50,11 +50,22 @@
       <input type="button" class="button-form button-form-user" value="Change password">
     </div>
 
+    <div class="disconnect-box">
+      <input id="disconnect" type="button" class="button-form button-form-user" value="Disconnect">
+    </div>
     <div class="osef-tous">
       <p>voici les trucs que personne ne lira, mais on vous recommande de le lire au cas où...</p>
     </div>
   </div>
 </main>
+
+<script type="text/javascript">
+  $('#disconnect').on('click', function(){
+
+  });
+</script>
+
+
 <?php
     require_once "footer.php";
 ?>
