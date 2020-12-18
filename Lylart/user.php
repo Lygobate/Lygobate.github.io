@@ -54,14 +54,26 @@
       <input id="disconnect" type="button" class="button-form button-form-user" value="Disconnect">
     </div>
     <div class="osef-tous">
-      <p>voici les trucs que personne ne lira, mais on vous recommande de le lire au cas où...</p>
+      <p>Things that none will read, but common read this : <a href="mentions.php">Legal Disclaimer</a></p>
     </div>
   </div>
 </main>
 
 <script type="text/javascript">
   $('#disconnect').on('click', function(){
-
+    $('#disconnect').attr('disabled','disabled');
+    var currentUrl = "<?=$url?>";
+    set_disconnect = {
+      disconnect: true
+    };
+    $.post(
+      'requetes/disconnect.php',
+      set_disconnect,
+      function(disconnected){
+        console.log(disconnected);
+        window.location.href = currentUrl.concat('/../index.php');
+      },
+      'text');
   });
 </script>
 
