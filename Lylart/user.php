@@ -23,7 +23,7 @@
       <div class="label-form label-form-user">Username</div>
       <div class="data-form data-form-user">
         <input type="text" class="data-form data-form-user-input">
-        <span><i class="fas fa-lock"></span>
+        <span><i class="fas fa-lock"></i></span>
       </div>
       <input type="button" class="button-form button-form-user" value="Changer Username">
     </div>
