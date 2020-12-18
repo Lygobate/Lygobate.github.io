@@ -19,7 +19,7 @@ $(function(){
                         <div class="card_desc">
                             <h3>` + success[i]['nom'] + `</h3>
                             <p>` + success[i]['description'] + `</p>
-                            <span>Suite</span>
+                            <span>View more</span>
                         </div>
                     </div>
                 `);

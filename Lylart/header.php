@@ -59,26 +59,27 @@
     <div id="loader"><img src="<?php if(isset($style)&&$style=="gen"){echo "../images/loader.gif";}else{echo "images/loader.gif";}?>" alt="loader">Loading...</div>
     <header>
         <?php if(isset($style)&&$style!="gen"){
-            echo '<a class="generatorButton" href="./gen">
+            echo '<a class="generatorButton" href="./gen" title="Generator">
                 <div>
                     <img src="images/gen.png" alt="Generator">
                 </div>
             </a>';
         }else{
             echo '<a class="generatorButton" href="../">
-                <div>Accueil</div>
+                <div>Home</div>
             </a>';
         }
         ?>
         <a class="logo" href="<?=$index?>">
             <img src="<?php if(isset($style)&&$style=="gen"){echo "../images/logo.png";}else{echo "images/logo.png";}?>" alt="Logo">
         </a>
-        <input type="text" placeholder="Rechercher">
+        <input type="text" placeholder="Search">
         <?php
             if(isset($style)&&$style!="gen"){
                 if(isset($_COOKIE["statut"])){
                     echo '<a href="user.php">
-                    <div id="is-connected">
+                    <div id="is-connected" title="My account">
+                        <i class="fas fa-user-circle"></i>
                     </div>
                 </a>';
                 }else{
@@ -87,7 +88,8 @@
             }else{
                 if(isset($_COOKIE["statut"])){
                     echo '<a href="../user.php">
-                    <div id="is-connected">
+                    <div id="is-connected" title="My account">
+                        <i class="fas fa-user-circle"></i>
                     </div>
                 </a>';
                 }else{

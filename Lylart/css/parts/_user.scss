@@ -75,14 +75,20 @@
       align-items: center;
       justify-content: center;
       & .pdp-box{
-        border: solid thin white;
+        //border: solid thin white;
         border-radius: 100%;
         width: 20vw;
         height: 20vw;
         min-width: 150px;
         min-height: 150px;
-        & img{
-          //ma PDP
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        & i{
+          font-size: 40vw;
+          @include sm{
+            font-size: 20vw;
+          }
         }
         @include sm{
         }

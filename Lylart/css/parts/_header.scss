@@ -55,6 +55,9 @@ header {
       & > img{
         width: 3em;
       }
+      &#is-connected > i{
+        font-size: 2.3em;
+      }
     }
     &:last-child{
       order: 4;
