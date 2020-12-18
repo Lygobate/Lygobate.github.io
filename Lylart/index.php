@@ -32,6 +32,7 @@
     <div class="grid-card">
     </div>
 </div>
+
 <?php
     require_once "footer.php";
 ?>
