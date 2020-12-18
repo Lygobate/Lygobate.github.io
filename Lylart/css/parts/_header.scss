@@ -35,7 +35,7 @@ header {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
-  
+
   & > a {
     text-decoration: none;
     color: white;
@@ -65,7 +65,7 @@ header {
     &.generatorButton{
       order: 0;
       @include lg{
-        order: 3;
+        order: 1;
       }
     }
     &.logo {
