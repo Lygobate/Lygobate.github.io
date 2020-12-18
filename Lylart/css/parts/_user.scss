@@ -51,12 +51,13 @@
   background: $background;
   color: white;
   margin-top: 7vh;
-  height: 85vh;
+  height: 90vh;
   @include md{
     margin-top: 13.5vh;
   }
   @include lg{
     margin-top: 15vh;
+    margin-bottom: 8vh;
   }
   @include hg{
     margin-top: 20vh;
@@ -182,15 +183,17 @@
       }
     }
     & .osef-tous{
+      @include lg{
+        display: none;
+      }
       height: 100%;
       width: 100%;
       grid-column: span 4;
       font-size: 8px;
       display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      & #disconnect{
-        text-align: center;
+      justify-content: center;
+      & a{
+        color: white;
       }
     }
   }
