@@ -82,7 +82,7 @@
         <input type="text" placeholder="Search">
         <?php
             if(isset($style)&&$style!="gen"){
-                if(isset($_COOKIE["statut"])){
+                if(isset($_SESSION["token"])){
                     echo '<a href="user.php">
                     <div id="is-connected" title="My account">
                         <i class="fas fa-user-circle"></i>
@@ -92,7 +92,7 @@
                     echo '<a href="new_user_and_connection_form.php">Log in</a>';
                 }
             }else{
-                if(isset($_COOKIE["statut"])){
+                if(isset($_SESSION["token"])){
                     echo '<a href="../user.php">
                     <div id="is-connected" title="My account">
                         <i class="fas fa-user-circle"></i>
