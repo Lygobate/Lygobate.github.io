@@ -11,8 +11,9 @@
     <div>
         <div></div>
         <div></div>
-        <div></div>
+        <a href="mentions.php" title="Legal disclaimer"><div class="mentions"></div></a>
     </div>
 </div>
+<div class="mentions"><a href="mentions.php">Legal disclaimer</a></div>
 </body>
 </html>

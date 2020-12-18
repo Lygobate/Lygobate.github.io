@@ -24,6 +24,9 @@
     <link rel="icon" type="image/x-icon" href="<?php if(isset($style)&&$style=="gen"){echo "../images/fav.png";}else{echo "images/fav.png";}?>">
     <!-- Titre de l'onglet -->
     <title><?php if (!empty($style) && $style=="gen"){echo "Lylart Generator";}else{echo "Lylart Gallery";};?></title>
+    <meta property="og:title" content="Lylart Project">
+    <meta property="og:image" content="<?php if(isset($style)&&$style=="gen"){echo "../images/logo.png";}else{echo "images/logo.png";}?>">
+    <meta property="og:description" content="Lylart project by Axel & Enzo">
     <!-- Importer CSS et scripts -->
     <?php
         if (empty($style)||(isset($style)&&$style!="gen")){
@@ -80,6 +83,7 @@
                     echo '<a href="user.php">
                     <div id="is-connected" title="My account">
                         <i class="fas fa-user-circle"></i>
+                        <div>Disconnect</div>
                     </div>
                 </a>';
                 }else{

@@ -8,8 +8,8 @@
     <div class="video">
         <div>
             <div>
-                <h1>Slogan</h1>
-                <h2>Autre chose ? Peut-être que oui ^^</h2>
+                <h1>LYLART</h1>
+                <h2>Lylart gallery is a brand new social network allowing users to share their creations on <a href="./gen">Lylart Generator</a>. This project, realized by students, is innovative and above all creative.</h2>
             </div>
             <a href="gen/"><div class="button">Create</div></a>
         </div>
