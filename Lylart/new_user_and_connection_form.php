@@ -12,8 +12,8 @@
           <div class="title_form">
             <p>Sign up to LyLart Gallery</p>
           </div>
-          <div class="message-box2">
-            <div class="message2"></div>
+          <div class="success-box success-box-create-account">
+            <div class="success-message-create-account"></div>
           </div>
 
           <form id="new_user_form" action="" method="post">
@@ -97,8 +97,8 @@
           <div class="title_form">
             <p>Connection to LyLart Gallery</p>
           </div>
-          <div class="message-box">
-            <div class="message"></div>
+          <div class="success-box success-box-login">
+            <div class="success-message-login"></div>
           </div>
 
           <form id="connection-form" action="" method="post">
@@ -150,6 +150,7 @@
 
         //animation
 
+        //faire faire apparaître ou masquer mdp
         let show=false;
         $('#connection-form > div:nth-child(2) > div > div.data-form > span').on('click',function(){
           if (show) {
@@ -166,27 +167,31 @@
           }
         });
 
-        $('.no-account-link').on('click',function(){
+        $('.no-account-link').on('click',function(){//clic sur le "I havent got account"
+            //masque formulaire de connection et fait apparaître le formulaire de création de compte
           $('.connection').css('display','none');
           $('.create_account').css('display', 'block')
+          //vide les champs
           $('input[name="login"]').val("");
           $('input[name="password"]').val("");
-          $('.message-box').css("display","none");
-          $('.message').empty();
+          //masque la message box et la vide
+          $('.success-box-login').css("display","none");
+          $('.success-message-login').empty();
         });
 
-        $('.back-link').on('click',function(){
+        $('.back-link').on('click',function(){//"go back to connection"
+          //masque formulaire de de création de compte et fait apparaître le formulaire de connection
           $('.create_account').css('display','none');
           $('.connection').css('display', 'block');
+          //vide les champs
           $('input[name="login"]').val("");
           $('input[name="password"]').val("");
           $('input[name="password_repeat"]').val("");
           $('input[name="mail"]').val("");
           $('input[name="pays"]').val("");
-          $('#ca-password-repeat,#ca-password').css('border','none');
-          $('#ca-password-repeat,#ca-password').css('border','border-bottom: solid thin $div_back;');
-          $('.message-box2').css("display","none");
-          $('.message2').empty();
+          //masque la message box et la vide
+          $('.success-box-create-account').css("display","none");
+          $('.success-message-create-account').empty();
         });
 
         //_______________________NEW USER
@@ -194,12 +199,12 @@
         //éviter que le mot de passe soit différent
         $('#ca-password-repeat, #ca-password').on('input change', function(){
           if($('#ca-password-repeat').val() != $('#ca-password').val()){
-            $('#message2').html('Passwords do not match');
+            $('#success-message-create-account').html('Passwords do not match');
             $('#ca-password-repeat,#ca-password').css('border','solid 2px red');
 
           } else {
             $('#ca-password-repeat,#ca-password').css('border','solid 2px green');
-            $('#message2').html('Passwords match');
+            $('#success-message-create-account').html('Passwords match');
             $('#submit_new_user').removeAttr('disabled');
           }
         });
@@ -217,9 +222,9 @@
             success: function(registed,statut){
               console.log("OK");
               if (registed == "registed") {
-                $('.message-box2').css('background','#E62000');
-                $('.message-box2').css('display','block');
-                  $('.message2').html("vous avez bien été enregistré");
+                $('.success-box-create-account').css('background','#00c963');
+                $('.success-box-create-account').css('display','block');
+                  $('.success-message-create-account').html("You have been successfully registered !");
                   <?php if (isset($_POST["given_title"])) { ?>
                   data = {
                     image: "<?=$_POST["compressed-generation"]?>",
@@ -239,17 +244,17 @@
                 ?>
                 window.location.href = $('#submit_login').attr('bringMeTo');
               } else if (registed == "mail_error") {
-                $('.message-box2').css('background','#E62000');
-                  $('.message-box2').css('display','block');
-                  $('.message2').html("a user account already exists with this email.");
+                $('.success-box-create-account').css('background','#E62000');
+                  $('.success-box-create-account').css('display','block');
+                  $('.success-message-create-account').html("A user account already exists with this email.");
               } else if (registed == "userName_error") {
-                $('.message-box2').css('background','#E62000');
-                $('.message-box2').css('display','block');
-                $('.message2').html("a user account already exists with this login / pseudonym.");
+                $('.success-box-create-account').css('background','#E62000');
+                $('.success-box-create-account').css('display','block');
+                $('.success-message-create-account').html("A user account already exists with this login / pseudonym.");
               } else if(registed == "mail_and_userName_error"){
-                $('.message-box2').css('background','#E62000');
-                $('.message-box2').css('display','block');
-                $('.message2').html("A user account already exists with this login / pseudonym and with this email.");
+                $('.success-box-create-account').css('background','#E62000');
+                $('.success-box-create-account').css('display','block');
+                $('.success-message-create-account').html("A user account already exists with this login / pseudonym and with this email.");
               }
             }
           });//end Ajax
@@ -269,9 +274,9 @@
             success: function(connection,statut){
               //console.log(connection);
               if (connection == "true"){
-                $('.message-box').css('background-color','#00c963');
-                $('.message-box').css('display','block');
-                $('.message').html("You are connected !");
+                $('.success-box-login').css('background-color','#00c963');
+                $('.success-box-login').css('display','block');
+                $('.success-message-login').html("You are connected !");
                 <?php if (isset($_POST["given_title"])) { ?>
                 data = {
                   image: "<?=$_POST["compressed-generation"]?>",
@@ -291,9 +296,9 @@
               ?>
               window.location.href = $('#submit_login').attr('bringMeTo');
               } else if (connection == "false") {
-                $('.message-box').css('background','#E62000');
-                $('.message-box').css('display','block');
-                $('.message').html("Login/Password don't match or don't exist");
+                $('.success-box-login').css('background','#E62000');
+                $('.success-box-login').css('display','block');
+                $('.success-message-login').html("Login/Password don't match or don't exist");
                 $('#submit_login').removeAttr('disabled');
               }
             }

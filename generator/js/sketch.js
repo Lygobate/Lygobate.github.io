@@ -262,7 +262,7 @@ function checkBoxInit(){
 
 // variables______________________________________
 
-var canvasSize = 1000;
+var canvasSize = 4000;
 let canvahtml;
 var backgroundKey;
 

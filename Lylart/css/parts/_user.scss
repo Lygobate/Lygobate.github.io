@@ -68,7 +68,7 @@
     margin: 0px 10%;
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    grid-template-rows: 6fr repeat(4,1fr) 3fr;
+    grid-template-rows: 5fr repeat(5,1fr) 3fr;
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     & .pdp-container{
@@ -105,6 +105,22 @@
             font-size: 10px;
             color: $lighter-grey;
         }
+      }
+    }
+    & .div{
+      width: 100%;
+      height: auto;
+      //border: solid thin red;
+      grid-column: span 4;
+      display: flex;
+      justify-content: center;
+      & .success-box-user{
+        width: 100%;
+        max-width: 600px;
+        margin-top: auto;
+        margin-bottom: 0;
+        //display: block;
+        background-color: white;
       }
     }
     & .info-box1.top{ //1ere des infobox, permet de lui mette une ligne en plus

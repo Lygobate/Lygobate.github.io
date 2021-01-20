@@ -23,6 +23,14 @@
       </div>
     </div>
 
+    <div class="div">
+      <div class="success-box success-box-user">
+        <div class="success-message success-message-user">
+          <!-- emplacement message -->
+        </div>
+      </div>
+    </div>
+
     <div class="info-box info-box1 top">
       <div class="label-form label-form-user">Username</div>
       <div class="data-form data-form-user">

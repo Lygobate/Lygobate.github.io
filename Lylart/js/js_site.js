@@ -112,7 +112,18 @@ $(function(){
             'requetes/user_param.php',
             data,
             function(success){
-                console.log("Petit log pour dire que tout s'est bien passé ;)");
+                //console.log("Petit log pour dire que tout s'est bien passé ;)");
+                $('.success-box-user').css('background','#00c963');
+                $('.success-box-user').css('display','block');
+                $('.success-message-user').html("Your username has been successfully updated !");
+
+                function fadeOutThis(){}
+                setTimeout(function(){
+                  $('.success-box-user').fadeOut(1000,function(){
+                    $('.success-box-user').css('display','none');}
+                  );
+                }, 3000); //je n'arrive pas à l'extenaliser dans js/functions.js pour l'appeler ensuite. j'ai pourtant bien importer dans header.php
+
             },
             'text'
         );
@@ -126,7 +137,24 @@ $(function(){
             'requetes/user_param.php',
             data,
             function(success){
-                console.log("Petit log pour dire que tout s'est bien passé ;)");
+                //console.log("Petit log pour dire que tout s'est bien passé ;)");
+                $('.success-box-user').css('background','#00c963');
+                $('.success-box-user').css('display','block');
+                $('.success-message-user').html("Your mail was successfully updated !");//temporaire
+                //prévoir une vérification d'Email.
+                // il faut créer un nouvel emplacement dans la table utilisateur. Un champ initialement vide pour tout le monde "mail_update_request" par exemple. Il contiendra le nouveau mail en attente d'approbation, avant qu il soit vérifié.
+                //une fois la requête de changement envoyé, il faut envoyer un mail à la nouvelle adresse mail demandé.
+                //une fois vérifié par l'utilisateur, le mail est remplacé par le mail en attente stocké dans "mail_update_request", et ce champ sera vidé.
+                //cela fait que l'utilisateur garde son mail en attendant. Si le mail n'est pas vérifié avant X temps (exemple 10 jours), le champ "mail_update_request" est supprimé, et l'utilisateur garde son mail. on pourra lui envoyer un petit mail a son ancienne adresse (normalement vérifiée aussi) pour lui dire que son mail n'as pas été modifié en raison de non modification.
+
+                //une fois fait on peut mettre la ligne de code ci dessous et enlever l'ancien message
+                //$('.success-message-user').html("Your request was successfully sent ! Please <b>check your Emails</b> to confirm the new mail.");
+                function fadeOutThis(){}
+                setTimeout(function(){
+                  $('.success-box-user').fadeOut(1000,function(){
+                    $('.success-box-user').css('display','none');}
+                  );
+                }, 3000); //je n'arrive pas à l'extenaliser dans js/functions.js pour l'appeler ensuite. j'ai pourtant bien importer dans header.php
             },
             'text'
         );
