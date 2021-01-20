@@ -1,12 +1,12 @@
 <?php
-
-$hote='localhost';
-$port='3306';
-$nom_bd='lylart_gallery';
-$identifiant='root';
-$mot_de_passe='';
-$encodage='utf8';
-$debug=true;
+    
+    $hote='localhost';
+    $port='3306';
+    $nom_bd='lylart_gallery';
+    $identifiant='root';
+    $mot_de_passe='';
+    $encodage='utf8';
+    $debug=true;
 
 
 // option pour la gestion de l'encodage

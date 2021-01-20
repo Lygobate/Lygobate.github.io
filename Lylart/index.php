@@ -2,7 +2,7 @@
   $style="index";
   $jquery=true;
   require_once "header.php";
-  session_start(['cookie_lifetime' => 86400]);
+//  session_start(['cookie_lifetime' => 86400]);
 ?>
 
 <div id="accueil">
