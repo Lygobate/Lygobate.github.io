@@ -93,21 +93,32 @@
     </form>
 
     <script type="text/javascript">
-    var session = "<?=$session?>";
-    var from = "<?=$from?>";
-    var currentUrl = "<?=$url?>";
+    let session = "<?=$session?>";
+    let from = "<?=$from?>";
+    let currentUrl = "<?=$url?>";
+    let action_url;
 
 
-    var token = "<?=$_SESSION['token']?>";
-    console.log(token);
+
+    <?php /*
+    if (isset($_SESSION['token'])) {
+      echo "
+      <script>
+      let token = '".$_SESSION['token']."';
+      console.log(token);
+      </script>
+      ";
+    }*/
+     ?>
+
 
     //console.log(currentUrl);
-    console.log("session : " + session);
+    //console.log("session : " + session);
     console.log("from : " + from);
     //console.log();
     $(function(){
       $('.reserved_to_member').on('click',function(){ // listener for reserved_to_member
-        var bringMeTo = $(this).attr('bringMeTo');//relative URL
+        let bringMeTo = $(this).attr('bringMeTo');//relative URL
         console.log(bringMeTo);
 
         if (session == "") {//le cookie n'exite pas ()
@@ -148,10 +159,10 @@
             });
 
             if (currentUrl[currentUrl.length - 1] == '/') {
-              var action_url = '../new_user_and_connection_form.php';
+              action_url = '../new_user_and_connection_form.php';
             }
             else{
-              var action_url = '/../new_user_and_connection_form.php';
+              action_url = '/../new_user_and_connection_form.php';
             }
             $('.transmit_data').attr('action', action_url);
           }
