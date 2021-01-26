@@ -1,4 +1,4 @@
-$(function{
+/*$(function{
 
   function fadeOutThis(id,fadeDuration,delay){}
   setTimeout(function(){
@@ -7,4 +7,4 @@ $(function{
     );
   }, delay);
 
-});
+});*/
